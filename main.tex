@@ -1,0 +1,204 @@
+%% This is file `elsarticle-template-1-num.tex',
+%%
+%% Copyright 2009 Elsevier Ltd
+%%
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%%
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%%
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%%
+%% $Id: elsarticle-template-1-num.tex 149 2009-10-08 05:01:15Z rishi $
+%% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-1-num.tex $
+%%
+\documentclass[preprint,5p]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+\usepackage{natbib}
+\bibliographystyle{abbrvnat}
+\setcitestyle{authoryear,open={(},close={)}} %Citations bracketed with ()
+\setcitestyle{citesep={;}} %Makes multiple citations with ;
+%% The graphicx package provides the includegraphics command.
+\usepackage{graphicx}
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+\makesavenoteenv{table}
+
+
+\usepackage{url}
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+\usepackage[switch]{lineno}
+%\linenumbers
+
+\usepackage{caption}
+\usepackage{subcaption}
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+
+% \biboptions{}
+\journal{journal\_name}
+
+\begin{document}\sloppy
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+\title{Scalability Model for LOFAR Direction Independent Pipeline}% Force line breaks with \\
+%speedup real life pipelines performance automatic measurements radio astronomy
+%\thanks{A footnote to the article title}%X
+\author{Author1$^a$ }
+\ead{email1}
+
+% \altaffiliation[Also at ]{Physics Department, XYZ University.}%Lines break automatically or can be forced with \\
+\author{Author2$^b$}%
+\author{Author3$^a$$^,$$^c$}%
+\author{Author4$^a$}%
+\author{Author5$^a$}%
+
+\date{\today}% It is always \today, today,
+\address{$^a$Affiliation Address 1}
+\address{$^b$Affiliation Address 2}
+\address{$^c$Affiliation Address 3}
+
+\begin{abstract}
+Understanding the performance of the LOFAR Direction Independent and Direction Dependent Pipelines is important when trying to optimize the throughput for large surveys. Making a model of completion time will enable us to predict the time taken to process a dataset, optimize our parameter choices and suggest targets for optimization. 
+% \begin{description}
+
+% \item[Prefactor]
+% The \texttt{LOFAR} pre-factor pipeline prepares LOFAR Observations for creating high fidelity images. 
+% \end{description}
+\end{abstract}
+\begin{keyword}
+Radio Astronomy \sep Performance Analysis \sep Profiling \sep High Performance Computing
+%% keywords here, in the form: keyword \sep keyword
+
+%% MSC codes here, in the form: \MSC code \sep code
+%% or \MSC[2008] code \sep code (2000 is the default)
+
+\end{keyword}
+\end{frontmatter}
+
+%\maketitle
+%
+%\tableofcontents
+%\linenumbers
+
+\section{\label{sec:intro}Introduction }
+
+Astronomy has started entering the big data era with many projects creating Petabytes of data per year. Often this data is processed with algorithms that do not scale well with increasing input data size. Understanding the scalability of astronomical algorithms theoretically, in a controlled environment and in production is important to making prediction for future projects and upcoming telescopes. 
+
+The Low Frequency Array (LOFAR) \textbf{cite} is a European leading low-frequency radio telescope. LOFAR's core stations are in the Netherlands, however it can collect data from sites across Europe. As it is an aperture synthesis array, LOFAR data needs to undergo several computationally intensive processing steps before a final scientific image is made. 
+
+To create a broadband image, LOFAR data is first processed by a Direction Independent Calibration scripts followed by the Direction Dependent Calibration software. Direction Independent LOFAR processing can be parallelized on a high throughput cluster, while the Direction Dependent processing is typically performed on a single HPC node. 
+
+The LOFAR Surveys Key Science Project (SKSP) is a long running project with the aim of creating a deep image of the northern sky at low frequencies. The broadest Tier of the survey, Tier 1, will create more than 3000 8-hour observations at a sensitivity below 100 $\mu$Jy. 
+
+While the current imaging algorithms can process heavily averaged data, it is important to understand how our work scales when key processing parameters were increased. 
+
+Finally, if we are to serve LOFAR data processing to scientific users, it is important to estimate the processing time for each request in order to determine whether the user has sufficient resources left in their resource pool. 
+
+%Introduction to LOFAR direction independent processing, the steps required (and their parallelization), the software used and the hardware/high throughput cluster. Differentiation between a model of the software execution and a model of the queueing/downloading/staging and other overhead. Discuss/mention the orchestration with AGLOW and the collection of time performance time-series data. 
+
+
+\section{Related Work}\label{sec:related}
+In previous work, we've parallelized the Direction Independent LOFAR pipeline on a High Throughput infrastructure \textbf{ref}. This success enabled us to process large amounts of data 
+
+
+\input{section_2}
+
+\section{Performance Results}\label{sec:results}
+
+Information on the method of access to the performance data and the pre-processing done to enable easy training of performance models.     
+
+\subsection{Isolated Environment tests}
+We first tested the LOFAR software in isolation in order to determine the scalability of processing time in terms of data size. 
+
+Additionally we tested other parameters (skymodel size and number of CPUs)
+\subsection{Model selection for 'overhead' (staging,downloading,queueing)}
+
+\subsection{Comparison with production runs}
+Over the past year, the LOFAR software has been running in production and collecting data on runtime for each processing step. We can compare this to the isolated model in order to determine the overhead incurred by processing LOFAR data on shared nodes. 
+
+\subsection{Validation}
+Test some data sets outside of the model and see if it can predict performance. 
+
+Discuss the models that make sense to use (and the pairs of data that can be modelled this way) 
+
+
+\subsection{Models chosen for each step and reasons for choice}
+Mention the models used to process the performance data; which data was left out (and why) and why and which models were chosen. Discuss difference between 'per-time-sample' models, 'per-run' models and 'per-dataset' models. Note which steps are being focused on and why; for faster steps, a simple performance model may be sufficient (finishing time vs CPUs for example).  
+
+Table: choice of model for each step and reasoning for choice
+
+\subsection{Detailed discussion for most important/slowest steps}
+
+
+Discussion of the model choices for each of the different 'overhead' tasks. 
+
+\section{Discussions and Conclusions}
+
+\subsection{Recommendations}
+
+
+
+\input{Appendix1}
+
+\section*{Acknowledgements}
+APM would like to acknowledge the support from the NWO/DOME/IBM programme ``Big Bang Big Data: Innovating ICT as a Driver For Astronomy'', project \#628.002.001.
+
+%Author5 gratefully acknowledge support from the European Research Council under the European Unions Seventh Framework Programme (FP/2007-2013)/ERC Advanced Grant NEWCLUSTERS- 321271.
+
+%Author3 acknowledges financial support from NWO Top LOFAR-CRRL project, project No. 614.001.351. R.J.W. is supported by a Clay Fellowship awarded by the Harvard-Smithsonian Center for Astrophysics. AGGMT acknowledges support through the Spinoza premie of the Dutch Science Organization (NWO).
+
+This work was carried out on the Dutch national e-infrastructure with the support of SURF
+Cooperative through grant e-infra 160022 \& 160152.
+
+\section*{References}
+\bibliography{bibliography}
+
+\end{document}
+
+%%
+%% End of file `elsarticle-template-1-num.tex'.
