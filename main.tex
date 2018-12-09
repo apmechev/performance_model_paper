@@ -42,6 +42,20 @@
 \makesavenoteenv{table}
 
 
+\usepackage[printwatermark]{xwatermark}
+\usepackage{xcolor}
+\usepackage{tikz}
+\newsavebox\mybox
+\savebox\mybox{\tikz[color=gray,opacity=0.3]\node{DRAFT};}
+\newwatermark*[
+  allpages,
+  angle=45,
+  scale=11,
+  xpos=-30,
+  ypos=30
+]{\usebox\mybox}
+
+
 \usepackage{url}
 %% The amssymb package provides various useful mathematical symbols
 \usepackage{amssymb}
@@ -85,11 +99,11 @@
 
 %% Title, authors and addresses
 
-\title{Scalability Model for LOFAR Direction Independent Pipeline}% Force line breaks with \\
+\title{Scalability Model for the LOFAR Direction Independent Pipeline}% Force line breaks with \\
 %speedup real life pipelines performance automatic measurements radio astronomy
 %\thanks{A footnote to the article title}%X
-\author{Author1$^a$ }
-\ead{email1}
+\author{Alexandar P. Mechev$^a$}
+\ead{apmechev@srw.leidenuniv.nl}
 
 % \altaffiliation[Also at ]{Physics Department, XYZ University.}%Lines break automatically or can be forced with \\
 \author{Author2$^b$}%
@@ -98,12 +112,12 @@
 \author{Author5$^a$}%
 
 \date{\today}% It is always \today, today,
-\address{$^a$Affiliation Address 1}
+\address{$^a$Leiden University}
 \address{$^b$Affiliation Address 2}
 \address{$^c$Affiliation Address 3}
 
 \begin{abstract}
-Understanding the performance of the LOFAR Direction Independent and Direction Dependent Pipelines is important when trying to optimize the throughput for large surveys. Making a model of completion time will enable us to predict the time taken to process a dataset, optimize our parameter choices and suggest targets for optimization. 
+Understanding the performance of the LOFAR Direction Independent and Direction Dependent Pipelines is important when trying to optimize the throughput for large surveys. Making a model of completion time will enable us to predict the time taken to process a data set, optimize our parameter choices,  help schedule future LOFAR processing services, and predict processing time for future large radio telescopes. 
 % \begin{description}
 
 % \item[Prefactor]
@@ -127,60 +141,133 @@ Radio Astronomy \sep Performance Analysis \sep Profiling \sep High Performance C
 
 \section{\label{sec:intro}Introduction }
 
-Astronomy has started entering the big data era with many projects creating Petabytes of data per year. Often this data is processed with algorithms that do not scale well with increasing input data size. Understanding the scalability of astronomical algorithms theoretically, in a controlled environment and in production is important to making prediction for future projects and upcoming telescopes. 
+Astronomy is entering the big data era with many projects creating Petabytes of data per year. Some algorithms used to process this data may not scale well with the increasing data size. Understanding the scalability of astronomical algorithms theoretically, in a controlled environment and in production is important to making prediction for future projects and upcoming telescopes. 
 
-The Low Frequency Array (LOFAR) \textbf{cite} is a European leading low-frequency radio telescope. LOFAR's core stations are in the Netherlands, however it can collect data from sites across Europe. As it is an aperture synthesis array, LOFAR data needs to undergo several computationally intensive processing steps before a final scientific image is made. 
+The Low Frequency Array (LOFAR) \citep{LOFAR} is a leading European low-frequency radio telescope. LOFAR's core stations are in the Netherlands, however it can collect data from sites across Europe. As it is an aperture synthesis array, LOFAR data needs to undergo several computationally intensive processing steps before a final scientific image is made. 
 
-To create a broadband image, LOFAR data is first processed by a Direction Independent Calibration scripts followed by the Direction Dependent Calibration software. Direction Independent LOFAR processing can be parallelized on a high throughput cluster, while the Direction Dependent processing is typically performed on a single HPC node. 
+To create a broadband image, LOFAR data is first processed by a Direction Independent Calibration steps followed by a Direction Dependent Calibration software \citep{lofar_prefactor, Wendy_bootes,tassesmirnov, tasse2018faceting}. Direction Independent LOFAR processing can be parallelized on a high throughput cluster, while the Direction Dependent processing is typically performed on a single HPC node. 
 
-The LOFAR Surveys Key Science Project (SKSP) is a long running project with the aim of creating a deep image of the northern sky at low frequencies. The broadest Tier of the survey, Tier 1, will create more than 3000 8-hour observations at a sensitivity below 100 $\mu$Jy. 
+The LOFAR Surveys Key Science Project (SKSP) \citep{lotss} is a long running project with the aim of creating a deep image of the northern sky at low frequencies. The broadest tier of the survey, Tier 1, will create more than 3000 8-hour observations at a sensitivity below 100 $\mu$Jy. We have already processed more than 500 of these observations using the \texttt{prefactor} direction independent software \citep{prefactor_zenodo}. 
 
-While the current imaging algorithms can process heavily averaged data, it is important to understand how our work scales when key processing parameters were increased. 
+While the current imaging algorithms can process data averaged by a factor of 64, it is important to understand how our work scales with increased processing parameters, such as averaging parameters. With an increasing LOFAR observation rate, data sizes and scientific requirements, users need to be able to predict the time and computational resources required to process their data.  
 
-Finally, if we are to serve LOFAR data processing to scientific users, it is important to estimate the processing time for each request in order to determine whether the user has sufficient resources left in their resource pool. 
-
-%Introduction to LOFAR direction independent processing, the steps required (and their parallelization), the software used and the hardware/high throughput cluster. Differentiation between a model of the software execution and a model of the queueing/downloading/staging and other overhead. Discuss/mention the orchestration with AGLOW and the collection of time performance time-series data. 
+To study the scalability of LOFAR processing, we set up processing of a sample SKSP data on an isolated node on the \texttt{GINA} cluster at SURFsara, part of the Dutch national e-infrastructure. We tested the software performance as a function of several parameters, including averaging parameters, number of CPUs and calibration model size. Additionally, we tested the performance of the underlying infrastructure, i.e. queuing  and download time, for the same parameters. Finally, we compared the isolated tests with our production runs of the \texttt{prefactor} pipeline to measure the overhead incurred by running on a shared system. 
 
 
 \section{Related Work}\label{sec:related}
-In previous work, we've parallelized the Direction Independent LOFAR pipeline on a High Throughput infrastructure \textbf{ref}. This success enabled us to process large amounts of data 
+In previous work, we've parallelized the Direction Independent LOFAR pipeline on a High Throughput infrastructure \citep{mechev17}. While this parallelization has helped accelerate data processing for the SKSP project, creating a performance model of our software is required if we're to predict the resources taken by future jobs. 
 
+Performance modelling on a distributed system is an important field of study related to grid computing. A good model of the performance of tasks in a distributed workflows can help more efficiently schedule these jobs on a grid environment \citep{grid_perform_model}. Many of the systems require knowledge of the source code and an analytical model of the slowest parts of the code \citep{semi_analytical_model}. Many systems exist to model the performance of distributed jobs \citep{barnes2008regression, semi_analytical_model,performance_prediction,Witt2018PredictivePM}, with some employing Black Box testing \citep{cross_platform_black_box, mapreduce_analysis} or tests on scientific benchmark cases \citep{synthetic_memory_prediction}. Such performance analysis doesn't require intimate knowledge of the software and can be applied on data obtained from processing on a grid infrastructure. 
+
+Empirical modelling is useful in finding bugs in parallel code \citep{scalability_bugs} and modelling the performance of big data architectures \citep{mean_field_modeling}. The insights from these models are used to optimize the architecture of the software system or determine bottlenecks in processing. 
 
 \input{section_2}
 
-\section{Performance Results}\label{sec:results}
+\section{Results}\label{sec:results}
 
-Information on the method of access to the performance data and the pre-processing done to enable easy training of performance models.     
+Using a test data set, we tested the LOFAR \texttt{prefactor} target pipeline on the SURFsara \texttt{GINA} cluster. First we'll present the tests done in an isolated environment and then compare them to the run time in production on a shared infrastructure. Finally, we'll make some predictions on the run time of our processing based on the model and validate these predictions. 
+
+Since we're processing a sample data set in the context of the LOFAR Surveys project, these tests can be compared with the production runs of our pipeline. In production, the parameters chosen are a data size of 1.3GB, a sky model length of 180 lines and 8 CPUs for the gsmcal\_solve step. 
+
 
 \subsection{Isolated Environment tests}
-We first tested the LOFAR software in isolation in order to determine the scalability of processing time in terms of data size. 
+We first tested the LOFAR software in isolation in order to determine the scalability of processing time in terms of data size. The slowest step for \texttt{prefactor} processing is the gsmcal\_solve step. This task performs gain calibration of the averaged data against a sky model, determining the gain parameters that minimize the difference between the data and the model. As an input, this step takes the averaged data and a model of the radio sky as a text file. 
 
-Additionally we tested other parameters (skymodel size and number of CPUs)
-\subsection{Model selection for 'overhead' (staging,downloading,queueing)}
+\subsubsection{Input Data Size}\label{sec:results_size}
+LOFAR data can be averaged to different sizes based on the scientific requirements. Smaller data sets are processed faster, so it is important to understand the effect of data size on processing time. Figures \ref{fig:dpppconcat_size}, \ref{fig:gsmcalsolve_size} and \ref{fig:gsmcalapply_size}  show the processing time for our test data set, averaged to different sizes for the slowest \texttt{prefactor} steps. Figures \ref{fig:predict_ateam}, \ref{fig:ateamcliptar}, \ref{fig:dpppconcat_size}, \ref{fig:gsmcalsolve_size}, \ref{fig:gsmcalapply_size} show the scaling relation between the run time and data size for these steps. With minor deviations, all of the steps show linear behavior with respect to input data size.
+
+
+\begin{figure}
+    \includegraphics[width=0.95\linewidth]{figures/predict_ateam_size.eps}
+      \caption{Tests of the predict\_ateam step for input data size ranging from 1GB to 64 GB. This step calculates the contamination from bright off-axis sources. Dashed lines are shown connecting each pair of points, to highlight the trend. }
+	\label{fig:predict_ateam}
+\end{figure}
+
+
+\begin{figure}
+    \includegraphics[width=0.95\linewidth]{figures/ateamcliptar_size.eps}
+      \caption{Tests of the ateamcliptar step for input data size ranging from 1GB to 64 GB. This step removes the contamination from bright off-axis sources. }
+	\label{fig:ateamcliptar}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=0.95\linewidth]{figures/dpppconcat_size.eps}
+      \caption{Tests of the dpppconcat step for input data size ranging from 1GB to 64 GB. This step concatenates 10 files into a single measurement set.}
+	\label{fig:dpppconcat_size}
+\end{figure}
+
+
+\begin{figure}
+    \includegraphics[width=0.95\linewidth]{figures/gsmcal_solve_size.eps}
+      \caption{Tests of the gsmcal\_solve step for input data size ranging from 1GB to 64 GB. This step performs gain calibration of the concatenated data set against a sky model. It is the slowest and most computationally expensive \texttt{prefactor} step.  }
+	\label{fig:gsmcalsolve_size}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=0.95\linewidth]{figures/gsmcal_apply_size.eps}
+      \caption{Tests of the gsmcal\_apply step for input data size ranging from 1GB to 64 GB. This step applies the calibration solutions to the data. }
+	\label{fig:gsmcalapply_size}
+\end{figure}
+
+\subsubsection{Global Sky Model Size}
+To test the effect of the calibration model size on run time, we tested our calibration with several different lengths of the sky model file. We tested sky models ranging in sensitivity from 0.05 Jy to 1.5 Jy. The most sensitive model had 809 sources while the 1.5 Jy model had only 18 sources. 
+
+
+\subsubsection{Number of CPUs}
+
+
 
 \subsection{Comparison with production runs}
-Over the past year, the LOFAR software has been running in production and collecting data on runtime for each processing step. We can compare this to the isolated model in order to determine the overhead incurred by processing LOFAR data on shared nodes. 
+Over the past two years, the LOFAR software has been running in production and collecting data on run time for each processing step. We can compare this to the isolated model in order to determine the overhead incurred by processing LOFAR data on shared nodes. 
+
+\subsection{Queuing Tests}
+
+Aside from performance of the LOFAR software, we measured the queuing time at the \texttt{GINA} cluster, as a function of the number of CPUs requested. This data was obtained between 16 Nov 2018 and 10 Dec 2018 for 1, 2, 3 ,4, 8, and 16 CPUs per job. A histogram of the queuing time for these jobs is shown in Figure \ref{fig:queue_NCPU}.
+
+\begin{figure}
+    \includegraphics[width=0.95\linewidth]{figures/Queue_NCPU.eps}
+      \caption{Test randomly submitting jobs to the \texttt{GINA} with different number of requested CPUs. Outliers due to grid downtime have been removed \textbf{Actually do this though} }
+	\label{fig:queue_NCPU}
+\end{figure}
+
+
+\subsection{Download Time}
+
+We tested the downloading and unpacking time for data sizes ranging from 512MB to 64GB. We discovered that the unpacking of files below 64GB scaled linearly with file size, however unpacking data larger than 16GB becomes considerably slower than downloading it. Figure \ref{fig:dl_hist} shows the histogram of the download tests, and Fig \ref{fig:dl_plot} displays the tests as a function of data size. Both figures show the scatter for extracting times for the 32 and 64GB data sets. 
+
+
+\begin{figure}
+    \includegraphics[width=0.95\linewidth]{figures/dl_ex.pdf}
+      \caption{A histogram of the download and extracting times of multiple data sizes on the \texttt{GINA} worker nodes. Download and extract times are comparable for data up to 8GB, however above that, the extracting time dominates.  }
+	\label{fig:dl_hist}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=0.95\linewidth]{figures/download_extract_sct.eps}
+      \caption{A scatter plot of the download and extracting times of multiple data sizes on the \texttt{GINA} worker nodes. The difference between download and extract time for the 32 and 64 GB data sets can be seen.  }
+	\label{fig:dl_plot}
+\end{figure}
+
 
 \subsection{Validation}
 Test some data sets outside of the model and see if it can predict performance. 
 
-Discuss the models that make sense to use (and the pairs of data that can be modelled this way) 
-
-
-\subsection{Models chosen for each step and reasons for choice}
-Mention the models used to process the performance data; which data was left out (and why) and why and which models were chosen. Discuss difference between 'per-time-sample' models, 'per-run' models and 'per-dataset' models. Note which steps are being focused on and why; for faster steps, a simple performance model may be sufficient (finishing time vs CPUs for example).  
-
-Table: choice of model for each step and reasoning for choice
-
-\subsection{Detailed discussion for most important/slowest steps}
-
-
-Discussion of the model choices for each of the different 'overhead' tasks. 
 
 \section{Discussions and Conclusions}
 
-\subsection{Recommendations}
 
+We scaled the size of broadband LOFAR data by a factor of 64 in size, and discovered that all our processing steps scale linearly in time. The largest data set tested, a measurement set of 64 GB, appears to lie above this trend. This may be because of resource contention for this test case. \textbf{(Will investigate)}
+
+Overall, the slowest step was the gsmcal\_solve step, and its run time scales more  with data size than the other steps. This suggests that as data sizes increase, gsmcal\_solve will increasingly dominate the processing time over the other steps (As seen in Figures \ref{fig:gsmcalsolve_size} and \ref{fig:predict_ateam}.)
+
+Discuss the models that make sense to use (and the pairs of data that can be modelled this way) 
+
+
+Part of the LOFAR SKSP processing is done on shared infrastructure, which requires requesting processing time ahead of time for each grant period. Being able to predict the amount of resources required to process data each grant period is required to make a reliable estimate on what resources to request.
+
+Moreover, to provide LOFAR processing as a service to scientific users, it is important to estimate the processing time for each request. This needs to be done in order to determine whether the user has sufficient resources left in their resource pool. Knowing the performance of the software pipelines as a function of the input parameters will help predict the run time for each request and the resources consumed. Knowing this will make it possible to notify users how long the request will take and warn them of how much of their quota will be used up. 
+
+Finally, a performance model of the LOFAR software will help make predictions on the time and resources needed to process data for other telescopes such as the Square Kilometer Array (SKA). Once operational, the SKA is expected to produce Exabytes of data per year. Processing this data efficiently requires understanding the scalability of the software performance to facilitate scheduling and resource allotment. Overall, these results will help guide algorithm development in radio astronomy, as well as be useful to schedule future processing jobs and optimize resource usage. 
 
 
 \input{Appendix1}
