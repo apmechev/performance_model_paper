@@ -43,7 +43,7 @@
 
 
 \usepackage[printwatermark]{xwatermark}
-\usepackage{xcolor}
+\usepackage{xcolor, colortbl}
 \usepackage{tikz}
 \newsavebox\mybox
 \savebox\mybox{\tikz[color=gray,opacity=0.3]\node{DRAFT};}
@@ -96,7 +96,7 @@
 \journal{journal\_name}
 
 \begin{document}\sloppy
-
+\definecolor{Gray}{gray}{0.9}
 \begin{frontmatter}
 
 %% Title, authors and addresses
@@ -235,6 +235,29 @@ Figure \ref{fig:skymodel_run_lenght} shows that the calibration time is directly
 
 We model the run time as a function of the cutoff frequency using a power law, and fit the data to the function $y=\alpha\cdot x^{-k}$. Our fit found the best model to be shown in Equation \ref{eq:skymodel_flux}, where $x$ value is the cutoff flux in Jansky and $y$ is the run time in seconds. 
 
+We show four images made from data sets calibrated with a 0.05Jy (top left), 0.3Jy (top right), 0.8 Jy (bottom left) and 1.5 Jy (bottom right) cutoff in Figure \ref{fig:skymodel_images}. The statistics for the four images, taken from the regions in green on Figure \ref{fig:skymodel_images}) are shown in table \ref{table:skymodel_RMS}.
+
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||p{2.6cm}| c | c||} 
+ \hline
+ Calibration Model Flux Cutoff & RMS Noise (Jy) & std dev (Jy) \\ [0.5ex]
+ \hline
+ 0.05Jy & 0.00402834   & 0.0040255    \\ 
+  \rowcolor{Gray}
+  \hline
+ 0.3 Jy & 0.00402311 & 0.00402019 \\
+ \hline
+ 0.8 Jy & 0.00404181 & 0.004039 \\
+ 1.5 Jy & 0.00402311 & 0.00402019\\
+ \hline
+\end{tabular}
+\caption{Statistics for an empty region for the four images shown in Figure \ref{fig:skymodel_images}. The 0.3Jy model, here shown shaded in gray,  is the one used in production.  }
+\label{table:skymodel_RMS}
+\end{table}
+
+
 \begin{equation}
     y=1185\cdot x^{-0.854}
 \label{eq:skymodel_flux}
@@ -251,6 +274,12 @@ We model the run time as a function of the cutoff frequency using a power law, a
       \caption{The run time of the gsmcal\_solve step as a function of the cutoff sensitivity is not linear. As shown in Figure \ref{fig:skymodel_size}, the number of sources increases exponentially as the minimum sensitivity decreases. The dashed line shows the model fitted in equation \ref{eq:skymodel_flux}. }
 	\label{fig:skymodel_run_sens}
 \end{figure}
+
+\begin{figure*}
+    \includegraphics[width=0.95\linewidth]{figures/skymodel_images.png}
+      \caption{Four dirty images made with \texttt{wsclean} from the data set. The four images were calibrated with sky models of various flux cutoffs ranging from 0.05Jy (top left) to 1.5Jy (bottom right). Flux statistics for the green regions in the four images are listed in Table \ref{table:skymodel_RMS}.}
+	\label{fig:skymodel_images}
+\end{figure*}
 
 \subsubsection{Number of CPUs}
 One parameter that can be optimized is the number of CPUs requested when the job is launched. We investigated the processing speedup as a function of the number of CPUs for the \texttt{prefactor} target pipeline. 
