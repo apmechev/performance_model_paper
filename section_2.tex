@@ -14,7 +14,7 @@ The goal for our scalability model is to understand the effect of several parame
 The data used by the LOFAR surveys is stored at a time resolution of 1 second intervals and frequency resolution of 16 channels per Subband (equivalent to 12kHz channel width). While some of the processing steps such as flagging of Radio Frequency Interference and removal of bright off-axis sources needs to be done on the high-resolution data, later steps can be performed on averaged data. To make processing of these steps more efficient, the raw data is averaged in time and frequency, decreasing the input data size to later tasks. For the LOFAR surveys project, our final averaging parameters are 8 seconds per sample and 2 channels per Subband. This corresponds to a reduction in size by a factor of 64. In section \ref{sec:results_size}, we measure the performance or the \texttt{prefactor} pipeline for data sizes between the raw data of 64GB/Subband and the averaged data of 1GB/Subband. The tested data sizes and parameters are shown in table \ref{table:averaging}. 
 
 
-\begin{table}[h!]
+\begin{table}[!ht]
 \centering
 \begin{tabular}{||c| c | c | c||} 
  \hline
@@ -41,7 +41,7 @@ The slowest step of the \texttt{prefactor} pipeline is the gsmcal\_solve step, w
 
 It is important to note that the model of the sky depends on the direction of observation. As such, our test is only a heuristic for predicting the run-time based on the sky-model length. The model size and calibration solution quality will differ for other observations and these results will require a further in depth study before changing the calibration strategy. Additionally, it is notable that the number of sources is an exponentially dependent on the minimum sky model sensitivity (seen in Figure \ref{fig:skymodel_size}). According to this relationship, even a modest decrease in sensitivity can significantly decrease the size of the model.
 
-\begin{table}[h!]
+\begin{table}[!ht]
 \centering
 \begin{tabular}{||c| c c||} 
  \hline
