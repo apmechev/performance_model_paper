@@ -74,6 +74,11 @@
 \usepackage{subcaption}
 \usepackage{amsmath}
 
+
+\DeclareCaptionType{equ}[Equation][List of Equations]
+%\captionsetup[equ]{labelformat=empty}
+
+
 %% natbib.sty is loaded by default. However, natbib options can be
 %% provided with \biboptions{...} command. Following options are
 %% valid:
@@ -105,7 +110,7 @@
 %speedup real life pipelines performance automatic measurements radio astronomy
 %\thanks{A footnote to the article title}%X
 \author{A.P. Mechev$^a$}
-\ead{apmechev@srw.leidenuniv.nl}
+\ead{apmechev@strw.leidenuniv.nl}
 
 % \altaffiliation[Also at ]{Physics Department, XYZ University.}%Lines break automatically or can be forced with \\
 \author{T.W. Shimwell $^b$}%
@@ -119,14 +124,14 @@
 \address{$^c$ Affiliation Address 3}
 
 \begin{abstract}
-Understanding the performance of the LOFAR Direction Independent and Direction Dependent Pipelines is important when trying to optimize the throughput for large surveys. Making a model of completion time will enable us to predict the time taken to process a data set, optimize our parameter choices, help schedule future LOFAR processing services, and predict processing time for future large radio telescopes. We tested the full LOFAR \texttt{prefactor} target calibration pipeline for several parameters, notably number of CPUs, data size and size of calibration sky model. Furthermore, we tested the download speeds and extraction overhead and queuing times on the distributed cluster tasked with processing the LOFAR Two-Meter Sky Survey. We present these results as a comprehensive model for distributed LOFAR direction independent processing, which will be used to optimize resource utilization and scheduling. 
+Understanding the performance of the LOFAR Direction Independent and Direction Dependent Pipelines is important when trying to optimize the throughput for large surveys. Making a model of completion time will enable us to predict the time taken to process a data set, optimize our parameter choices, help schedule future LOFAR processing services, and predict processing time for future large radio telescopes. We tested the full LOFAR \texttt{prefactor} target calibration pipeline for several parameters, notably number of CPUs, data size and size of calibration sky model. Furthermore, we tested the download speeds and extraction overhead and queuing times on the distributed cluster tasked with processing the LOFAR Two-Meter Sky Survey. We present these results as a comprehensive model which will be used to predict processing time for a wide range of processing parameters. 
 
 % \item[Prefactor]
 % The \texttt{LOFAR} pre-factor pipeline prepares LOFAR Observations for creating high fidelity images. 
 % \end{description}
 \end{abstract}
 \begin{keyword}
-Radio Astronomy \sep Performance Analysis \sep Profiling \sep High Performance Computing
+Radio Astronomy \sep Performance Analysis \sep Performance Modelling \sep High Performance Computing
 %% keywords here, in the form: keyword \sep keyword
 
 %% MSC codes here, in the form: \MSC code \sep code
@@ -183,17 +188,19 @@ LOFAR data can be averaged to different sizes based on the scientific requiremen
 
 With minor deviations, all of the steps show linear behavior with respect to input data size. The linear fit to the run times are shown in Equations \ref{eq:predictateam}-\ref{eq:gsmcalapply}. The equations show the processing time as a function of the data size ($\mathcal{S}$), with the slope in the units of seconds/byte. The fits are also shown in Figures \ref{fig:predict_ateam} to \ref{fig:gsmcalapply_size} as a black dashed line.
 
+\begin{equ}
 \begin{subequations}
 \begin{align}
-        y_{predict\_ateam}=5.19\cdot10^{-8}\mathcal{S}+4.20\cdot10^1 \label{eq:predictateam} \\
-        y_{ateamcliptar}=4.57\cdot10^{-9}\mathcal{S}-8.42\cdot10^0 \label{eq:ateamcliptar} \\
-        y_{dpppconcat}=3.51\cdot10^{-8}\mathcal{S}+4.20\cdot10^1 \label{eq:dpppconcat} \\
-        y_{gsmcal\_solve}=9.97\cdot10^{-7}\mathcal{S}-1.56\cdot10^3 \label{eq:gsmcalsolve} \\
-        y_{gsmcal\_apply}=2.07\cdot10^{-8}\mathcal{S}-1.38\cdot10^1 \label{eq:gsmcalapply}
+        y_{predict\_ateam}=5.19\times10^{-8}\mathcal{S}+4.20\times10^1 \label{eq:predictateam} \\
+        y_{ateamcliptar}=4.57\times10^{-9}\mathcal{S}-8.42\times10^0 \label{eq:ateamcliptar} \\
+        y_{dpppconcat}=3.51\times10^{-8}\mathcal{S}+4.20\times10^1 \label{eq:dpppconcat} \\
+        y_{gsmcal\_solve}=9.97\times10^{-7}\mathcal{S}-1.56\times10^3 \label{eq:gsmcalsolve} \\
+        y_{gsmcal\_apply}=2.07\times10^{-8}\mathcal{S}-1.38\times10^1 \label{eq:gsmcalapply}
 \end{align}
 \label{eq:runtime_size_models}
 \end{subequations}
-
+\caption{Equations describing the processing time of five \texttt{prefactor} steps as a function of the input data size ($\mathcal{S}$) in bytes.}
+\end{equ}
 %predict\_ateam::  R=9.958E-01 and stderr=1.919E-10
 %ateamcliptar ::  R=9.786E-01 and stderr=3.945E-11
 %dpppconcat :: R=9.988E-01 and stderr=1.757E-10
@@ -261,11 +268,13 @@ We show four images made from data sets calibrated with a 0.05Jy (top left), 0.3
 \label{table:skymodel_RMS}
 \end{table}
 
-
+\begin{equ}
 \begin{equation}
     y=1185\cdot \mathcal{F}^{-0.854}
 \label{eq:skymodel_flux}
 \end{equation}
+\caption{Processing time for the gsmcal\_solve step as a function of the flux cutoff of the calibration model ($\mathcal{F}$) in Jansky}
+\end{equ}
 
 \begin{figure}
     \includegraphics[width=0.95\linewidth]{figures/skymodel_length.eps}
@@ -291,8 +300,8 @@ One parameter that can be optimized is the number of CPUs requested when the job
 We fit an inverse proportional model to the raw data, shown in Equation \ref{eq:gsmcal_NCPU}, with the parameter $(\mathcal{N})$ being the number of CPUs used. 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/gsmcal_solve_NCPU.eps}
-      \caption{The processing time of the gsmcal\_solve step decreases exponentially with the number of CPUS requested. }
+    \includegraphics[width=0.95\linewidth]{figures/gsmcal_NCPU_and_model.eps}
+      \caption{The processing time of the gsmcal\_solve step decreases exponentially with the number of CPUS requested. The model in Equation \ref{eq:gsmcal_NCPU} is shown in a dashed line}
 	\label{fig:gsmcal_solve_NCPU}
 \end{figure}
 
@@ -302,10 +311,14 @@ We fit an inverse proportional model to the raw data, shown in Equation \ref{eq:
 	\label{fig:gsmcal_apply_NCPU}
 \end{figure}
 
+\begin{equ}
 \begin{equation}
     y=503.37+\frac{3062.6}{\mathcal{N}}
 \label{eq:gsmcal_NCPU}
 \end{equation}
+\caption{Processing time for the gsmcal\_solve step as a function of ($\mathcal{N}$), the Number of CPUs used by the process.}
+\end{equ}
+
 
 
 \subsection{Queuing Tests}
@@ -316,7 +329,9 @@ We fit two linear models for this queueing time. One model for 1-4 CPUs and one 
 
 \begin{figure}
     \includegraphics[width=0.95\linewidth]{figures/Queue_NCPU.eps}
-      \caption{Test randomly submitting jobs to the \texttt{GINA} with different number of requested CPUs. Outliers due to grid downtime have been removed \textbf{Actually do this though} }
+      \caption{Test randomly submitting jobs to the \texttt{GINA} with different number of requested CPUs. }
+      
+      %Outliers due to grid downtime have been removed \textbf{Actually do this though} }
 	\label{fig:queue_NCPU}
 \end{figure}
 
@@ -346,11 +361,11 @@ We fit two linear models for this queueing time. One model for 1-4 CPUs and one 
 \end{figure}
 
 \begin{equation}
-y = \begin{cases}
-49.3\cdot\mathcal{N}+ 120 &|\mathcal{N}<=4\\
-726\cdot\mathcal{N}-3071 & |\mathcal{N}>4
-\end{cases}
-\label{eq:queue_model}
+  y = \begin{cases}
+    49.3\cdot\mathcal{N}+ 120 &|\mathcal{N}<=4\\
+    726\cdot\mathcal{N}-3071 & |\mathcal{N}>4
+    \end{cases}
+  \label{eq:queue_model}
 \end{equation}
 
 
@@ -360,10 +375,10 @@ We tested the downloading and unpacking time for data sizes ranging from 512MB t
 
 Figure \ref{fig:dl_hist} shows the histogram of the download tests, and Fig \ref{fig:dl_plot} displays the tests as a function of data size. Both figures show that extracting of the 32 and 64GB data sets has more slow outliers than the downloading of this data. 
 
-We fit a power law model to the time taken to transfer and unpack the data. In this case, we also consider the 75th percentile of these times in order to capture the majority of runs and ignore outliers. The plot of the data and our model can be seen in Figure \ref{fig:dl_plot} and the model is in Equation \ref{eq:download_model}, as a function of the input data size, $\mathcal{G} $ in Gigabytes.
+We fit a power law model to the time taken to transfer and unpack the data. In this case, we also consider the 75th percentile of these times in order to capture the majority of runs and ignore outliers. The plot of the data and our model can be seen in Figure \ref{fig:dl_plot} and the model is in Equation \ref{eq:download_model}, as a function of the input data size, $\mathcal{S} $ in Gigabytes.
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/dl_ex.pdf}
+    \includegraphics[width=0.95\linewidth]{figures/dl_ex_hatched.png}
       \caption{A histogram of the download and extracting times of multiple data sizes on the \texttt{GINA} worker nodes. Download and extract times are comparable for data up to 8GB, however above that, the extracting time dominates.  }
 	\label{fig:dl_hist}
 \end{figure}
@@ -380,12 +395,13 @@ We fit a power law model to the time taken to transfer and unpack the data. In t
 	\label{fig:dl_ex_model}
 \end{figure}
 
-
-
+\begin{equ}
 \begin{equation}
-    y=0.056\cdot \mathcal{G}^{2.336}
-\label{eq:download_model}
+  y=5.918\times10^{20}\cdot \mathcal{S}^{2.336}
+  \label{eq:download_model}
 \end{equation}
+\caption{Model of the downloading and extracting time as a function of the data size ($\mathcal{S}$) in bytes.}
+\end{equ}
 
 
 \subsection{Comparison with production runs}
@@ -395,44 +411,45 @@ Using the logs recorded by our processing launcher\footnote{GRID\_PiCaS\_Launche
 The results are shown in Figures \ref{fig:prod_dl_10} and \ref{fig:prod_dl_64}. We include predicted extract times from Section \ref{sec:results_dl} as vertical dashed lines for both plots. 
 
 
-
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/Production_10GB.eps}
+    \includegraphics[width=0.95\linewidth]{figures/Production_10GB.png}
       \caption{Downloading and extracting time for 10 1GB data sets performed in our production environment. Data from this test ranges from 2017-2018. The dashed red line shows the prediction obtained from section \ref{sec:results_dl}. }
 	\label{fig:prod_dl_10}
 \end{figure}
 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/Production_64GB.eps}
+    \includegraphics[width=0.95\linewidth]{figures/Production_64GB.png}
       \caption{Downloading and extracting time for a 64GB data set performed in our production environment. Data from this test ranges from 2017-2018. The dashed red line shows the prediction obtained from Figure \ref{fig:gsmcalsolve_size} in Section \ref{sec:results_size}. }
 	\label{fig:prod_dl_64}
 \end{figure}
 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/Production_gsmcal_1GB.eps}
+    \includegraphics[width=0.95\linewidth]{figures/Production_gsmcal_1GB.png}
       \caption{Processing time for the gsmcal\_solve step in a production environment. Data from this test ranges from 2017-2018. The dashed red line shows the prediction obtained from section \ref{sec:results_dl}. }
 	\label{fig:prod_gsmcal}
 \end{figure}
 
 \subsection{Complete Model and Validation}
-To incorporate all our data into a complete model, we consider the slowdown of each parameter with respect to our base run as a multiplier. We incorporate the models for each parameter above for the model of the run time. We add the transfer and queuing time to the processing time to obtain a final function of all our parameters. We can use this function to predict the processing time for an arbitrary data set. 
-\begin{figure*}[!t]
-\normalsize
+To incorporate all our data into a complete model, we consider the slowdown of each parameter with respect to our base run as a multiplier. We incorporate the models for each parameter above for the model of the run time. We add the transfer and queuing time to the processing time to obtain a final function of all our parameters. We can use this function to predict the processing time for an arbitrary data set. The final performance model is in Equation \ref{eq:full_model}. 
 
+\begin{equ*}[!t]
+\normalsize
 \begin{equation}
-   y = \begin{cases}
+    \begin{split}
+   t_{gsmcal\_solve} & = \begin{cases}
         49.3\cdot\mathcal{N}+ 120 &|\mathcal{N}<=4\\
         726\cdot\mathcal{N}-3071 & |\mathcal{N}>4
-       \end{cases} 
-       + 0.056\cdot \mathcal{G}^{2.336} 
+       \end{cases} \\
+       & + 0.056\cdot \mathcal{S}^{2.336} \\ 
+       & + 3566\cdot \frac{1}{3.012}\mathcal{F}^{-0.854} \cdot 9.97\cdot10^{-7}\mathcal{S}\cdot (0.1412+\frac{0.8589}{\mathcal{N}}) \\
+       & + 0.056\cdot \mathcal{S}^{2.336} 
+       \end{split}
  \label{eq:full_model}
  \end{equation}
-\end{figure*}
-
-Test some data sets outside of the model and see if it can predict performance. 
-
+\caption{Model of the total time of the gsmcal\_solve step ($t_{gsmcal\_solve}$) for the parameters $\mathcal{N}$, Number of CPUs; $\mathcal{S}$, Size of data in bytes and $\mathcal{F}$, cutoff calibration model flux in Jansky. }
+\end{equ*}
 
 \section{Discussions and Conclusions}\label{sec:discussions}
 
