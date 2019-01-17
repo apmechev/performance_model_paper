@@ -109,19 +109,21 @@
 \title{Scalability Model for the LOFAR Direction Independent Pipeline}% Force line breaks with \\
 %speedup real life pipelines performance automatic measurements radio astronomy
 %\thanks{A footnote to the article title}%X
-\author{A.P. Mechev$^a$}
+\author{A.P. Mechev $^a$}
 \ead{apmechev@strw.leidenuniv.nl}
 
 % \altaffiliation[Also at ]{Physics Department, XYZ University.}%Lines break automatically or can be forced with \\
 \author{T.W. Shimwell $^b$}%
-\author{A. Plaat$^a$}%
-\author{H. Intema$^a$}%
-\author{H.J.A Rottgering$^a$}%
+\author{A. Plaat $^c$}%
+\author{A.L. Varbanescu $^d$}
+\author{H. Intema $^a$}%
+\author{H.J.A Rottgering $^a$}%
 
 \date{\today}% It is always \today, today,
-\address{$^a$ Leiden University}
-\address{$^b$ ASTRON }
-\address{$^c$ Affiliation Address 3}
+\address{$^a$ Leiden Observatory, Niels Bohrweg 2, 2333 CA Leiden, the Netherlands}
+\address{$^b$ ASTRON, Oude Hoogeveensedijk 4, 7991 PD , The Netherlands }
+\address{$^c$ Leiden Institute of Advanced Computer Science,Niels Bohrweg 1, 2333 CA Leiden, the Netherlands}
+\address{$^d$ University of Amsterdam,Spui 21, 1012 WX Amsterdam, the Netherlands}
 
 \begin{abstract}
 Understanding the performance of the LOFAR Direction Independent and Direction Dependent Pipelines is important when trying to optimize the throughput for large surveys. Making a model of completion time will enable us to predict the time taken to process a data set, optimize our parameter choices, help schedule future LOFAR processing services, and predict processing time for future large radio telescopes. We tested the full LOFAR \texttt{prefactor} target calibration pipeline for several parameters, notably number of CPUs, data size and size of calibration sky model. Furthermore, we tested the download speeds and extraction overhead and queuing times on the distributed cluster tasked with processing the LOFAR Two-Meter Sky Survey. We present these results as a comprehensive model which will be used to predict processing time for a wide range of processing parameters. 
@@ -147,7 +149,7 @@ Radio Astronomy \sep Performance Analysis \sep Performance Modelling \sep High P
 
 \section{\label{sec:intro}Introduction }
 
-Astronomy is entering the big data era with many projects creating Petabytes of data per year. This data is often processed by complex multi-step pipelines consisting of various different algorithms. Understanding the scalability of astronomical algorithms theoretically, in a controlled environment and in production is important to making prediction for future projects and upcoming telescopes. 
+Astronomy is entering the big data era with many projects creating Petabytes of data per year. This data is often processed by complex multi-step pipelines consisting of various algorithms. Understanding the scalability of astronomical algorithms theoretically, in a controlled environment, and in production is important to making prediction for future projects and upcoming telescopes. 
 
 The Low Frequency Array (LOFAR) \citep{LOFAR} is a leading European low-frequency radio telescope. LOFAR's core stations are in the Netherlands, however it can collect data from sites across Europe. As it is an aperture synthesis array, LOFAR data needs to undergo several computationally intensive processing steps before obtaining a final scientific image. 
 
@@ -159,7 +161,13 @@ While the current imaging algorithms can process data averaged by a factor of 64
 
 To study the scalability of LOFAR processing, we set up processing of a sample SKSP data on an isolated node on the \texttt{GINA} cluster at SURFsara, part of the Dutch national e-infrastructure \citep{dutch_einfra}. We tested the software performance as a function of several parameters, including averaging parameters, number of CPUs and calibration model size. Additionally, we tested the performance of the underlying infrastructure, i.e. queuing  and download time, for the same parameters. Finally, we compared the isolated tests with our production runs of the \texttt{prefactor} pipeline to measure the overhead incurred by running on a shared system. 
 
-We discover that the intensive LOFAR processing steps scale linearly with data size, and calibration model size. Additionally, we find that these steps scale as an inverse power law with respect to the number of CPUs used. We discover that the time to download and extract data on the \texttt{GINA} cluster is linear with size up to 32GB, however becomes slower beyond this data size. In addition to this overhead, discover that queuing time on the \texttt{GINA} cluster grows exponentially for jobs requesting more than 8 CPUs. We validate these isolated tests with production runs of LOFAR data from the past two years.  Finally we combine all these tests into a single model and show its prediction power by testing the processing time for different combinations of parameters. 
+We discover that the intensive LOFAR processing steps scale linearly with data size, and calibration model size. Additionally, we find that these steps scale as an inverse power law with respect to the number of CPUs used. We discover that the time to download and extract data on the \texttt{GINA} cluster is linear with size up to 32GB, however becomes slower beyond this data size. In addition to this overhead, discover that queuing time on the \texttt{GINA} cluster grows exponentially for jobs requesting more than 8 CPUs. We validate these isolated tests with production runs of LOFAR data from the past two years.  Finally we combine all these tests into a single model and show its prediction power by testing the processing time for different combinations of parameters. The major contributions of this work can be summarized as:
+
+\begin{itemize}
+    \item A model of processing time for the slowest steps in the LOFAR Direction Independent Calibration Piepline.
+    \item A model of queueing time and file transfer time which can be used by current or future jobs processed on the \texttt{GINA} cluster.
+    \item Insight into calibration speed and quality with calibration models of radically different size and sensitivity.
+\end{itemize}
 
 We introduce LOFAR processing and other related work in Section \ref{sec:related} and describe our software setup and data processing methods in Section \ref{sec:methods}. We present our results and performance model in Section \ref{sec:results} and  discussions and conclusions in Section \ref{sec:discussions}. 
 
@@ -360,6 +368,7 @@ We fit two linear models for this queueing time. One model for 1-4 CPUs and one 
 	\label{fig:queue_model}
 \end{figure}
 
+\begin{equ}
 \begin{equation}
   y = \begin{cases}
     49.3\cdot\mathcal{N}+ 120 &|\mathcal{N}<=4\\
@@ -367,6 +376,9 @@ We fit two linear models for this queueing time. One model for 1-4 CPUs and one 
     \end{cases}
   \label{eq:queue_model}
 \end{equation}
+\caption{The model for the Queuing time as described by two linear models. }
+\end{equ}
+
 
 
 \subsection{Transfer and Unpacking Time}\label{sec:results_dl}

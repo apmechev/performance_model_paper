@@ -1,5 +1,8 @@
 \appendix
 
+\renewcommand{\theequ}{\Alph{section}.\arabic{equ}}
+
+
 \section{Calibration Solutions for the sky model tests }\label{ap:calib_solutions}
 The output of the calibration step is a data set corrected for direction independent effects, as well as a set of calibration solutions. Figures \ref{fig:skymodel_rcalib_004_03} and \ref{fig:skymodel_rcalib_08_15} show the calibration solutions for core station obtained when calibrating with  sky models with minimum flux cutoffs of0.05, 0.3, 0.8 and 1.5Jy.
 
@@ -16,10 +19,84 @@ The output of the calibration step is a data set corrected for direction indepen
 	\label{fig:skymodel_rcalib_08_15}
 \end{figure}
 
+\section{Parametric model parameters and fit accuracy}\label{ap:model_params}
+
+In this section, we note the uncertainties to the models fit in Equations \ref{eq:runtime_size_models}-\ref{eq:download_model}. 
+
+%Resetting the equation environment to match the equ number
+\numberwithin{equation}{section}
+\setcounter{equation}{6}
+\renewcommand{\theequation}{\Alph{section}.\arabic{equation}}
+
+\subsection{Fits of run time vs input size}
+
+The models of the processing time vs input size were fit as a linear regression. In this work we present such models for the gsmcal\_solve, gsmcal\_apply, dpppconcat, predict\_ateam and ateamcliptar, the five slowest steps. The resulting models, calculated by the \texttt{scipy linregress}\citep{scipy} routine, are shown in Equation \ref{eq:runtime_size_models}. We present the $R^2$ values, P values and standard error below, in Table \ref{table:fits_size}.
 
 
-%\subsection{Shell session isolation}
 
-%\subsection{Setting up for future pipelines}
+\begin{table}[ht!]
+\centering
+\begin{tabular}{||p{2.2cm}| c | c|p{2cm}||} 
+ \hline
+ \texttt{prefactor} step & $R^2$ & P value & Standard Error \\ [0.5ex]
+ \hline
+ predict\_ateam & 0.996   & 0 & $1.92\times10^{-10}$    \\ 
+ ateamcliptar & 0.979   & 0 & $3.94\times10^{-11}$    \\ 
+ dpppconcat & 0.999   & $1.2\times10^{-128}$ & $1.78\times10^{-10}$    \\ 
+ gsmcal\_solve & 0.997   & $4.7\times10^{-108}$ & $7.98\times10^{-9}$    \\ 
+ gsmcal\_apply & 0.989   & $5.6\times10^{-82}$ & $3.12\times10^{-10}$    \\ 
+
+\hline
+\end{tabular}
+\caption{Fit parameters for the models in Equation \ref{eq:runtime_size_models}. }
+\label{table:fits_size}
+\end{table}
 
 
+\subsection{Fit of run time vs calibration model flux cutoff }
+
+The run time vs Flux cutoff model shown in Equation \ref{eq:skymodel_flux} is defined by the equation $y=a\cdot x^{-k}$ and two parameters, $a$ and $k$. The covariance matrix for these two parameters is shown in Equation \ref{eq:cov_Flux}. The standard deviation for the fit of the parameters $a$ and $k$ is 26.134 and $7.624\times10^{-3}$
+
+\begin{equ}
+\begin{equation}
+  \begin{bmatrix}
+    6.83\times10^{2} &  -1.94\times10^{-1} \\
+ -1.94\times10^{-1} &  5.81\times10^{-5} \\
+\end{bmatrix}
+\end{equation}
+\caption{The covariance matrix of the parameters in model in Equation \ref{eq:skymodel_flux}.}
+\label{eq:cov_Flux}
+\end{equ}
+
+\subsection{Fit of the NCPU model }
+The covariance matrix for the fit parameters of equation \ref{eq:gsmcal_NCPU}, $a$ and $k$ in $y=a+\frac{k}{\mathcal{N}}$ are shown in Equation \ref{eq:cov_NCPU}. The standard deviation of the fits for $a$ and $k$ are 13.11 and 48.20 respectively. 
+
+\begin{equ}
+\begin{equation}
+  \begin{bmatrix}
+    171.94 & -504.11 \\
+    -504.11 & 2322.95
+\end{bmatrix}
+\end{equation}
+\caption{The covariance matrix for the parameters for the model predicting run time vs Number of CPUs used, shown in Equation \ref{eq:gsmcal_NCPU}.}
+\label{eq:cov_NCPU}
+\end{equ}
+
+\subsection{Fit for the queuing time model}
+
+asdfghjkl
+
+
+\subsection{Fit of the download and extract model }
+Equation \ref{eq:cov_downl} shows the covariance matrix for the two parameters  $a$ and $k$, $y=a\times10^{k}$ with the best fit values shown in Equation \ref{eq:download_model}. The standard deviations of the fits for $a$ and $k$ are 0.016 and 0.068 respectively. 
+
+\begin{equ}
+\begin{equation}
+  \begin{bmatrix}
+    2.53\times10^{-4} & 1.08\times10^{-3} \\
+    1.08\times10^{-3} & 4.60\times10^{-3}
+\end{bmatrix}
+\end{equation}
+\caption{The covariance matrix for the parameters for the model for Download and Extract time, shown in Equation \ref{eq:download_model}.}
+\label{eq:cov_downl}
+\end{equ}
