@@ -4,7 +4,7 @@
 
 
 \section{Calibration Solutions for the sky model tests }\label{ap:calib_solutions}
-The output of the calibration step is a data set corrected for direction independent effects, as well as a set of calibration solutions. Figures \ref{fig:skymodel_rcalib_004_03} and \ref{fig:skymodel_rcalib_08_15} show the calibration solutions for core station obtained when calibrating with  sky models with minimum flux cutoffs of0.05, 0.3, 0.8 and 1.5Jy.
+The output of the calibration step is a data set corrected for direction independent effects, as well as a set of calibration solutions. Figures \ref{fig:skymodel_rcalib_004_03} and \ref{fig:skymodel_rcalib_08_15} show the calibration solutions for core station obtained when calibrating with  sky models with minimum flux cutoffs of 0.05, 0.3, 0.8 and 1.5Jy.
 
 \begin{figure}
     \includegraphics[width=0.95\linewidth]{figures/005_and_03_solutsions_CS003HBA0_CS003HBA1_CS004HBA0.png}
@@ -28,7 +28,7 @@ In this section, we note the uncertainties to the models fit in Equations \ref{e
 \setcounter{equation}{6}
 \renewcommand{\theequation}{\Alph{section}.\arabic{equation}}
 
-\subsection{Fits of run time vs input size}
+\subsection{Fits quality of run time vs input size model}
 
 The models of the processing time vs input size were fit as a linear regression. In this work we present such models for the gsmcal\_solve, gsmcal\_apply, dpppconcat, predict\_ateam and ateamcliptar, the five slowest steps. The resulting models, calculated by the \texttt{scipy linregress}\citep{scipy} routine, are shown in Equation \ref{eq:runtime_size_models}. We present the $R^2$ values, P values and standard error below, in Table \ref{table:fits_size}.
 
@@ -40,11 +40,17 @@ The models of the processing time vs input size were fit as a linear regression.
  \hline
  \texttt{prefactor} step & $R^2$ & P value & Standard Error \\ [0.5ex]
  \hline
- predict\_ateam & 0.996   & 0 & $1.92\times10^{-10}$    \\ 
- ateamcliptar & 0.979   & 0 & $3.94\times10^{-11}$    \\ 
- dpppconcat & 0.999   & $1.2\times10^{-128}$ & $1.78\times10^{-10}$    \\ 
- gsmcal\_solve & 0.997   & $4.7\times10^{-108}$ & $7.98\times10^{-9}$    \\ 
- gsmcal\_apply & 0.989   & $5.6\times10^{-82}$ & $3.12\times10^{-10}$    \\ 
+ predict\_ateam & 0.996   & 0                    & $1.92\times10^{-10}$    \\ 
+ \hline
+ ateamcliptar   & 0.979   & 0                    & $3.94\times10^{-11}$    \\ 
+ \hline
+ dpppconcat     & 0.999   & $1.2\times10^{-128}$ & $1.78\times10^{-10}$    \\ 
+ \hline
+ gsmcal\_solve $<=$16GB  & 0.995   & $3.12\times10^{-75}$ & $6.80\times10^{-9}$     \\ 
+ \hline
+ gsmcal\_solve $>$16GB  & 0.951   & $7.07\times10^{-40}$ & $1.58\times10^{-8}$     \\ 
+ \hline
+ gsmcal\_apply  & 0.989   & $5.6\times10^{-82}$  & $3.12\times10^{-10}$    \\ 
 
 \hline
 \end{tabular}
@@ -55,13 +61,13 @@ The models of the processing time vs input size were fit as a linear regression.
 
 \subsection{Fit of run time vs calibration model flux cutoff }
 
-The run time vs Flux cutoff model shown in Equation \ref{eq:skymodel_flux} is defined by the equation $y=a\cdot x^{-k}$ and two parameters, $a$ and $k$. The covariance matrix for these two parameters is shown in Equation \ref{eq:cov_Flux}. The standard deviation for the fit of the parameters $a$ and $k$ is 26.134 and $7.624\times10^{-3}$
+The run time vs Flux cutoff model shown in Equation \ref{eq:skymodel_flux} is defined by the equation $y=a\cdot x^{-k}$ and two parameters, $a$ and $k$. The covariance matrix for these two parameters is shown in Equation \ref{eq:cov_Flux}. The standard deviation for the fit of the parameters $a$ and $k$ is 26.134 and $7.624\times10^{-3}$ respectively.
 
 \begin{equ}
 \begin{equation}
   \begin{bmatrix}
-    6.83\times10^{2} &  -1.94\times10^{-1} \\
- -1.94\times10^{-1} &  5.81\times10^{-5} \\
+    6.83\times10^{2}  &  -1.94\times10^{-1} \\
+   -1.94\times10^{-1} &   5.81\times10^{-5} \\
 \end{bmatrix}
 \end{equation}
 \caption{The covariance matrix of the parameters in model in Equation \ref{eq:skymodel_flux}.}
@@ -84,7 +90,22 @@ The covariance matrix for the fit parameters of equation \ref{eq:gsmcal_NCPU}, $
 
 \subsection{Fit for the queuing time model}
 
-asdfghjkl
+The statistics of the model fit parameters for the queuing time model (Equation \ref{eq:queue_model}) are in Table \ref{table:fits_queue}. 
+The queuing model is fit to the $75^{th}$ percentile of the queuing times for each parameter step. Since this results in a single number for each step, the model's P values are larger than the models from the other sections. 
+
+\begin{table}[ht!]
+\centering
+\begin{tabular}{||p{2.2cm}| c | c|p{2cm}||} 
+ \hline
+ Value of $\mathcal{N}$ & $R^2$ & P value & Standard Error \\ [0.5ex]
+ \hline
+ $\mathcal{N}\leq4$ & 0.382   & 0.381                   & 37.086    \\ 
+ $\mathcal{N}>4$    & 0.986   & 0.075                   & 86.293    \\ 
+\hline
+\end{tabular}
+\caption{Goodness of fit parameters for the model in Equation \ref{eq:queue_model}. Since the model is split into two parts, we treat each section as a single linear model.}
+\label{table:fits_queue}
+\end{table}
 
 
 \subsection{Fit of the download and extract model }
