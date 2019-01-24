@@ -1,129 +1,129 @@
-%% This is file `elsarticle-template-1-num.tex',
-%%
-%% Copyright 2009 Elsevier Ltd
-%%
-%% This file is part of the 'Elsarticle Bundle'.
-%% ---------------------------------------------
-%%
-%% It may be distributed under the conditions of the LaTeX Project Public
-%% License, either version 1.2 of this license or (at your option) any
-%% later version.  The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
-%% and version 1.2 or later is part of all distributions of LaTeX
-%% version 1999/12/01 or later.
-%%
-%% Template article for Elsevier's document class `elsarticle'
-%% with numbered style bibliographic references
-%%
-%% $Id: elsarticle-template-1-num.tex 149 2009-10-08 05:01:15Z rishi $
-%% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-1-num.tex $
-%%
-\documentclass[preprint,5p]{elsarticle}
+% %%% This is file `elsarticle-template-1-num.tex',
+% %%%
+% %%% Copyright 2009 Elsevier Ltd
+% %%%
+% %%% This file is part of the 'Elsarticle Bundle'.
+% %%% ---------------------------------------------
+% %%%
+% %%% It may be distributed under the conditions of the LaTeX Project Public
+% %%% License, either version 1.2 of this license or (at your option) any
+% %%% later version.  The latest version of this license is in
+% %%%    http://www.latex-project.org/lppl.txt
+% %%% and version 1.2 or later is part of all distributions of LaTeX
+% %%% version 1999/12/01 or later.
+% %%%
+% %%% Template article for Elsevier's document class `elsarticle'
+% %%% with numbered style bibliographic references
+% %%%
+% %%% $Id: elsarticle-template-1-num.tex 149 2009-10-08 05:01:15Z rishi $
+% %%% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-1-num.tex $
+% %%%
+% %\documentclass[preprint,5p]{elsarticle}
+% %
+% %%% Use the option review to obtain double line spacing
+% %%% \documentclass[preprint,review,12pt]{elsarticle}
+% %
+% %%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+% %%% for a journal layout:
+% %%% \documentclass[final,1p,times]{elsarticle}
+% %%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+% %%% \documentclass[final,3p,times]{elsarticle}
+% %%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+% %%% \documentclass[final,5p,times]{elsarticle}
+% %%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+% %\usepackage{natbib}
+% %\bibliographystyle{abbrvnat}
+% %\setcitestyle{authoryear,open={(},close={)}} %Citations bracketed with ()
+% %\setcitestyle{citesep={;}} %Makes multiple citations with ;
+% %%% The graphicx package provides the includegraphics command.
+% %\usepackage{graphicx}
+% %\usepackage{footnote}
+% %\makesavenoteenv{tabular}
+% %\makesavenoteenv{table}
+% %\usepackage{multicol}
+% %
+% %\usepackage[printwatermark]{xwatermark}
+% %\usepackage{xcolor, colortbl}
+% %\usepackage{tikz}
+% %\newsavebox\mybox
+% %\savebox\mybox{\tikz[color=gray,opacity=0.3]\node{DRAFT};}
+% %\newwatermark*[
+% %  allpages,
+% %  angle=45,
+% %  scale=11,
+% %  xpos=-30,
+% %  ypos=30
+% %]{\usebox\mybox}
+% %
+% %
+% %\usepackage{url}
+% %%% The amssymb package provides various useful mathematical symbols
+% %\usepackage{amssymb}
+% %%% The amsthm package provides extended theorem environments
+% %%% \usepackage{amsthm}
+% %
+% %\usepackage{dcolumn}% Align table columns on decimal point
+% %\usepackage{bm}% bold math
+% %%% The lineno packages adds line numbers. Start line numbering with
+% %%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+% %%% for the whole article with \linenumbers after \end{frontmatter}.
+% %\usepackage[switch]{lineno}
+% %%\linenumbers
+% %
+% %\usepackage{caption}
+% %\usepackage{subcaption}
+% %\usepackage{amsmath}
+% %
+% %
+% %\DeclareCaptionType{equ}[Equation][List of Equations]
+% %%\captionsetup[equ]{labelformat=empty}
+% %
+% %
+% %%% natbib.sty is loaded by default. However, natbib options can be
+% %%% provided with \biboptions{...} command. Following options are
+% %%% valid:
+% %
+% %%%   square -  square brackets are used   [option]
+% %%%   curly  -  curly braces are used      {option}
+% %%%   angle  -  angle brackets are used    <option>
+% %%%   semicolon  -  multiple citations separated by semi-colon
+% %%%   colon  - same as semicolon, an earlier confusion
+% %%%   comma  -  separated by comma
+% %%%   numbers-  selects numerical citations
+% %%%   super  -  numerical citations as superscripts
+% %%%   sort   -  sorts multiple citations according to order in ref. list
+% %%%   sort&compress   -  like sort, but also compresses numerical citations
+% %%%   compress - compresses without sorting
+% %%%
+% %%% \biboptions{comma,round}
+% %
+% %% \biboptions{}
+% %\journal{Astronomy And Computing}
+% %
+% %\begin{document}\sloppy
+% %\definecolor{Gray}{gray}{0.9}
+% %\begin{frontmatter}
+% %
+% %%% Title, authors and addresses
 
-%% Use the option review to obtain double line spacing
-%% \documentclass[preprint,review,12pt]{elsarticle}
-
-%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
-%% for a journal layout:
-%% \documentclass[final,1p,times]{elsarticle}
-%% \documentclass[final,1p,times,twocolumn]{elsarticle}
-%% \documentclass[final,3p,times]{elsarticle}
-%% \documentclass[final,3p,times,twocolumn]{elsarticle}
-%% \documentclass[final,5p,times]{elsarticle}
-%% \documentclass[final,5p,times,twocolumn]{elsarticle}
-\usepackage{natbib}
-\bibliographystyle{abbrvnat}
-\setcitestyle{authoryear,open={(},close={)}} %Citations bracketed with ()
-\setcitestyle{citesep={;}} %Makes multiple citations with ;
-%% The graphicx package provides the includegraphics command.
-\usepackage{graphicx}
-\usepackage{footnote}
-\makesavenoteenv{tabular}
-\makesavenoteenv{table}
-\usepackage{multicol}
-
-\usepackage[printwatermark]{xwatermark}
-\usepackage{xcolor, colortbl}
-\usepackage{tikz}
-\newsavebox\mybox
-\savebox\mybox{\tikz[color=gray,opacity=0.3]\node{DRAFT};}
-\newwatermark*[
-  allpages,
-  angle=45,
-  scale=11,
-  xpos=-30,
-  ypos=30
-]{\usebox\mybox}
-
-
-\usepackage{url}
-%% The amssymb package provides various useful mathematical symbols
-\usepackage{amssymb}
-%% The amsthm package provides extended theorem environments
-%% \usepackage{amsthm}
-
-\usepackage{dcolumn}% Align table columns on decimal point
-\usepackage{bm}% bold math
-%% The lineno packages adds line numbers. Start line numbering with
-%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
-%% for the whole article with \linenumbers after \end{frontmatter}.
-\usepackage[switch]{lineno}
-%\linenumbers
-
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{amsmath}
-
-
-\DeclareCaptionType{equ}[Equation][List of Equations]
-%\captionsetup[equ]{labelformat=empty}
-
-
-%% natbib.sty is loaded by default. However, natbib options can be
-%% provided with \biboptions{...} command. Following options are
-%% valid:
-
-%%   square -  square brackets are used   [option]
-%%   curly  -  curly braces are used      {option}
-%%   angle  -  angle brackets are used    <option>
-%%   semicolon  -  multiple citations separated by semi-colon
-%%   colon  - same as semicolon, an earlier confusion
-%%   comma  -  separated by comma
-%%   numbers-  selects numerical citations
-%%   super  -  numerical citations as superscripts
-%%   sort   -  sorts multiple citations according to order in ref. list
-%%   sort&compress   -  like sort, but also compresses numerical citations
-%%   compress - compresses without sorting
-%%
-%% \biboptions{comma,round}
-
-% \biboptions{}
-\journal{Astronomy And Computing}
-
-\begin{document}\sloppy
-\definecolor{Gray}{gray}{0.9}
-\begin{frontmatter}
-
-%% Title, authors and addresses
-
-\title{Scalability Model for the LOFAR Direction Independent Pipeline}% Force line breaks with \\
+\chapter{Scalability Model for the LOFAR Direction Independent Pipeline}% Force line breaks with \\
 %speedup real life pipelines performance automatic measurements radio astronomy
 %\thanks{A footnote to the article title}%X
-\author{A.P. Mechev $^a$}
-\ead{apmechev@strw.leidenuniv.nl}
+% %\author{A.P. Mechev $^a$}
+% %\ead{apmechev@strw.leidenuniv.nl}
 
 % \altaffiliation[Also at ]{Physics Department, XYZ University.}%Lines break automatically or can be forced with \\
-\author{T.W. Shimwell $^b$}%
-\author{A. Plaat $^c$}%
-\author{A.L. Varbanescu $^d$}
-\author{H. Intema $^a$}%
-\author{H.J.A Rottgering $^a$}%
-
-\date{\today}% It is always \today, today,
-\address{$^a$ Leiden Observatory, Niels Bohrweg 2, 2333 CA Leiden, the Netherlands}
-\address{$^b$ ASTRON, Oude Hoogeveensedijk 4, 7991 PD , The Netherlands }
-\address{$^c$ Leiden Institute of Advanced Computer Science, Niels Bohrweg 1, 2333 CA Leiden, the Netherlands}
-\address{$^d$ University of Amsterdam, Spui 21, 1012 WX Amsterdam, the Netherlands}
+% %\author{T.W. Shimwell $^b$}%
+% %\author{A. Plaat $^c$}%
+% %\author{A.L. Varbanescu $^d$}
+% %\author{H. Intema $^a$}%
+% %\author{H.J.A Rottgering $^a$}%
+% %
+% %\date{\today}% It is always \today, today,
+% %\address{$^a$ Leiden Observatory, Niels Bohrweg 2, 2333 CA Leiden, the Netherlands}
+% %\address{$^b$ ASTRON, Oude Hoogeveensedijk 4, 7991 PD , The Netherlands }
+% %\address{$^c$ Leiden Institute of Advanced Computer Science, Niels Bohrweg 1, 2333 CA Leiden, the Netherlands}
+% %\address{$^d$ University of Amsterdam, Spui 21, 1012 WX Amsterdam, the Netherlands}
 
 \begin{abstract}
 Understanding the performance of the LOFAR Direction Independent and Direction Dependent Pipelines is important when trying to optimize the throughput for large surveys. Making a model of completion time will enable us to predict the time taken to process a data set, optimize our parameter choices, help schedule future LOFAR processing services, and predict processing time for future large radio telescopes. We tested the full LOFAR \texttt{prefactor} target calibration pipeline by scaling several parameters, notably number of CPUs, data size and size of calibration sky model. Furthermore, we tested the overhead incurred by downloading and extracting the data and queuing jobs on the distributed cluster tasked with processing the LOFAR Two-Meter Sky Survey. We present these results as a comprehensive model which will be used to predict processing time for a wide range of processing parameters. We also discover that the calibration time scales favorably in time with smaller calibration models, while the calibration results do not degrade in quality. Finally, we validate the model and compare predictions with production runs from the past six months. 
@@ -132,16 +132,16 @@ Understanding the performance of the LOFAR Direction Independent and Direction D
 % The \texttt{LOFAR} pre-factor pipeline prepares LOFAR Observations for creating high fidelity images. 
 % \end{description}
 \end{abstract}
-\begin{keyword}
-Radio Astronomy \sep Performance Analysis \sep Performance Modelling \sep High Performance Computing
-%% keywords here, in the form: keyword \sep keyword
-
-%% MSC codes here, in the form: \MSC code \sep code
-%% or \MSC[2008] code \sep code (2000 is the default)
-
-\end{keyword}
-\end{frontmatter}
-
+% %\begin{keyword}
+% %Radio Astronomy \sep Performance Analysis \sep Performance Modelling \sep High Performance Computing
+% %%% keywords here, in the form: keyword \sep keyword
+% %
+% %%% MSC codes here, in the form: \MSC code \sep code
+% %%% or \MSC[2008] code \sep code (2000 is the default)
+% %
+% %\end{keyword}
+% %\end{frontmatter}
+% %
 %\maketitle
 %
 %\tableofcontents
@@ -180,7 +180,7 @@ Performance modelling on a distributed system is an important field of study rel
 Empirical modelling is useful in finding bugs in parallel code \citep{scalability_bugs} and modelling the performance of big data architectures \citep{mean_field_modeling}. The insights from these models are used to optimize the architecture of the software system or determine bottlenecks in processing. We plan to use empirical modelling to determine how the LOFAR \texttt{prefactor} performance scales with different parameters. 
 
 
-\input{section_2}
+\input{ch6/section_2}
 
 \section{Results}\label{sec:ch6_results}
 
@@ -490,7 +490,7 @@ Moreover, providing LOFAR processing as a service to scientific users requires e
 Finally, a performance model of the LOFAR software will help make predictions on the time and resources needed to process data for other telescopes such as the Square Kilometer Array (SKA). Once operational, the SKA is expected to produce Exabytes of data per year. Processing this data efficiently requires understanding the scalability of the software performance to facilitate scheduling and resource allotment. Overall, these results will help guide algorithm development in radio astronomy, as well as be useful to schedule future processing jobs and optimize resource usage. 
 
 
-\input{Appendix1}
+\input{ch6/Appendix1}
 
 \section*{Acknowledgements}
 APM would like to acknowledge the support from the NWO/DOME/IBM programme ``Big Bang Big Data: Innovating ICT as a Driver For Astronomy'', project \#628.002.001.
@@ -498,10 +498,10 @@ APM would like to acknowledge the support from the NWO/DOME/IBM programme ``Big 
 This work was carried out on the Dutch national e-infrastructure with the support of SURF
 Cooperative through grant e-infra 160022 \& 160152.
 
-\section*{References}
-\bibliography{bibliography}
-
-\end{document}
-
+% %\section*{References}
+% %\bibliography{bibliography}
+% %
+% %\end{document}
+% %
 %%
 %% End of file `elsarticle-template-1-num.tex'.
