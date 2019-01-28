@@ -296,7 +296,7 @@ We show four images made from data sets calibrated with a 0.05Jy (top left), 0.3
 
 \begin{figure*}
     \includegraphics[width=0.95\linewidth]{figures/skymodel_images.png}
-      \caption{Four dirty images made with \texttt{wsclean} from the data set. The four images were calibrated with sky models of various flux cutoffs ranging from 0.05Jy (top left) to 1.5Jy (bottom right). Flux statistics for the green regions in the four images are listed in Table \ref{table:skymodel_RMS}.}
+      \caption{Four dirty images made with \texttt{wsclean} from the data set. The four images were calibrated with sky models of various flux cutoffs ranging from 0.05Jy (top left) to 1.5Jy (bottom right). Flux statistics for the green regions in the four images are listed in Table \ref{table:skymodel_RMS}. While the images have similar noise statistics, the data for the top left image takes $\sim$10 times longer to calibrate than that for the bottom right image. }
 	\label{fig:skymodel_images}
 \end{figure*}
 
@@ -307,13 +307,13 @@ We fit an inverse proportional model to the raw data, shown in Equation \ref{eq:
 
 \begin{figure}
     \includegraphics[width=0.95\linewidth]{figures/gsmcal_NCPU_and_model.eps}
-      \caption{The processing time of the gsmcal\_solve step decreases exponentially with the number of CPUS requested. The model in Equation \ref{eq:gsmcal_NCPU} is shown in a dashed line}
+      \caption{The processing time of the gsmcal\_solve step decreases exponentially with the number of CPUS requested. The model in Equation \ref{eq:gsmcal_NCPU} is shown in a dashed line. As this is a 1/x model, it shows diminishing returns past 16 CPUs. }
 	\label{fig:gsmcal_solve_NCPU}
 \end{figure}
 
 \begin{figure}
     \includegraphics[width=0.95\linewidth]{figures/gsmcal_apply_NCPU.eps}
-      \caption{The step that applies the calibration solutions, gsmcal\_apply, does not show a speedup when run on multiple cores. }
+      \caption{The step that applies the calibration solutions, gsmcal\_apply, does not show a speedup when run on multiple cores, as all runs take roughly 30 seconds to complete.  }
 	\label{fig:gsmcal_apply_NCPU}
 \end{figure}
 
@@ -326,7 +326,6 @@ We fit an inverse proportional model to the raw data, shown in Equation \ref{eq:
 \end{equ}
 
 
-
 \subsection{Queuing Tests}
 
 Aside from performance of the LOFAR software, we measured the queuing time at the \texttt{GINA} cluster, as a function of the number of CPUs requested. This data was obtained between 16 Nov 2018 and 10 Dec 2018 for 1,  2, 3 ,4, 8, and 16 CPUs per job. A histogram of the queuing time for these jobs is shown in Figure \ref{fig:queue_NCPU}. Statistics for these runs are in Table \ref{table:queueing_stats}. We use the 75th percentile of the queuing time for each parameter step to fit a model. This scenario will include 75\% of runs and is a good trade-off between ignoring and including outliers. 
@@ -335,7 +334,7 @@ We fit two linear models for this queueing time. One model for 1-4 CPUs and one 
 
 \begin{figure}
     \includegraphics[width=0.95\linewidth]{figures/Queue_NCPU.eps}
-      \caption{Test randomly submitting jobs to the \texttt{GINA} with different number of requested CPUs. }
+      \caption{Test randomly submitting jobs to the \texttt{GINA} with different number of requested CPUs. The long tail for 8 and 16 CPU jobs shows that some jobs can take several hours to launch.  }
       
       %Outliers due to grid downtime have been removed \textbf{Actually do this though} }
 	\label{fig:queue_NCPU}
@@ -356,7 +355,7 @@ We fit two linear models for this queueing time. One model for 1-4 CPUs and one 
  16 CPU & 7079.0 & 696.4 & 8750.6\\
  \hline
 \end{tabular}
-\caption{Statistics for queuing time for different values of CPUs requested. }
+\caption{Statistics for queuing time for different values of CPUs requested. Queueing time for jobs requesting less than 8 CPUs is typically less than five minutes. It can drastically increase for larger jobs. }
 \label{table:queueing_stats}
 \end{table*}
 
@@ -423,21 +422,21 @@ The results are shown in Figures \ref{fig:prod_dl_10} and \ref{fig:prod_dl_64}. 
 Finally, we present Figures \ref{fig:prod_gsmcal} which shows a comparison of gsmcal\_solve run times and our model's prediction for a 1GB data set.  Figure \ref{fig:prod_gsmcal_times} plots the processing time vs data size for these production runs and includes the model from Equation \ref{eq:gsmcalsolve}. The significant overhead incurred on a shared infrastructure can be noted. 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/Production_10GB.png}
+    \includegraphics[width=0.95\linewidth]{figures/Production_10GB_2.eps}
       \caption{Downloading and extracting time for 10 1GB data sets performed in our production environment. Data from this test ranges from July 2018 to January 2019. The dashed red line shows the prediction obtained from section \ref{sec:results_dl}. }
 	\label{fig:prod_dl_10}
 \end{figure}
 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/Production_64GB.png}
+    \includegraphics[width=0.95\linewidth]{figures/Production_64GB_2.eps}
       \caption{Downloading and extracting time for a 64GB data set performed in our production environment. Data from this test ranges from 07/2018-01/2019. The dashed red line shows the prediction obtained from Figure \ref{fig:gsmcalsolve_size} in Section \ref{sec:results_dl}. }
 	\label{fig:prod_dl_64}
 \end{figure}
 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/Production_gsmcal_1GB.png}
+    \includegraphics[width=0.95\linewidth]{figures/Production_gsmcal_1GB_2.eps}
       \caption{Processing time for the gsmcal\_solve step in a production environment. Data from this test ranges from 07/2018-01/2019. The dashed red line shows the prediction for a 1GB run, obtained from section \ref{sec:results_dl}. It should be noted that the first peak corresponds to 512MB data, as seen in Figure \ref{fig:prod_gsmcal_times}.}
 	\label{fig:prod_gsmcal}
 \end{figure}
