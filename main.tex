@@ -1,129 +1,129 @@
-%% This is file `elsarticle-template-1-num.tex',
-%%
-%% Copyright 2009 Elsevier Ltd
-%%
-%% This file is part of the 'Elsarticle Bundle'.
-%% ---------------------------------------------
-%%
-%% It may be distributed under the conditions of the LaTeX Project Public
-%% License, either version 1.2 of this license or (at your option) any
-%% later version.  The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
-%% and version 1.2 or later is part of all distributions of LaTeX
-%% version 1999/12/01 or later.
-%%
-%% Template article for Elsevier's document class `elsarticle'
-%% with numbered style bibliographic references
-%%
-%% $Id: elsarticle-template-1-num.tex 149 2009-10-08 05:01:15Z rishi $
-%% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-1-num.tex $
-%%
-\documentclass[preprint,5p]{elsarticle}
+% %%% This is file `elsarticle-template-1-num.tex',
+% %%%
+% %%% Copyright 2009 Elsevier Ltd
+% %%%
+% %%% This file is part of the 'Elsarticle Bundle'.
+% %%% ---------------------------------------------
+% %%%
+% %%% It may be distributed under the conditions of the LaTeX Project Public
+% %%% License, either version 1.2 of this license or (at your option) any
+% %%% later version.  The latest version of this license is in
+% %%%    http://www.latex-project.org/lppl.txt
+% %%% and version 1.2 or later is part of all distributions of LaTeX
+% %%% version 1999/12/01 or later.
+% %%%
+% %%% Template article for Elsevier's document class `elsarticle'
+% %%% with numbered style bibliographic references
+% %%%
+% %%% $Id: elsarticle-template-1-num.tex 149 2009-10-08 05:01:15Z rishi $
+% %%% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-1-num.tex $
+% %%%
+% %\documentclass[preprint,5p]{elsarticle}
+% %
+% %%% Use the option review to obtain double line spacing
+% %%% \documentclass[preprint,review,12pt]{elsarticle}
+% %
+% %%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+% %%% for a journal layout:
+% %%% \documentclass[final,1p,times]{elsarticle}
+% %%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+% %%% \documentclass[final,3p,times]{elsarticle}
+% %%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+% %%% \documentclass[final,5p,times]{elsarticle}
+% %%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+% %\usepackage{natbib}
+% %\bibliographystyle{abbrvnat}
+% %\setcitestyle{authoryear,open={(},close={)}} %Citations bracketed with ()
+% %\setcitestyle{citesep={;}} %Makes multiple citations with ;
+% %%% The graphicx package provides the includegraphics command.
+% %\usepackage{graphicx}
+% %\usepackage{footnote}
+% %\makesavenoteenv{tabular}
+% %\makesavenoteenv{table}
+% %\usepackage{multicol}
+% %
+% %\usepackage[printwatermark]{xwatermark}
+% %\usepackage{xcolor, colortbl}
+% %\usepackage{tikz}
+% %\newsavebox\mybox
+% %\savebox\mybox{\tikz[color=gray,opacity=0.3]\node{DRAFT};}
+% %\newwatermark*[
+% %  allpages,
+% %  angle=45,
+% %  scale=11,
+% %  xpos=-30,
+% %  ypos=30
+% %]{\usebox\mybox}
+% %
+% %
+% %\usepackage{url}
+% %%% The amssymb package provides various useful mathematical symbols
+% %\usepackage{amssymb}
+% %%% The amsthm package provides extended theorem environments
+% %%% \usepackage{amsthm}
+% %
+% %\usepackage{dcolumn}% Align table columns on decimal point
+% %\usepackage{bm}% bold math
+% %%% The lineno packages adds line numbers. Start line numbering with
+% %%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+% %%% for the whole article with \linenumbers after \end{frontmatter}.
+% %\usepackage[switch]{lineno}
+% %%\linenumbers
+% %
+% %\usepackage{caption}
+% %\usepackage{subcaption}
+% %\usepackage{amsmath}
+% %
+% %
+% %\DeclareCaptionType{equ}[Equation][List of Equations]
+% %%\captionsetup[equ]{labelformat=empty}
+% %
+% %
+% %%% natbib.sty is loaded by default. However, natbib options can be
+% %%% provided with \biboptions{...} command. Following options are
+% %%% valid:
+% %
+% %%%   square -  square brackets are used   [option]
+% %%%   curly  -  curly braces are used      {option}
+% %%%   angle  -  angle brackets are used    <option>
+% %%%   semicolon  -  multiple citations separated by semi-colon
+% %%%   colon  - same as semicolon, an earlier confusion
+% %%%   comma  -  separated by comma
+% %%%   numbers-  selects numerical citations
+% %%%   super  -  numerical citations as superscripts
+% %%%   sort   -  sorts multiple citations according to order in ref. list
+% %%%   sort&compress   -  like sort, but also compresses numerical citations
+% %%%   compress - compresses without sorting
+% %%%
+% %%% \biboptions{comma,round}
+% %
+% %% \biboptions{}
+% %\journal{Astronomy And Computing}
+% %
+% %\begin{document}\sloppy
+% %\definecolor{Gray}{gray}{0.9}
+% %\begin{frontmatter}
+% %
+% %%% Title, authors and addresses
 
-%% Use the option review to obtain double line spacing
-%% \documentclass[preprint,review,12pt]{elsarticle}
-
-%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
-%% for a journal layout:
-%% \documentclass[final,1p,times]{elsarticle}
-%% \documentclass[final,1p,times,twocolumn]{elsarticle}
-%% \documentclass[final,3p,times]{elsarticle}
-%% \documentclass[final,3p,times,twocolumn]{elsarticle}
-%% \documentclass[final,5p,times]{elsarticle}
-%% \documentclass[final,5p,times,twocolumn]{elsarticle}
-\usepackage{natbib}
-\bibliographystyle{abbrvnat}
-\setcitestyle{authoryear,open={(},close={)}} %Citations bracketed with ()
-\setcitestyle{citesep={;}} %Makes multiple citations with ;
-%% The graphicx package provides the includegraphics command.
-\usepackage{graphicx}
-\usepackage{footnote}
-\makesavenoteenv{tabular}
-\makesavenoteenv{table}
-\usepackage{multicol}
-
-\usepackage[printwatermark]{xwatermark}
-\usepackage{xcolor, colortbl}
-\usepackage{tikz}
-\newsavebox\mybox
-\savebox\mybox{\tikz[color=gray,opacity=0.3]\node{DRAFT};}
-\newwatermark*[
-  allpages,
-  angle=45,
-  scale=11,
-  xpos=-30,
-  ypos=30
-]{\usebox\mybox}
-
-
-\usepackage{url}
-%% The amssymb package provides various useful mathematical symbols
-\usepackage{amssymb}
-%% The amsthm package provides extended theorem environments
-%% \usepackage{amsthm}
-
-\usepackage{dcolumn}% Align table columns on decimal point
-\usepackage{bm}% bold math
-%% The lineno packages adds line numbers. Start line numbering with
-%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
-%% for the whole article with \linenumbers after \end{frontmatter}.
-\usepackage[switch]{lineno}
-%\linenumbers
-
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{amsmath}
-
-
-\DeclareCaptionType{equ}[Equation][List of Equations]
-%\captionsetup[equ]{labelformat=empty}
-
-
-%% natbib.sty is loaded by default. However, natbib options can be
-%% provided with \biboptions{...} command. Following options are
-%% valid:
-
-%%   square -  square brackets are used   [option]
-%%   curly  -  curly braces are used      {option}
-%%   angle  -  angle brackets are used    <option>
-%%   semicolon  -  multiple citations separated by semi-colon
-%%   colon  - same as semicolon, an earlier confusion
-%%   comma  -  separated by comma
-%%   numbers-  selects numerical citations
-%%   super  -  numerical citations as superscripts
-%%   sort   -  sorts multiple citations according to order in ref. list
-%%   sort&compress   -  like sort, but also compresses numerical citations
-%%   compress - compresses without sorting
-%%
-%% \biboptions{comma,round}
-
-% \biboptions{}
-\journal{Astronomy And Computing}
-
-\begin{document}\sloppy
-\definecolor{Gray}{gray}{0.9}
-\begin{frontmatter}
-
-%% Title, authors and addresses
-
-\title{Scalability Model for the LOFAR Direction Independent Pipeline}% Force line breaks with \\
+\chapter{Scalability Model for the LOFAR Direction Independent Pipeline}% Force line breaks with \\
 %speedup real life pipelines performance automatic measurements radio astronomy
 %\thanks{A footnote to the article title}%X
-\author{A.P. Mechev $^a$}
-\ead{apmechev@strw.leidenuniv.nl}
+% %\author{A.P. Mechev $^a$}
+% %\ead{apmechev@strw.leidenuniv.nl}
 
 % \altaffiliation[Also at ]{Physics Department, XYZ University.}%Lines break automatically or can be forced with \\
-\author{T.W. Shimwell $^b$}%
-\author{A. Plaat $^c$}%
-\author{A.L. Varbanescu $^d$}
-\author{H. Intema $^a$}%
-\author{H.J.A Rottgering $^a$}%
-
-\date{\today}% It is always \today, today,
-\address{$^a$ Leiden Observatory, Niels Bohrweg 2, 2333 CA Leiden, the Netherlands}
-\address{$^b$ ASTRON, Oude Hoogeveensedijk 4, 7991 PD , The Netherlands }
-\address{$^c$ Leiden Institute of Advanced Computer Science, Niels Bohrweg 1, 2333 CA Leiden, the Netherlands}
-\address{$^d$ University of Amsterdam, Spui 21, 1012 WX Amsterdam, the Netherlands}
+% %\author{T.W. Shimwell $^b$}%
+% %\author{A. Plaat $^c$}%
+% %\author{A.L. Varbanescu $^d$}
+% %\author{H. Intema $^a$}%
+% %\author{H.J.A Rottgering $^a$}%
+% %
+% %\date{\today}% It is always \today, today,
+% %\address{$^a$ Leiden Observatory, Niels Bohrweg 2, 2333 CA Leiden, the Netherlands}
+% %\address{$^b$ ASTRON, Oude Hoogeveensedijk 4, 7991 PD , The Netherlands }
+% %\address{$^c$ Leiden Institute of Advanced Computer Science, Niels Bohrweg 1, 2333 CA Leiden, the Netherlands}
+% %\address{$^d$ University of Amsterdam, Spui 21, 1012 WX Amsterdam, the Netherlands}
 
 \begin{abstract}
 Understanding the performance of the LOFAR Direction Independent and Direction Dependent Pipelines is important when trying to optimize the throughput for large surveys. Making a model of completion time will enable us to predict the time taken to process a data set, optimize our parameter choices, help schedule future LOFAR processing services, and predict processing time for future large radio telescopes. We tested the full LOFAR \texttt{prefactor} target calibration pipeline by scaling several parameters, notably number of CPUs, data size and size of calibration sky model. Furthermore, we tested the overhead incurred by downloading and extracting the data and queuing jobs on the distributed cluster tasked with processing the LOFAR Two-Meter Sky Survey. We present these results as a comprehensive model which will be used to predict processing time for a wide range of processing parameters. We also discover that the calibration time scales favorably in time with smaller calibration models, while the calibration results do not degrade in quality. Finally, we validate the model and compare predictions with production runs from the past six months. 
@@ -132,22 +132,22 @@ Understanding the performance of the LOFAR Direction Independent and Direction D
 % The \texttt{LOFAR} pre-factor pipeline prepares LOFAR Observations for creating high fidelity images. 
 % \end{description}
 \end{abstract}
-\begin{keyword}
-Radio Astronomy \sep Performance Analysis \sep Performance Modelling \sep High Performance Computing
-%% keywords here, in the form: keyword \sep keyword
-
-%% MSC codes here, in the form: \MSC code \sep code
-%% or \MSC[2008] code \sep code (2000 is the default)
-
-\end{keyword}
-\end{frontmatter}
-
+% %\begin{keyword}
+% %Radio Astronomy \sep Performance Analysis \sep Performance Modelling \sep High Performance Computing
+% %%% keywords here, in the form: keyword \sep keyword
+% %
+% %%% MSC codes here, in the form: \MSC code \sep code
+% %%% or \MSC[2008] code \sep code (2000 is the default)
+% %
+% %\end{keyword}
+% %\end{frontmatter}
+% %
 %\maketitle
 %
 %\tableofcontents
 %\linenumbers
 
-\section{\label{sec:intro}Introduction }
+\section{\label{sec:ch6_intro}Introduction }
 
 Astronomy is entering the big data era with many projects creating Petabytes of data per year. This data is often processed by complex multi-step pipelines consisting of various algorithms. Understanding the scalability of astronomical algorithms theoretically, in a controlled environment, and in production is important to making prediction for future projects and upcoming telescopes. 
 
@@ -169,10 +169,10 @@ We discover that the intensive LOFAR processing steps scale linearly with data s
     \item Insight into calibration speed and quality with calibration models of radically different size and sensitivity.
 \end{itemize}
 
-We introduce LOFAR processing and other related work in Section \ref{sec:related} and describe our software setup and data processing methods in Section \ref{sec:methods}. We present our results and performance model in Section \ref{sec:results} and  discussions and conclusions in Section \ref{sec:discussions}. 
+We introduce LOFAR processing and other related work in Section \ref{sec:ch6_related} and describe our software setup and data processing methods in Section \ref{sec:ch6_methods}. We present our results and performance model in Section \ref{sec:ch6_results} and  discussions and conclusions in Section \ref{sec:ch6_discussions}. 
 
 
-\section{Related Work}\label{sec:related}
+\section{Related Work}\label{sec:ch6_related}
 In previous work, we have parallelized the Direction Independent LOFAR pipeline on a High Throughput infrastructure \citep{mechev17}. While this parallelization has helped accelerate data processing for the SKSP project, creating a performance model of our software is required if we are to predict the resources taken by future jobs. This model will be particularly useful in understanding how processing parameters will affect run time.  
 
 Performance modelling on a distributed system is an important field of study related to grid computing. A good model of the performance of tasks in a distributed workflows can help more efficiently schedule these jobs on a grid environment \citep{grid_perform_model}. Many of the systems require knowledge of the source code and an analytical model of the slowest parts of the code \citep{semi_analytical_model}. Many systems exist to model the performance of distributed jobs \citep{barnes2008regression, semi_analytical_model,performance_prediction,Witt2018PredictivePM}, with some employing Black Box testing \citep{cross_platform_black_box, mapreduce_analysis} or tests on scientific benchmark cases \citep{synthetic_memory_prediction}. Such performance analysis does not require intimate knowledge of the software and can be applied on data obtained from processing on a grid infrastructure.
@@ -180,9 +180,9 @@ Performance modelling on a distributed system is an important field of study rel
 Empirical modelling is useful in finding bugs in parallel code \citep{scalability_bugs} and modelling the performance of big data architectures \citep{mean_field_modeling}. The insights from these models are used to optimize the architecture of the software system or determine bottlenecks in processing. We plan to use empirical modelling to determine how the LOFAR \texttt{prefactor} performance scales with different parameters. 
 
 
-\input{section_2}
+\input{ch6/section_2}
 
-\section{Results}\label{sec:results}
+\section{Results}\label{sec:ch6_results}
 
 Using a test data set, we tested the LOFAR \texttt{prefactor} target pipeline on the SURFsara \texttt{GINA} cluster. First we will present the tests done in an isolated environment and then compare them to the run time in production on a shared infrastructure. We will integrate all the results in a complete model which can be used to predict processing time for a variety of parameters. Finally, we will make some predictions on the run time of our processing based on the model and validate these predictions. 
 
@@ -192,67 +192,67 @@ Since we are  processing a sample data set in the context of the LOFAR Surveys p
 \subsection{Isolated Environment tests}
 We first tested the LOFAR software in isolation in order to determine the scalability of processing time in terms of data size. We run the entire \texttt{prefactor} target pipeline which which removes Direction Independent Calibration errors from a LOFAR science target. In the following sections, we present the models obtained from these tests.  
 
-\subsubsection{Input Data Size}\label{sec:results_size}
-LOFAR data can be averaged to different sizes based on the scientific requirements. Smaller data sets are processed faster, so it is important to understand the effect of data size on processing time. We show the processing time for our test data set, averaged to different sizes for several \texttt{prefactor} steps in Figures \ref{fig:predict_ateam}, \ref{fig:ateamcliptar}, \ref{fig:dpppconcat_size}, \ref{fig:gsmcalsolve_size}, \ref{fig:gsmcalapply_size}. The figures also plot linear fits for consecutive pairs of parameter steps, in gray dashed lines, used to help guide the selection of parametric model. 
+\subsubsection{Input Data Size}\label{sec:ch6_results_size}
+LOFAR data can be averaged to different sizes based on the scientific requirements. Smaller data sets are processed faster, so it is important to understand the effect of data size on processing time. We show the processing time for our test data set, averaged to different sizes for several \texttt{prefactor} steps in Figures \ref{fig:ch6_predict_ateam}, \ref{fig:ch6_ateamcliptar}, \ref{fig:ch6_dpppconcat_size}, \ref{fig:ch6_gsmcalsolve_size}, \ref{fig:ch6_gsmcalapply_size}. The figures also plot linear fits for consecutive pairs of parameter steps, in gray dashed lines, used to help guide the selection of parametric model. 
 
-All of the steps show linear behavior with respect to input data size, while the gsmcal\_solve step is best fit by two linear relationships, for data smaller and larger than 16 GB. The linear fit to the run times are shown in Equations \ref{eq:predictateam}-\ref{eq:gsmcalapply}. The equations show the processing time as a function of the data size ($\mathcal{S}$), with the slope in the units of seconds/byte. The fits are also shown in Figures \ref{fig:predict_ateam} to \ref{fig:gsmcalapply_size} as a black dashed line.
+All of the steps show linear behavior with respect to input data size, while the gsmcal\_solve step is best fit by two linear relationships, for data smaller and larger than 16 GB. The linear fit to the run times are shown in Equations \ref{eq:ch6_predictateam}-\ref{eq:ch6_gsmcalapply}. The equations show the processing time as a function of the data size ($\mathcal{S}$), with the slope in the units of seconds/byte. The fits are also shown in Figures \ref{fig:ch6_predict_ateam} to \ref{fig:ch6_gsmcalapply_size} as a black dashed line.
 
 \begin{equ*}
 \begin{subequations}
 \begin{align}
-        T_{predict\_ateam}=5.19\times10^{-8}\mathcal{S}+4.20\times10^1 \label{eq:predictateam} \\
-        T_{ateamcliptar}=4.57\times10^{-9}\mathcal{S}-8.42\times10^0 \label{eq:ateamcliptar} \\
-        T_{dpppconcat}=3.51\times10^{-8}\mathcal{S}+4.20\times10^1 \label{eq:dpppconcat} \\
+        T_{predict\_ateam}=5.19\times10^{-8}\mathcal{S}+4.20\times10^1 \label{eq:ch6_predictateam} \\
+        T_{ateamcliptar}=4.57\times10^{-9}\mathcal{S}-8.42\times10^0 \label{eq:ch6_ateamcliptar} \\
+        T_{dpppconcat}=3.51\times10^{-8}\mathcal{S}+4.20\times10^1 \label{eq:ch6_dpppconcat} \\
         T_{gsmcal\_solve}=\begin{cases}
                           7.38\times10^{-7}\mathcal{S}-8.20\times10^1 &|\mathcal{S}<=1.6\times10^{10}\\
                           1.04\times10^{-6}\mathcal{S}-4.04\times10^3 & |\mathcal{S}>1.6\times10^{10}
-    \end{cases} \label{eq:gsmcalsolve} \\
-        T_{gsmcal\_apply}=2.07\times10^{-8}\mathcal{S}-1.38\times10^1 \label{eq:gsmcalapply}    
+    \end{cases} \label{eq:ch6_gsmcalsolve} \\
+        T_{gsmcal\_apply}=2.07\times10^{-8}\mathcal{S}-1.38\times10^1 \label{eq:ch6_gsmcalapply}    
 \end{align}
-\label{eq:runtime_size_models}
+\label{eq:ch6_runtime_size_models}
 \end{subequations}
 \caption{Equations describing the processing time of five \texttt{prefactor} steps as a function of the input data size ($\mathcal{S}$) in bytes.}
 \end{equ*}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/predict_ateam_size.pdf}
-      \caption{Tests of the predict\_ateam step for input data size ranging from 1GB to 64 GB. This step calculates the contamination from bright off-axis sources. Dashed lines are shown connecting each pair of points, to highlight the trend. The linear model fit to this data (Equation \ref{eq:predictateam}) is shown in black. }
-	\label{fig:predict_ateam}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/predict_ateam_size.pdf}
+      \caption{Tests of the predict\_ateam step for input data size ranging from 1GB to 64 GB. This step calculates the contamination from bright off-axis sources. Dashed lines are shown connecting each pair of points, to highlight the trend. The linear model fit to this data (Equation \ref{eq:ch6_predictateam}) is shown in black. }
+	\label{fig:ch6_predict_ateam}
 \end{figure}
 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/ateamcliptar_size.pdf}
-      \caption{Tests of the ateamcliptar step for input data size ranging from 1GB to 64 GB. This step removes the contamination from bright off-axis sources. The linear model fit to this data (Equation \ref{eq:ateamcliptar}) is shown in black.}
-	\label{fig:ateamcliptar}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/ateamcliptar_size.pdf}
+      \caption{Tests of the ateamcliptar step for input data size ranging from 1GB to 64 GB. This step removes the contamination from bright off-axis sources. The linear model fit to this data (Equation \ref{eq:ch6_ateamcliptar}) is shown in black.}
+	\label{fig:ch6_ateamcliptar}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/dpppconcat_size.pdf}
-      \caption{Tests of the dpppconcat step for input data size ranging from 1GB to 64 GB. This step concatenates 10 files into a single measurement set. The linear model fit to this data (Equation \ref{eq:dpppconcat}) is shown in black.}
-	\label{fig:dpppconcat_size}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/dpppconcat_size.pdf}
+      \caption{Tests of the dpppconcat step for input data size ranging from 1GB to 64 GB. This step concatenates 10 files into a single measurement set. The linear model fit to this data (Equation \ref{eq:ch6_dpppconcat}) is shown in black.}
+	\label{fig:ch6_dpppconcat_size}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/gsmcal_solve_size2.pdf}
-      \caption{Tests of the gsmcal\_solve step for input data size ranging from 1GB to 64 GB. This step performs gain calibration of the concatenated data set against a sky model. It is the slowest and most computationally expensive \texttt{prefactor} step. We fit two linear models, for data below 16GB and above 16GB. The models, shown in  (Equation \ref{eq:gsmcalsolve}) are shown in a black dashed line.}
-	\label{fig:gsmcalsolve_size}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/gsmcal_solve_size2.pdf}
+      \caption{Tests of the gsmcal\_solve step for input data size ranging from 1GB to 64 GB. This step performs gain calibration of the concatenated data set against a sky model. It is the slowest and most computationally expensive \texttt{prefactor} step. We fit two linear models, for data below 16GB and above 16GB. The models, shown in  (Equation \ref{eq:ch6_gsmcalsolve}) are shown in a black dashed line.}
+	\label{fig:ch6_gsmcalsolve_size}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/gsmcal_apply_size.pdf}
-      \caption{Tests of the gsmcal\_apply step for input data size ranging from 1GB to 64 GB. This step applies the calibration solutions to the data. The linear model fit to this data (Equation \ref{eq:gsmcalapply} is shown in dark blue.}
-	\label{fig:gsmcalapply_size}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/gsmcal_apply_size.pdf}
+      \caption{Tests of the gsmcal\_apply step for input data size ranging from 1GB to 64 GB. This step applies the calibration solutions to the data. The linear model fit to this data (Equation \ref{eq:ch6_gsmcalapply} is shown in dark blue.}
+	\label{fig:ch6_gsmcalapply_size}
 \end{figure}
 
 \subsubsection{Calibration Model Size}
 To test the effect of the calibration model size on run time, we tested our calibration with several different lengths of the sky model file. We created these models by changing the maximum sensitivity using values ranging from 0.05 Jy to 1.5 Jy. The most sensitive model (0.05 Jy) had 809 sources while the 1.5 Jy model had only 16 sources. 
 
-Figure \ref{fig:skymodel_run_lenght} shows that the calibration time is directly proportional to the length of the sky model. Figure \ref{fig:skymodel_run_sens} shows the run time as a function of the processing parameter: the cutoff sensitivity. As the relationship between the number of sources and cutoff sensitivity is a power law, here we see the same relationship holding for processing time.
+Figure \ref{fig:ch6_skymodel_run_lenght} shows that the calibration time is directly proportional to the length of the sky model. Figure \ref{fig:ch6_skymodel_run_sens} shows the run time as a function of the processing parameter: the cutoff sensitivity. As the relationship between the number of sources and cutoff sensitivity is a power law, here we see the same relationship holding for processing time.
 
-We model the run time as a function of the cutoff frequency using a power law, and fit the data to the function $y=\alpha\cdot \mathcal{F}^{-k}$. Our fit found the best model to be shown in Equation \ref{eq:skymodel_flux}, where $\mathcal{F}$ value is the cutoff flux in Jansky and $T$ is the run time in seconds. 
+We model the run time as a function of the cutoff frequency using a power law, and fit the data to the function $y=\alpha\cdot \mathcal{F}^{-k}$. Our fit found the best model to be shown in Equation \ref{eq:ch6_skymodel_flux}, where $\mathcal{F}$ value is the cutoff flux in Jansky and $T$ is the run time in seconds. 
 
-We show four images made from data sets calibrated with a 0.05Jy (top left), 0.3Jy (top right), 0.8 Jy (bottom left) and 1.5 Jy (bottom right) cutoff in Figure \ref{fig:skymodel_images}. The statistics for the four images, taken from the regions in green on Figure \ref{fig:skymodel_images}) are shown in Table \ref{table:skymodel_RMS}.
+We show four images made from data sets calibrated with a 0.05Jy (top left), 0.3Jy (top right), 0.8 Jy (bottom left) and 1.5 Jy (bottom right) cutoff in Figure \ref{fig:ch6_skymodel_images}. The statistics for the four images, taken from the regions in green on Figure \ref{fig:ch6_skymodel_images}) are shown in Table \ref{table:ch6_skymodel_RMS}.
 
 
 \begin{table}[h!]
@@ -270,74 +270,75 @@ We show four images made from data sets calibrated with a 0.05Jy (top left), 0.3
  1.5 Jy & 0.00410204 & 0.004105\\
  \hline
 \end{tabular}
-\caption{Statistics for an empty region for the four images shown in Figure \ref{fig:skymodel_images}. The 0.3Jy model, here shown shaded in gray,  is the one used in production.  }
-\label{table:skymodel_RMS}
+\caption{Statistics for an empty region for the four images shown in Figure \ref{fig:ch6_skymodel_images}. The 0.3Jy model, here shown shaded in gray,  is the one used in production.  }
+\label{table:ch6_skymodel_RMS}
 \end{table}
 
 \begin{equ}
 \begin{equation}
     T=1185\cdot \mathcal{F}^{-0.854}
-\label{eq:skymodel_flux}
+\label{eq:ch6_skymodel_flux}
 \end{equation}
 \caption{Processing time for the gsmcal\_solve step as a function of the flux cutoff of the calibration model ($\mathcal{F}$) in Jansky}
 \end{equ}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/skymodel_length.eps}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/skymodel_length.eps}
       \caption{The processing time of the gsmcal\_solve step is linear with the size of the sky model as measured by the number of sources.}
-	\label{fig:skymodel_run_lenght}
+	\label{fig:ch6_skymodel_run_lenght}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/skymodel_flux.eps}
-      \caption{The run time of the gsmcal\_solve step as a function of the cutoff sensitivity is not linear. As shown in Figure \ref{fig:skymodel_size}, the number of sources increases exponentially as the minimum sensitivity decreases. The dashed line shows the model fitted in Equation \ref{eq:skymodel_flux}. }
-	\label{fig:skymodel_run_sens}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/skymodel_flux.eps}
+      \caption{The run time of the gsmcal\_solve step as a function of the cutoff sensitivity is not linear. As shown in Figure \ref{fig:ch6_skymodel_size}, the number of sources increases exponentially as the minimum sensitivity decreases. The dashed line shows the model fitted in Equation \ref{eq:ch6_skymodel_flux}. }
+	\label{fig:ch6_skymodel_run_sens}
 \end{figure}
 
 \begin{figure*}
-    \includegraphics[width=0.95\linewidth]{figures/skymodel_images.png}
-      \caption{Four dirty images made with \texttt{wsclean} from the data set. The four images were calibrated with sky models of various flux cutoffs ranging from 0.05Jy (top left) to 1.5Jy (bottom right). Flux statistics for the green regions in the four images are listed in Table \ref{table:skymodel_RMS}. While the images have similar noise statistics, the data for the top left image takes $\sim$10 times longer to calibrate than that for the bottom right image. }
-	\label{fig:skymodel_images}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/skymodel_images.png}
+      \caption{Four dirty images made with \texttt{wsclean} from the data set. The four images were calibrated with sky models of various flux cutoffs ranging from 0.05Jy (top left) to 1.5Jy (bottom right). Flux statistics for the green regions in the four images are listed in Table \ref{table:ch6_skymodel_RMS}.}
+	\label{fig:ch6_skymodel_images}
 \end{figure*}
 
 \subsubsection{Number of CPUs}
-One parameter that can be optimized is the number of CPUs requested when the job is launched. We investigated the processing speedup as a function of the number of CPUs for the \texttt{prefactor} target pipeline. From the steps tested, only the gsmcal\_solve step shows a significant speedup as the number of CPUs is increased. The run time of this step is an inverse power law with respect to the number of CPUs as seen in Figure \ref{fig:gsmcal_solve_NCPU}. Unlike the solving step, the step applying the calibration solutions (gsmcal\_apply) is constant in time with respect to the number of CPUs as seen in Figure \ref{fig:gsmcal_apply_NCPU}. 
+One parameter that can be optimized is the number of CPUs requested when the job is launched. We investigated the processing speedup as a function of the number of CPUs for the \texttt{prefactor} target pipeline. From the steps tested, only the gsmcal\_solve step shows a significant speedup as the number of CPUs is increased. The run time of this step is an inverse power law with respect to the number of CPUs as seen in Figure \ref{fig:ch6_gsmcal_solve_NCPU}. Unlike the solving step, the step applying the calibration solutions (gsmcal\_apply) is constant in time with respect to the number of CPUs as seen in Figure \ref{fig:ch6_gsmcal_apply_NCPU}. 
 
-We fit an inverse proportional model to the raw data, shown in Equation \ref{eq:gsmcal_NCPU}, with the parameter $(\mathcal{N})$ being the number of CPUs used. 
+We fit an inverse proportional model to the raw data, shown in Equation \ref{eq:ch6_gsmcal_NCPU}, with the parameter $(\mathcal{N})$ being the number of CPUs used. 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/gsmcal_NCPU_and_model.eps}
-      \caption{The processing time of the gsmcal\_solve step decreases exponentially with the number of CPUS requested. The model in Equation \ref{eq:gsmcal_NCPU} is shown in a dashed line. As this is a 1/x model, it shows diminishing returns past 16 CPUs. }
-	\label{fig:gsmcal_solve_NCPU}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/gsmcal_NCPU_and_model.eps}
+      \caption{The processing time of the gsmcal\_solve step decreases exponentially with the number of CPUS requested. The model in Equation \ref{eq:ch6_gsmcal_NCPU} is shown in a dashed line}
+	\label{fig:ch6_gsmcal_solve_NCPU}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/gsmcal_apply_NCPU.eps}
-      \caption{The step that applies the calibration solutions, gsmcal\_apply, does not show a speedup when run on multiple cores, as all runs take roughly 30 seconds to complete.  }
-	\label{fig:gsmcal_apply_NCPU}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/gsmcal_apply_NCPU.eps}
+      \caption{The step that applies the calibration solutions, gsmcal\_apply, does not show a speedup when run on multiple cores. }
+	\label{fig:ch6_gsmcal_apply_NCPU}
 \end{figure}
 
 \begin{equ}
 \begin{equation}
     T=503.37+\frac{3062.6}{\mathcal{N}}
-\label{eq:gsmcal_NCPU}
+\label{eq:ch6_gsmcal_NCPU}
 \end{equation}
 \caption{Processing time for the gsmcal\_solve step as a function of ($\mathcal{N}$), the Number of CPUs used by the process.}
 \end{equ}
 
 
+
 \subsection{Queuing Tests}
 
-Aside from performance of the LOFAR software, we measured the queuing time at the \texttt{GINA} cluster, as a function of the number of CPUs requested. This data was obtained between 16 Nov 2018 and 10 Dec 2018 for 1,  2, 3 ,4, 8, and 16 CPUs per job. A histogram of the queuing time for these jobs is shown in Figure \ref{fig:queue_NCPU}. Statistics for these runs are in Table \ref{table:queueing_stats}. We use the 75th percentile of the queuing time for each parameter step to fit a model. This scenario will include 75\% of runs and is a good trade-off between ignoring and including outliers. 
+Aside from performance of the LOFAR software, we measured the queuing time at the \texttt{GINA} cluster, as a function of the number of CPUs requested. This data was obtained between 16 Nov 2018 and 10 Dec 2018 for 1,  2, 3 ,4, 8, and 16 CPUs per job. A histogram of the queuing time for these jobs is shown in Figure \ref{fig:ch6_queue_NCPU}. Statistics for these runs are in Table \ref{table:ch6_queueing_stats}. We use the 75th percentile of the queuing time for each parameter step to fit a model. This scenario will include 75\% of runs and is a good trade-off between ignoring and including outliers. 
 
-We fit two linear models for this queueing time. One model for 1-4 CPUs and one for 4-16 CPUs. The model, as a function of Number of CPUS, $\mathcal{N}$ is in equation \ref{eq:queue_model}. The two models are plotted against the 75th percentile of the queuing times (last column in Table \ref{table:queueing_stats}) in Figure \ref{fig:queue_model}.
+We fit two linear models for this queueing time. One model for 1-4 CPUs and one for 4-16 CPUs. The model, as a function of Number of CPUS, $\mathcal{N}$ is in equation \ref{eq:ch6_queue_model}. The two models are plotted against the 75th percentile of the queuing times (last column in Table \ref{table:ch6_queueing_stats}) in Figure \ref{fig:ch6_queue_model}.
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/Queue_NCPU.eps}
-      \caption{Test randomly submitting jobs to the \texttt{GINA} with different number of requested CPUs. The long tail for 8 and 16 CPU jobs shows that some jobs can take several hours to launch.  }
+    \includegraphics[width=0.95\linewidth]{ch6/figures/Queue_NCPU.eps}
+      \caption{Test randomly submitting jobs to the \texttt{GINA} with different number of requested CPUs. }
       
       %Outliers due to grid downtime have been removed \textbf{Actually do this though} }
-	\label{fig:queue_NCPU}
+	\label{fig:ch6_queue_NCPU}
 \end{figure}
 
 
@@ -355,14 +356,14 @@ We fit two linear models for this queueing time. One model for 1-4 CPUs and one 
  16 CPU & 7079.0 & 696.4 & 8750.6\\
  \hline
 \end{tabular}
-\caption{Statistics for queuing time for different values of CPUs requested. Queueing time for jobs requesting less than 8 CPUs is typically less than five minutes. It can drastically increase for larger jobs. }
-\label{table:queueing_stats}
+\caption{Statistics for queuing time for different values of CPUs requested. }
+\label{table:ch6_queueing_stats}
 \end{table*}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/Queueing_model.eps}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/Queueing_model.eps}
       \caption{The queuing model built from two linear fits to the queuing times. We use the 75th percentile of the queuing data as a upper bound of job queuing. }
-	\label{fig:queue_model}
+	\label{fig:ch6_queue_model}
 \end{figure}
 
 \begin{equ}
@@ -371,43 +372,43 @@ We fit two linear models for this queueing time. One model for 1-4 CPUs and one 
     49.3\cdot\mathcal{N}+ 120 &|\mathcal{N}<=4\\
     726\cdot\mathcal{N}-3071 & |\mathcal{N}>4
     \end{cases}
-  \label{eq:queue_model}
+  \label{eq:ch6_queue_model}
 \end{equation}
 \caption{The model for the Queuing time as described by two linear models. }
 \end{equ}
 
 
 
-\subsection{Transfer and Unpacking Time}\label{sec:results_dl}
+\subsection{Transfer and Unpacking Time}\label{sec:ch6_results_dl}
 
 We tested the downloading and unpacking time for data sizes ranging from 512MB to 64GB. We discovered that the unpacking of files below 64GB scaled linearly with file size, however unpacking data larger than 16GB becomes considerably slower than downloading it. 
 
-Figure \ref{fig:dl_hist} shows the histogram of the download tests, and Figure \ref{fig:dl_plot} displays the tests as a function of data size. Both figures show that extracting of the 32 and 64GB data sets has more slow outliers than the downloading of this data. 
+Figure \ref{fig:ch6_dl_hist} shows the histogram of the download tests, and Figure \ref{fig:ch6_dl_plot} displays the tests as a function of data size. Both figures show that extracting of the 32 and 64GB data sets has more slow outliers than the downloading of this data. 
 
-We fit a power law model to the time taken to transfer and unpack the data. In this case, we also consider the 75th percentile of these times in order to capture the majority of runs and ignore outliers. The plot of the data and our model can be seen in Figure \ref{fig:dl_plot} and the model is in Equation \ref{eq:download_model}, as a function of the input data size, $\mathcal{S} $ in Gigabytes.
+We fit a power law model to the time taken to transfer and unpack the data. In this case, we also consider the 75th percentile of these times in order to capture the majority of runs and ignore outliers. The plot of the data and our model can be seen in Figure \ref{fig:ch6_dl_plot} and the model is in Equation \ref{eq:ch6_download_model}, as a function of the input data size, $\mathcal{S} $ in Gigabytes.
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/dl_ex_hatched.png}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/dl_ex_hatched.png}
       \caption{A histogram of the download and extracting times of multiple data sizes on the \texttt{GINA} worker nodes. Download and extract times are comparable for data up to 8GB, however above that, the extracting time dominates.  }
-	\label{fig:dl_hist}
+	\label{fig:ch6_dl_hist}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/download_extract_sct.eps}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/download_extract_sct.eps}
       \caption{A scatter plot of the download and extracting times of multiple data sizes on the \texttt{GINA} worker nodes. The difference between download and extract time for the 32 and 64 GB data sets can be seen.  }
-	\label{fig:dl_plot}
+	\label{fig:ch6_dl_plot}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/Dl_Ex_model.eps}
-      \caption{Fit of an exponential model to the Download and Extraction time for different data sizes. For the transfer overhead, we took the 75th percentile from the data shown in Figure \ref{fig:dl_hist}. The model in Equation \ref{eq:download_model} is shown in a dahsed line. }
-	\label{fig:dl_ex_model}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/Dl_Ex_model.eps}
+      \caption{Fit of an exponential model to the Download and Extraction time for different data sizes. For the transfer overhead, we took the 75th percentile from the data shown in Figure \ref{fig:ch6_dl_hist}. The model in Equation \ref{eq:ch6_download_model} is shown in a dahsed line. }
+	\label{fig:ch6_dl_ex_model}
 \end{figure}
 
 \begin{equ}
 \begin{equation}
   T=5.918\times10^{20}\cdot \mathcal{S}^{2.336}
-  \label{eq:download_model}
+  \label{eq:ch6_download_model}
 \end{equation}
 \caption{Model of the downloading and extracting time as a function of the data size ($\mathcal{S}$) in bytes.}
 \end{equ}
@@ -417,40 +418,40 @@ We fit a power law model to the time taken to transfer and unpack the data. In t
 Over the past two years, the LOFAR software has been running in production and collecting data on run time for each processing step. We have saved detailed logs for these runs starting in July 2018.  We can compare this to the isolated model in order to determine the overhead incurred by processing LOFAR data on shared nodes. 
 
 Using the logs recorded by our processing launcher\footnote{GRID\_PiCaS\_Launcher, \url{https://github.com/apmechev/GRID\_picastools }}, we made plots showing the processing time for the downloading and extracting, and for the slowest steps, ndppp\_prepcal and gsmcal\_solve. 
-The results are shown in Figures \ref{fig:prod_dl_10} and \ref{fig:prod_dl_64}. We include predicted extract times from Section \ref{sec:results_dl} as vertical dashed lines for both plots. 
+The results are shown in Figures \ref{fig:ch6_prod_dl_10} and \ref{fig:ch6_prod_dl_64}. We include predicted extract times from Section \ref{sec:ch6_results_dl} as vertical dashed lines for both plots. 
 
-Finally, we present Figures \ref{fig:prod_gsmcal} which shows a comparison of gsmcal\_solve run times and our model's prediction for a 1GB data set.  Figure \ref{fig:prod_gsmcal_times} plots the processing time vs data size for these production runs and includes the model from Equation \ref{eq:gsmcalsolve}. The significant overhead incurred on a shared infrastructure can be noted. 
+Finally, we present Figures \ref{fig:ch6_prod_gsmcal} which shows a comparison of gsmcal\_solve run times and our model's prediction for a 1GB data set.  Figure \ref{fig:ch6_prod_gsmcal_times} plots the processing time vs data size for these production runs and includes the model from Equation \ref{eq:ch6_gsmcalsolve}. The significant overhead incurred on a shared infrastructure can be noted. 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/Production_10GB_2.eps}
-      \caption{Downloading and extracting time for 10 1GB data sets performed in our production environment. Data from this test ranges from July 2018 to January 2019. The dashed red line shows the prediction obtained from section \ref{sec:results_dl}. }
-	\label{fig:prod_dl_10}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/Production_10GB.png}
+      \caption{Downloading and extracting time for 10 1GB data sets performed in our production environment. Data from this test ranges from July 2018 to January 2019. The dashed red line shows the prediction obtained from section \ref{sec:ch6_results_dl}. }
+	\label{fig:ch6_prod_dl_10}
 \end{figure}
 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/Production_64GB_2.eps}
-      \caption{Downloading and extracting time for a 64GB data set performed in our production environment. Data from this test ranges from 07/2018-01/2019. The dashed red line shows the prediction obtained from Figure \ref{fig:gsmcalsolve_size} in Section \ref{sec:results_dl}. }
-	\label{fig:prod_dl_64}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/Production_64GB.png}
+      \caption{Downloading and extracting time for a 64GB data set performed in our production environment. Data from this test ranges from 07/2018-01/2019. The dashed red line shows the prediction obtained from Figure \ref{fig:ch6_gsmcalsolve_size} in Section \ref{sec:ch6_results_dl}. }
+	\label{fig:ch6_prod_dl_64}
 \end{figure}
 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/Production_gsmcal_1GB_2.eps}
-      \caption{Processing time for the gsmcal\_solve step in a production environment. Data from this test ranges from 07/2018-01/2019. The dashed red line shows the prediction for a 1GB run, obtained from section \ref{sec:results_dl}. It should be noted that the first peak corresponds to 512MB data, as seen in Figure \ref{fig:prod_gsmcal_times}.}
-	\label{fig:prod_gsmcal}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/Production_gsmcal_1GB.png}
+      \caption{Processing time for the gsmcal\_solve step in a production environment. Data from this test ranges from 07/2018-01/2019. The dashed red line shows the prediction for a 1GB run, obtained from section \ref{sec:ch6_results_dl}. It should be noted that the first peak corresponds to 512MB data, as seen in Figure \ref{fig:ch6_prod_gsmcal_times}.}
+	\label{fig:ch6_prod_gsmcal}
 \end{figure}
 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{figures/gsmcal_solve_size_prod.eps}
+    \includegraphics[width=0.95\linewidth]{ch6/figures/gsmcal_solve_size_prod.eps}
       \caption{The scalability model for processing data through the gsmcal\_solve step and the performance for production runs of this step between July 2018 and January 2019. }
-	\label{fig:prod_gsmcal_times}
+	\label{fig:ch6_prod_gsmcal_times}
 \end{figure}
 
 
 \subsection{Complete Scalability Model}
-To incorporate all our data into a complete model, we consider the slowdown of each parameter as a multiplier to the time taken to process our base run. We incorporate the models for each parameter above for the model of the run time. We add the transfer and queuing time to the processing time to obtain a final function of all our parameters. We can use this function to predict the processing time for an arbitrary data set. The final performance model is in Equation \ref{eq:full_model}. 
+To incorporate all our data into a complete model, we consider the slowdown of each parameter as a multiplier to the time taken to process our base run. We incorporate the models for each parameter above for the model of the run time. We add the transfer and queuing time to the processing time to obtain a final function of all our parameters. We can use this function to predict the processing time for an arbitrary data set. The final performance model is in Equation \ref{eq:ch6_full_model}. 
 
 \begin{equ*}[!t]
 \normalsize
@@ -464,24 +465,24 @@ To incorporate all our data into a complete model, we consider the slowdown of e
        & + 3566\cdot \frac{1}{3.012}\mathcal{F}^{-0.854} \cdot 9.97\cdot10^{-7}\mathcal{S}\cdot (0.1412+\frac{0.8589}{\mathcal{N}}) \\
        & + 0.056\cdot \mathcal{S}^{2.336} 
        \end{split}
- \label{eq:full_model}
+ \label{eq:ch6_full_model}
  \end{equation}
 \caption{Model of the total time of the gsmcal\_solve step ($t_{gsmcal\_solve}$) for the parameters $\mathcal{N}$, Number of CPUs; $\mathcal{S}$, Size of data in bytes and $\mathcal{F}$, cutoff calibration model flux in Jansky. }
 \end{equ*}
 
-\section{Discussions and Conclusions}\label{sec:discussions}
+\section{Discussions and Conclusions}\label{sec:ch6_discussions}
 
 The goal of this work is to understand the performance of the LOFAR Direction Independent Pipeline as processing parameters are scaled up or down. We increased the size of broadband LOFAR data by a factor of 64 in size, and discovered that all our processing steps scale linearly in time with respect of the input data size. We learned that for input data above 16GB in size, the slope of our scaling relation is higher than for the smaller data sets.
 
 As the calibration step concatenates 10 input subbands, and the test system only has 380GB of RAM, data larger than 16GB, the discrepancy in slopes can be attributed to the large memory requirement for data larger than 200GB. Splitting the performance model in two also helps make a more accurate processing time prediction as fitting a single linear model would have a large negative y-intercept, predicting negative processing times for data smaller than 2GB. 
 
-When comparing our model's prediction with real processing runs over the past six months, we note that there are considerable overheads when processing data on an isolated node vs when running on a shared infrastructure (Figure \ref{fig:prod_gsmcal_times}). The overhead in processing is roughly a factor of two-three from our model. This discrepancy suggests that a model for gsmcal\_solve needs to be built using data when running on a shared environment, to better predict processing time. 
+When comparing our model's prediction with real processing runs over the past six months, we note that there are considerable overheads when processing data on an isolated node vs when running on a shared infrastructure (Figure \ref{fig:ch6_prod_gsmcal_times}). The overhead in processing is roughly a factor of two-three from our model. This discrepancy suggests that a model for gsmcal\_solve needs to be built using data when running on a shared environment, to better predict processing time. 
 
-Overall, the slowest step was the gsmcal\_solve step, and its run time scales more strongly with data size than the other steps (equation \ref{eq:gsmcalsolve} has the steepest slope). This suggests that as data sizes increase, gsmcal\_solve will increasingly dominate the processing time over the other steps (As seen in Figures \ref{fig:predict_ateam} and \ref{fig:gsmcalsolve_size}). This effect is especially prominent for data larger than 16GB (160GB when 10 subbands are concatenated). As such, it is recommended to avoid calibration of data larger than 160GB. 
+Overall, the slowest step was the gsmcal\_solve step, and its run time scales more strongly with data size than the other steps (equation \ref{eq:ch6_gsmcalsolve} has the steepest slope). This suggests that as data sizes increase, gsmcal\_solve will increasingly dominate the processing time over the other steps (As seen in Figures \ref{fig:ch6_predict_ateam} and \ref{fig:ch6_gsmcalsolve_size}). This effect is especially prominent for data larger than 16GB (160GB when 10 subbands are concatenated). As such, it is recommended to avoid calibration of data larger than 160GB. 
 
-Additionally we discovered that the calibration scales linearly in time as a function of the length of the calibration model, however it is a power law as a function of the model's cutoff sensitivity. This is because of the (expected) power law relation between the number of sources and cutoff sensitivity, seen in Figure \ref{fig:skymodel_size}. We can use this discovery to accelerate the processing time by increasing the flux cutoff to the LOFAR direction independent calibration to 0.5 Jy. Doing so will execute the calibration step in 60\% of the time, saving 83 CPU-h per run. Over the remaining 2000 \texttt{prefactor} runs left in the LOTSS project, this change in sensitivity will save more than 167k CPU hours. Figures \ref{fig:skymodel_images} show a data set calibrated with sky models with cutoff sensitivities listed in Table \ref{table:skymodel_RMS}, and figures  \ref{fig:skymodel_rcalib_004_03} and \ref{fig:skymodel_rcalib_08_15} show the calibration solutions obtained by calibrating with skymodels of cutoff ranging from 0.05 Jy to 1.5 Jy. These results suggest that performing gain calibration with less complex, and thus smaller, calibration models will not degrade image and solution quality while taking less than 20\% of processing time. Table \ref{table:skymodel_RMS} also confirms this result.
+Additionally we discovered that the calibration scales linearly in time as a function of the length of the calibration model, however it is a power law as a function of the model's cutoff sensitivity. This is because of the (expected) power law relation between the number of sources and cutoff sensitivity, seen in Figure \ref{fig:ch6_skymodel_size}. We can use this discovery to accelerate the processing time by increasing the flux cutoff to the LOFAR direction independent calibration to 0.5 Jy. Doing so will execute the calibration step in 60\% of the time, saving 83 CPU-h per run. Over the remaining 2000 \texttt{prefactor} runs left in the LOTSS project, this change in sensitivity will save more than 167k CPU hours. Figures \ref{fig:ch6_skymodel_images} show a data set calibrated with sky models with cutoff sensitivities listed in Table \ref{table:ch6_skymodel_RMS}, and figures  \ref{fig:ch6_skymodel_rcalib_004_03} and \ref{fig:ch6_skymodel_rcalib_08_15} show the calibration solutions obtained by calibrating with skymodels of cutoff ranging from 0.05 Jy to 1.5 Jy. These results suggest that performing gain calibration with less complex, and thus smaller, calibration models will not degrade image and solution quality while taking less than 20\% of processing time. Table \ref{table:ch6_skymodel_RMS} also confirms this result.
 
-We tested downloading and extracting test LOFAR data of various sizes. Both downloading and extracting was linear with respect to the data size for data up to 32 GB in size. Beyond those sizes, there was more scatter in data extraction. This is because load on the worker node's file-system can be unpredictable and can affect the extraction negatively. Nevertheless, when comparing our extraction tests and processing for the past 6 months, the predictions by our models (Figure \ref{fig:dl_hist}) correspond to the production runs (Figures \ref{fig:prod_dl_10} and \ref{fig:prod_dl_64}).  
+We tested downloading and extracting test LOFAR data of various sizes. Both downloading and extracting was linear with respect to the data size for data up to 32 GB in size. Beyond those sizes, there was more scatter in data extraction. This is because load on the worker node's file-system can be unpredictable and can affect the extraction negatively. Nevertheless, when comparing our extraction tests and processing for the past 6 months, the predictions by our models (Figure \ref{fig:ch6_dl_hist}) correspond to the production runs (Figures \ref{fig:ch6_prod_dl_10} and \ref{fig:ch6_prod_dl_64}).  
 Part of the LOFAR SKSP processing is done on shared infrastructure, which requires requesting processing time ahead of time for each grant period. Being able to predict the amount of resources required to process data each grant period is required to make a reliable estimate on what resources to request. 
 
 Moreover, providing LOFAR processing as a service to scientific users requires estimating the processing time for each request. This needs to be done in order to determine whether the user has sufficient resources left in their resource pool. Knowing the performance of the software pipelines as a function of the input parameters will help predict the run time for each request and the resources consumed. Knowing this will make it possible to notify users how long the request will take and how much of their quota will be used up. 
@@ -489,7 +490,7 @@ Moreover, providing LOFAR processing as a service to scientific users requires e
 Finally, a performance model of the LOFAR software will help make predictions on the time and resources needed to process data for other telescopes such as the Square Kilometer Array (SKA). Once operational, the SKA is expected to produce Exabytes of data per year. Processing this data efficiently requires understanding the scalability of the software performance to facilitate scheduling and resource allotment. Overall, these results will help guide algorithm development in radio astronomy, as well as be useful to schedule future processing jobs and optimize resource usage. 
 
 
-\input{Appendix1}
+\input{ch6/Appendix1}
 
 \section*{Acknowledgements}
 APM would like to acknowledge the support from the NWO/DOME/IBM programme ``Big Bang Big Data: Innovating ICT as a Driver For Astronomy'', project \#628.002.001.
@@ -497,10 +498,10 @@ APM would like to acknowledge the support from the NWO/DOME/IBM programme ``Big 
 This work was carried out on the Dutch national e-infrastructure with the support of SURF
 Cooperative through grant e-infra 160022 \& 160152.
 
-\section*{References}
-\bibliography{bibliography}
-
-\end{document}
-
+% %\section*{References}
+% %\bibliography{bibliography}
+% %
+% %\end{document}
+% %
 %%
 %% End of file `elsarticle-template-1-num.tex'.
