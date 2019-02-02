@@ -115,18 +115,20 @@
 % \altaffiliation[Also at ]{Physics Department, XYZ University.}%Lines break automatically or can be forced with \\
 \author{T.W. Shimwell $^b$}%
 \author{A. Plaat $^c$}%
-\author{A.L. Varbanescu $^d$}
-\author{H. Intema $^a$}%
+\author{H. Intema $^a^d$}%
+\author{A.L. Varbanescu $^e$}
 \author{H.J.A Rottgering $^a$}%
 
 \date{\today}% It is always \today, today,
 \address{$^a$ Leiden Observatory, Niels Bohrweg 2, 2333 CA Leiden, the Netherlands}
 \address{$^b$ ASTRON, Oude Hoogeveensedijk 4, 7991 PD , The Netherlands }
 \address{$^c$ Leiden Institute of Advanced Computer Science, Niels Bohrweg 1, 2333 CA Leiden, the Netherlands}
-\address{$^d$ University of Amsterdam, Spui 21, 1012 WX Amsterdam, the Netherlands}
+\address{$^d$ International Centre for Radio Astronomy Research -- Curtin University, GPO Box U1987, Perth, WA 6845, Australia}
+\address{$^e$ University of Amsterdam, Spui 21, 1012 WX Amsterdam, the Netherlands}
+
 
 \begin{abstract}
-Understanding the performance of the LOFAR Direction Independent and Direction Dependent Pipelines is important when trying to optimize the throughput for large surveys. Making a model of completion time will enable us to predict the time taken to process a data set, optimize our parameter choices, help schedule future LOFAR processing services, and predict processing time for future large radio telescopes. We tested the full LOFAR \texttt{prefactor} target calibration pipeline by scaling several parameters, notably number of CPUs, data size and size of calibration sky model. Furthermore, we tested the overhead incurred by downloading and extracting the data and queuing jobs on the distributed cluster tasked with processing the LOFAR Two-Meter Sky Survey. We present these results as a comprehensive model which will be used to predict processing time for a wide range of processing parameters. We also discover that the calibration time scales favorably in time with smaller calibration models, while the calibration results do not degrade in quality. Finally, we validate the model and compare predictions with production runs from the past six months. 
+Understanding the performance of the LOFAR Direction Independent and Direction Dependent Pipelines is important when trying to optimize the throughput for large, multi-Petabyte,  surveys. Making a model of completion time will enable us to predict the time taken to process large data sets, optimize our parameter choices, help schedule future LOFAR processing services, and predict processing time for future large radio telescopes. We tested the full LOFAR \texttt{prefactor} target calibration pipeline by scaling several parameters, notably number of CPUs, data size and size of calibration sky model. Furthermore, we tested the overhead incurred by downloading and extracting the data and queuing jobs on the distributed cluster tasked with processing the LOFAR Two-Meter Sky Survey. We present these results as a comprehensive model which will be used to predict processing time for a wide range of processing parameters. We also discover that the calibration time scales favorably in time with smaller calibration models, while the calibration results do not degrade in quality. Finally, we validate the model and compare predictions with production runs from the past six months. 
 
 % \item[Prefactor]
 % The \texttt{LOFAR} pre-factor pipeline prepares LOFAR Observations for creating high fidelity images. 
