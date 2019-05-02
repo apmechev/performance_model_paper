@@ -710,7 +710,7 @@ To incorporate all our data into a complete model, we consider the slowdown of e
 The goal of this work is to understand the performance of the LOFAR Direction Independent Pipeline as processing parameters are changed. We \DIFdelbegin \DIFdel{increased the size of }\DIFdelend \DIFaddbegin \DIFadd{modify several parameters and compare the wall clock time taken to process the data. Finally, we model queuing jobs and downloading data, in order to fully model infrastructure overheads. We compare our model with past runs of the software and discuss the results and implications. We discuss the utility of this model for current and upcoming LOFAR projects. Finally, we note the effectiveness of this modelling technique for understanding the performance of large-scale processing of astronomical data.
 }
 
-\subsection{\DIFadd{Software Performance}}
+\subsection{Software Performance}
 
 \DIFadd{We have done several tests to determine the scalability of LOFAR processing with respect to several parameters. We outline our discoveries below as well as their implications for processing in context of the LOFAR surveys and other LOFAR projects. 
 }
@@ -741,7 +741,7 @@ While this result is encouraging, there are caveats suggesting future study is r
 \DIFadd{When comparing our model's prediction with real processing runs over the past six months, we note that there are considerable overheads when running on a shared infrastructure vs.  when processing data on an isolated (Figure \ref{fig:prod_gsmcal_times}). The overhead in processing is roughly a factor of two-three from our model. This discrepancy suggests that a model for }{\fontfamily{qcr}\selectfont \DIFadd{gsmcal\_solve}} \DIFadd{needs to be built using data when running on a shared environment, to better predict processing time. 
 }
 
-\subsection{\DIFadd{Infrastructure Performance}}
+\subsection{Infrastructure Performance}
 \DIFaddend We tested downloading and extracting test LOFAR data of various sizes. Both downloading and extracting \DIFdelbegin \DIFdel{was linear }\DIFdelend \DIFaddbegin \DIFadd{were linear in time }\DIFaddend with respect to the data size for data up to 32 GB\DIFdelbegin \DIFdel{in size}\DIFdelend . Beyond those sizes, there was more scatter in data extraction due to high file-system load. This is because load on the worker node's file-system can be unpredictable and can affect the data extraction times negatively. Nevertheless, when comparing our extraction tests and processing for the past 6 months, the predictions by our models (Figure \ref{fig:dl_hist}) correspond to the production runs (Figures \ref{fig:prod_dl_10} and \ref{fig:prod_dl_64}).  
 \DIFaddbegin 
 
@@ -749,7 +749,7 @@ While this result is encouraging, there are caveats suggesting future study is r
 \DIFaddend Part of the LOFAR SKSP processing is done on shared infrastructure, which requires requesting processing time ahead of time for each grant period. Being able to predict the amount of resources required to process data each grant period is required to make a reliable estimate on what resources to request. \DIFaddbegin \DIFadd{These results can be used by other projects sharing the SURFsara }\texttt{\DIFadd{GINA}} \DIFadd{cluster to predict their processing time before submitting jobs. 
 }\DIFaddend 
 
-\DIFdelbegin \DIFdel{Moreover, providing LOFAR }\DIFdelend \DIFaddbegin \subsection{\DIFadd{Applications and Conclusions}}
+\DIFdelbegin \DIFdel{Moreover, providing LOFAR }\DIFdelend \DIFaddbegin \subsection{Applications and Conclusions}
 
 \DIFadd{Our performance model shows that it's possible to predict the processing time and computational resources used by a complex astronomical pipeline. Our results suggest that LOFAR LoTSS processing can be further optimized without sacrificing data quality. Additionally, our results are transferable to other scientific pipelines that process LOFAR data with different parameters.  Any pipeline that performs gain calibration or application of calibration solutions can benefit from these results. 
 }
