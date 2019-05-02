@@ -4,24 +4,24 @@
 
 
 \section{Calibration Solutions for the sky model tests }\label{ap:calib_solutions}
-The output of the calibration step is a data set corrected for direction independent effects, as well as a set of calibration solutions. Figures \ref{fig:ch6_skymodel_rcalib_004_03} and \ref{fig:ch6_skymodel_rcalib_08_15} show the calibration solutions for core station obtained when calibrating with  sky models with minimum flux cutoffs of 0.05, 0.3, 0.8 and 1.5Jy.
+The output of the calibration step is a data set corrected for direction independent effects, as well as a set of calibration solutions. Figures \ref{fig:skymodel_rcalib_004_03} and \ref{fig:skymodel_rcalib_08_15} show the calibration solutions for core station obtained when calibrating with  sky models with minimum flux cutoffs of 0.05, 0.3, 0.8 and 1.5Jy. Much like in Figure \ref{fig:skymodel_images}, we can see that there is no significant difference between the calibration solutions for these stations. 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/005_and_03_solutsions_CS003HBA0_CS003HBA1_CS004HBA0.png}
-      \caption{The calibration (phase) solutions for the test dataset obtained when calibrating with sky models of 0.05 Jy cutoff (left) and 0.3Jy cutoff (right). The data shows the phase solutions for baselines including stations CS003HBA0, CS003HBA1 and CS004HBA0, with respect to the reference station, CS001HBA0.}
-	\label{fig:ch6_skymodel_rcalib_004_03}
+    \includegraphics[width=0.95\linewidth]{figures/005_and_03_solutsions_CS003HBA0_CS003HBA1_CS004HBA0.png}
+      \caption{The calibration (phase) solutions for the test dataset obtained when calibrating with sky models of 0.05 Jy cutoff (left) and 0.3Jy cutoff (right). The data shows the phase solutions for baselines including stations CS003HBA0, CS003HBA1 and CS004HBA0, with respect to the reference station, CS001HBA0. The right solutions were obtained using the production calibration model. We do not see any improvement in results in the left figure, which took twice as long to obtain.}
+	\label{fig:skymodel_rcalib_004_03}
 \end{figure}
 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/08_and_15_solutsions_CS003HBA0_CS003HBA1_CS004HBA0.png}
-      \caption{The calibration (phase) solutions for the test dataset obtained when calibrating with sky models of 0.8 Jy cutoff (left) and 1.5Jy cutoff (right). The data shows the phase solutions for baselines including stations CS003HBA0, CS003HBA1 and CS004HBA0, with respect to the reference station, CS001HBA0.}
-	\label{fig:ch6_skymodel_rcalib_08_15}
+    \includegraphics[width=0.95\linewidth]{figures/08_and_15_solutsions_CS003HBA0_CS003HBA1_CS004HBA0.png}
+      \caption{The calibration (phase) solutions for the test dataset obtained when calibrating with sky models of 0.8 Jy cutoff (left) and 1.5Jy cutoff (right). The data shows the phase solutions for baselines including stations CS003HBA0, CS003HBA1 and CS004HBA0, with respect to the reference station, CS001HBA0. We can see that the calibration solutions shown here are not significantly different than those shown in \ref{fig:skymodel_rcalib_004_03}, despite taking a fraction of the processing time.  }
+	\label{fig:skymodel_rcalib_08_15}
 \end{figure}
 
 \section{Parametric model parameters and fit accuracy}\label{ap:model_params}
 
-In this section, we note the uncertainties to the models fit in Equations \ref{eq:ch6_runtime_size_models}-\ref{eq:ch6_download_model}. 
+In this section, we note the uncertainties to the models fit in Equations \ref{eq:runtime_size_models}-\ref{eq:download_model}. 
 
 %Resetting the equation environment to match the equ number
 \numberwithin{equation}{section}
@@ -30,7 +30,7 @@ In this section, we note the uncertainties to the models fit in Equations \ref{e
 
 \subsection{Fits quality of run time vs input size model}
 
-The models of the processing time vs input size were fit as a linear regression. In this work we present such models for the gsmcal\_solve, gsmcal\_apply, dpppconcat, predict\_ateam and ateamcliptar, the five slowest steps. The resulting models, calculated by the \texttt{scipy linregress}\citep{scipy} routine, are shown in Equation \ref{eq:ch6_runtime_size_models}. We present the $R^2$ values, P values and standard error below, in Table \ref{table:fits_size}.
+The models of the processing time vs input size were fit as a linear regression. In this work we present such models for the {\fontfamily{qcr}\selectfont  gsmcal\_solve}, {\fontfamily{qcr}\selectfont gsmcal\_apply}, {\fontfamily{qcr}\selectfont dpppconcat}, {\fontfamily{qcr}\selectfont predict\_ateam} and {\fontfamily{qcr}\selectfont ateamcliptar}, the five slowest steps. The resulting models, calculated by the \texttt{scipy linregress}\citep{scipy} routine, are shown in Equation \ref{eq:runtime_size_models}. We present the $R^2$ values, P values and standard error below, in Table \ref{table:fits_size}.
 
 
 
@@ -54,14 +54,14 @@ The models of the processing time vs input size were fit as a linear regression.
 
 \hline
 \end{tabular}
-\caption{Fit parameters for the models in Equation \ref{eq:ch6_runtime_size_models}. }
+\caption{Fit parameters for the models in Equation \ref{eq:runtime_size_models}. }
 \label{table:fits_size}
 \end{table}
 
 
 \subsection{Fit of run time vs calibration model flux cutoff }
 
-The run time vs Flux cutoff model shown in Equation \ref{eq:ch6_skymodel_flux} is defined by the equation $y=a\cdot x^{-k}$ and two parameters, $a$ and $k$. The covariance matrix for these two parameters is shown in Equation \ref{eq:ch6_cov_Flux}. The standard deviation for the fit of the parameters $a$ and $k$ is 26.134 and $7.624\times10^{-3}$ respectively.
+The run time vs Flux cutoff model shown in Equation \ref{eq:skymodel_flux} is defined by the equation $y=a\cdot x^{-k}$ and two parameters, $a$ and $k$. The covariance matrix for these two parameters is shown in Equation \ref{eq:cov_Flux}. The standard deviation for the fit of the parameters $a$ and $k$ is 26.134 and $7.624\times10^{-3}$ respectively.
 
 \begin{equ}
 \begin{equation}
@@ -70,12 +70,12 @@ The run time vs Flux cutoff model shown in Equation \ref{eq:ch6_skymodel_flux} i
    -1.94\times10^{-1} &   5.81\times10^{-5} \\
 \end{bmatrix}
 \end{equation}
-\caption{The covariance matrix of the parameters in model in Equation \ref{eq:ch6_skymodel_flux}.}
-\label{eq:ch6_cov_Flux}
+\caption{The covariance matrix of the parameters in model in Equation \ref{eq:skymodel_flux}.}
+\label{eq:cov_Flux}
 \end{equ}
 
 \subsection{Fit of the NCPU model }
-The covariance matrix for the fit parameters of equation \ref{eq:ch6_gsmcal_NCPU}, $a$ and $k$ in $y=a+\frac{k}{\mathcal{N}}$ are shown in Equation \ref{eq:ch6_cov_NCPU}. The standard deviation of the fits for $a$ and $k$ are 13.11 and 48.20 respectively. 
+The covariance matrix for the fit parameters of equation \ref{eq:gsmcal_NCPU}, $a$ and $k$ in $y=a+\frac{k}{\mathcal{N}}$ are shown in Equation \ref{eq:cov_NCPU}. The standard deviation of the fits for $a$ and $k$ are 13.11 and 48.20 respectively. 
 
 \begin{equ}
 \begin{equation}
@@ -84,13 +84,13 @@ The covariance matrix for the fit parameters of equation \ref{eq:ch6_gsmcal_NCPU
     -504.11 & 2322.95
 \end{bmatrix}
 \end{equation}
-\caption{The covariance matrix for the parameters for the model predicting run time vs Number of CPUs used, shown in Equation \ref{eq:ch6_gsmcal_NCPU}.}
-\label{eq:ch6_cov_NCPU}
+\caption{The covariance matrix for the parameters for the model predicting run time vs Number of CPUs used, shown in Equation \ref{eq:gsmcal_NCPU}.}
+\label{eq:cov_NCPU}
 \end{equ}
 
 \subsection{Fit for the queuing time model}
 
-The statistics of the model fit parameters for the queuing time model (Equation \ref{eq:ch6_queue_model}) are in Table \ref{table:fits_queue}. 
+The statistics of the model fit parameters for the queuing time model (Equation \ref{eq:queue_model}) are in Table \ref{table:fits_queue}. 
 The queuing model is fit to the $75^{th}$ percentile of the queuing times for each parameter step. Since this results in a single number for each step, the model's P values are larger than the models from the other sections. 
 
 \begin{table}[ht!]
@@ -103,13 +103,13 @@ The queuing model is fit to the $75^{th}$ percentile of the queuing times for ea
  $\mathcal{N}>4$    & 0.986   & 0.075                   & 86.293    \\ 
 \hline
 \end{tabular}
-\caption{Goodness of fit parameters for the model in Equation \ref{eq:ch6_queue_model}. Since the model is split into two parts, we treat each section as a single linear model.}
+\caption{Goodness of fit parameters for the model in Equation \ref{eq:queue_model}. Since the model is split into two parts, we treat each section as a single linear model.}
 \label{table:fits_queue}
 \end{table}
 
 
 \subsection{Fit of the download and extract model }
-Equation \ref{eq:ch6_cov_downl} shows the covariance matrix for the two parameters  $a$ and $k$, $y=a\times10^{k}$ with the best fit values shown in Equation \ref{eq:ch6_download_model}. The standard deviations of the fits for $a$ and $k$ are 0.016 and 0.068 respectively. 
+Equation \ref{eq:cov_downl} shows the covariance matrix for the two parameters  $a$ and $k$, $y=a\times10^{k}$ with the best fit values shown in Equation \ref{eq:download_model}. The standard deviations of the fits for $a$ and $k$ are 0.016 and 0.068 respectively. 
 
 \begin{equ}
 \begin{equation}
@@ -118,6 +118,6 @@ Equation \ref{eq:ch6_cov_downl} shows the covariance matrix for the two paramete
     1.08\times10^{-3} & 4.60\times10^{-3}
 \end{bmatrix}
 \end{equation}
-\caption{The covariance matrix for the parameters for the model for Download and Extract time, shown in Equation \ref{eq:ch6_download_model}.}
-\label{eq:ch6_cov_downl}
+\caption{The covariance matrix for the parameters for the model for Download and Extract time, shown in Equation \ref{eq:download_model}.}
+\label{eq:cov_downl}
 \end{equ}
