@@ -556,7 +556,6 @@ archivePrefix = "arXiv",
   author={Marco, Cecchi and Fabio, Capannini and Alvise, Dorigo and Antonia, Ghiselli and Alessio, Gianelle and Francesco, Giacomini and Alessandro, Maraschini and Elisabetta, Molinari and Salvatore, Monforte and Luca, Petronzio},
   booktitle={Journal of Physics: Conference Series},
   volume={219},
-  number={6},
   pages={062039},
   year={2010},
   organization={IOP Publishing}
@@ -711,16 +710,16 @@ howpublished = {Available at \url{https://webdocs.cs.ualberta.ca/~amaral/courses
   organization={IEEE}
 }
 
-@article{skadron1999branch,
-  title={Branch prediction, instruction-window size, and cache size: {P}erformance trade-offs and simulation techniques},
-  author={Skadron, Kevin and Ahuja, Pritpal S and Martonosi, Margaret and Clark, Douglas W},
-  journal={IEEE Transactions on Computers},
-  volume={48},
-  number={11},
-  pages={1260--1281},
-  year={1999},
-  publisher={IEEE}
-}
+%@article{skadron1999branch,
+%  title={Branch prediction, instruction-window size, and cache size: {P}erformance trade-offs and simulation techniques},
+%  author={Skadron, Kevin and Ahuja, Pritpal S and Martonosi, Margaret and Clark, Douglas W},
+%  journal={IEEE Transactions on Computers},
+%  volume={48},
+%  number={11},
+%  pages={1260--1281},
+%  year={1999},
+%  publisher={IEEE}
+%}
 
 @misc{dd,
  title={dd(1) - {L}inux man page},
@@ -803,7 +802,33 @@ howpublished = {Available at \url{https://webdocs.cs.ualberta.ca/~amaral/courses
 	year={2017}
 }
 
+@INPROCEEDINGS{ieee_AGLOW,
+author={A. {Mechev} and R. {Oonk} and T. {Shimwell} and A. {Plaat} and H. {Intema} and H. {Rottgerin}},
+booktitle={2018 IEEE 14th International Conference on e-Science (e-Science)},
+title={Fast and Reproducible LOFAR Workflows with AGLOW},
+year={2018},
+volume={},
+number={},
+pages={136-144},
+abstract={The LOFAR radio telescope creates petabytes of data per year. This data is important for many scientific projects. The data needs to be efficiently processed within the timespan of these projects in order to maximize the scientific impact. We present a workflow orchestration system that integrates LOFAR processing with a distributed computing platform. The system is named Automated Grid-enabled LOFAR Workflows (AGLOW). AGLOW makes it fast and easy to develop, test and deploy complex LOFAR workflows, and to accelerate them on a distributed cluster architecture. AGLOW reduces the setup time of complex workflows: typically, from months to days. We lay out two case studies that process the data from the LOFAR Surveys Key Science Project. We have implemented these into the AGLOW environment. We also describe the capabilities of AGLOW, paving the way for use by other LOFAR science cases. In the future, AGLOW will automatically produce multiple science products from a single dataset, serving several of the LOFAR Key Science Projects.},
+keywords={astronomy computing;radioastronomy;radiotelescopes;grid-enabled LOFAR Workflows;LOFAR key science projects;workflow orchestration system;LOFAR radio telescope;LOFAR science cases;AGLOW environment;complex workflows;distributed cluster architecture;distributed computing platform;LOFAR processing;Software;Pipelines;Task analysis;Tools;Acceleration;Radio astronomy;Light rail systems;Workflow management software;Radio Astronomy;Distributed Computing;Big Data Applications},
+doi={10.1109/eScience.2018.00029},
+ISSN={},
+month={Oct},}
 
+@article{mechev_pipeline_collector,
+title = "Pipeline Collector: Gathering performance data for distributed astronomical pipelines",
+journal = "Astronomy and Computing",
+volume = "24",
+pages = "117 - 128",
+year = "2018",
+issn = "2213-1337",
+doi = "https://doi.org/10.1016/j.ascom.2018.06.005",
+url = "http://www.sciencedirect.com/science/article/pii/S2213133718300490",
+author = "A.P. Mechev and A. Plaat and J.B. Raymond Oonk and H.T. Intema and H.J.A. Röttgering",
+keywords = "Radio astronomy, Performance analysis, Profiling, High performance computing",
+abstract = "Modern astronomical data processing requires complex software pipelines to process ever growing datasets. For radio astronomy, these pipelines have become so large that they need to be distributed across a computational cluster. This makes it difficult to monitor the performance of each pipeline step. To gain insight into the performance of each step, a performance monitoring utility needs to be integrated with the pipeline execution. In this work we have developed such a utility and integrated it with the calibration pipeline of the Low Frequency Array, LOFAR, a leading radio telescope. We tested the tool by running the pipeline on several different compute platforms and collected the performance data. Based on this data, we make well informed recommendations on future hardware and software upgrades. The aim of these upgrades is to accelerate the slowest processing steps for this LOFAR pipeline. The pipeline_collector suite is open source and will be incorporated in future LOFAR pipelines to create a performance database for all LOFAR processing."
+}
 
 
 @article{hbase,
