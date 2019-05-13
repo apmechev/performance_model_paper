@@ -127,18 +127,18 @@
 
 
 
-\title{Scalability Model for the LOFAR Direction Independent Pipeline}\author{A.P. Mechev $^a$}
-\ead{apmechev@strw.leidenuniv.nl}
+\title{Scalability Model for the LOFAR Direction Independent Pipeline}\author{ $^a$}
+\ead{a@email.com}
 
-\author{T.W. Shimwell $^b$}\author{A. Plaat $^c$}\author{H. Intema $^{ad}$}\author{A.L. Varbanescu $^e$}
-\author{H.J.A Rottgering $^a$}
+\author{B $^b$}\author{C $^c$}\author{D $^{ad}$}\author{E$^e$}
+\author{F$^a$}
 
 \date{\today} 
-\address{$^a$ Leiden Observatory, Niels Bohrweg 2, 2333 CA Leiden, the Netherlands}
-\address{$^b$ ASTRON, Oude Hoogeveensedijk 4, 7991 PD , The Netherlands }
-\address{$^c$ Leiden Institute of Advanced Computer Science, Niels Bohrweg 1, 2333 CA Leiden, the Netherlands}
-\address{$^d$ International Centre for Radio Astronomy Research -- Curtin University, GPO Box U1987, Perth, WA 6845, Australia}
-\address{$^e$ University of Amsterdam, Spui 21, 1012 WX Amsterdam, the Netherlands}
+\address{$^a$ affilA}
+\address{$^b$ affilB }
+\address{$^c$ affilC}
+\address{$^d$ affilD}
+\address{$^e$ affilE}
 
 
 \begin{abstract}
@@ -234,7 +234,7 @@ The goal for our scalability model is to understand the effect of several parame
 \centering
 \begin{tabular}{||c| c | c | c||} 
  \hline
-\DIFdelbeginFL \DIFdelFL{Data set }\DIFdelendFL \DIFaddbeginFL \multicolumn{1}{|p{2cm}|}{\centering Averaging \\ ratio} \DIFaddendFL & \multicolumn{1}{|p{2cm}|}{\centering Time averaging \\ parameter (sec)} &  \multicolumn{1}{|p{2cm}|}{\centering Channels per Subband} & \DIFdelbeginFL \DIFdelFL{Size (Gb) }\DIFdelendFL \DIFaddbeginFL \multicolumn{1}{|p{2cm}|}{\centering Averaged \\ Size (Gb) }\DIFaddendFL \\ [0.5ex]
+ \multicolumn{1}{|p{2cm}|}{\centering Averaging \\ ratio}  & \multicolumn{1}{|p{2cm}|}{\centering Time averaging \\ parameter (sec)} &  \multicolumn{1}{|p{2cm}|}{\centering Channels per Subband} &\multicolumn{1}{|p{2cm}|}{\centering Averaged \\ Size (Gb) } \\ [0.5ex]
  \hline
  \rowcolor{Gray}
   \hline
@@ -715,7 +715,7 @@ The goal of this work is to understand the performance of the LOFAR Direction In
 \DIFadd{We have done several tests to determine the scalability of LOFAR processing with respect to several parameters. We outline our findings below as well as their implications for processing in context of the LOFAR surveys and other LOFAR projects. 
 }
 
-\subsubsection{\DIFadd{Data Size}}
+\subsubsection{Data Size}
 \DIFadd{We increased tested }\DIFaddend broadband LOFAR data \DIFaddbegin \DIFadd{ranging in size }\DIFaddend by a factor of 64\DIFdelbegin \DIFdel{in size}\DIFdelend , and discovered that all our processing steps scale linearly in time with respect of the input data size. We learned that for input data above 16GB\DIFdelbegin \DIFdel{in size}\DIFdelend , the slope of our scaling relation is higher than for the smaller data sets. \DIFaddbegin \DIFadd{The linear scaling of our processing suggests that projects interesting in processing massive LOFAR data sets can scale well in terms of processing time. 
 }\DIFaddend 
 
@@ -728,7 +728,7 @@ As the calibration step concatenates 10 input subbands, \DIFdelbegin \DIFdel{and
 \DIFdelend Our analysis shows the following results. Overall, the slowest step was the \DIFaddbegin {\fontfamily{qcr}\selectfont \DIFaddend gsmcal\_solve\DIFaddbegin } \DIFaddend step, and its run time scales more strongly with data size than the other steps (equation \ref{eq:gsmcalsolve} has the steepest slope). This suggests that as data sizes increase, \DIFaddbegin {\fontfamily{qcr}\selectfont \DIFaddend gsmcal\_solve\DIFaddbegin } \DIFaddend will increasingly dominate the processing time over the other steps (As seen in Figures \ref{fig:predict_ateam} and \ref{fig:gsmcalsolve_size}). This effect is especially prominent for data larger than 16GB (160GB when 10 subbands are concatenated). As such, it is recommended to avoid calibration of data larger than 160GB. \DIFaddbegin \DIFadd{This limitation suggests that science requiring operations on non-averaged data sets, such as long-baseline imaging, will require significant computational requirements for high-fidelity images.
 }\DIFaddend 
 
-\DIFdelbegin \DIFdel{Additionally, we }\DIFdelend \DIFaddbegin \subsubsection{\DIFadd{Calibration Model Size}}
+\DIFdelbegin \DIFdel{Additionally, we }\DIFdelend \DIFaddbegin \subsubsection{Calibration Model Size}
 \DIFadd{We }\DIFaddend discovered that the calibration \DIFaddbegin \DIFadd{time }\DIFaddend scales linearly in \DIFdelbegin \DIFdel{time }\DIFdelend as a function of the length of the calibration model, however \DIFdelbegin \DIFdel{it is }\DIFdelend \DIFaddbegin \DIFadd{as }\DIFaddend a power law \DIFdelbegin \DIFdel{as a function of }\DIFdelend \DIFaddbegin \DIFadd{with respect to }\DIFaddend the model's cutoff sensitivity. This is because of the (expected) power law relation between the number of sources and cutoff sensitivity, seen in Figure \ref{fig:skymodel_size}. We can use this discovery to accelerate the processing time by increasing the flux cutoff to the LOFAR direction independent calibration to 0.5 Jy. Doing so will execute the calibration step in 60\% of the time, saving 83 CPU-h per run. Over the remaining 2000 \texttt{prefactor} runs left in the LOTSS project, this change in sensitivity will save more than 167k \DIFdelbegin \DIFdel{CPU hours}\DIFdelend \DIFaddbegin \DIFadd{CPU-hours}\DIFaddend . 
 
 Figures \ref{fig:skymodel_images} show a data set calibrated with sky models with cutoff sensitivities listed in Table \ref{table:skymodel_RMS}, and figures  \ref{fig:skymodel_rcalib_004_03} and \ref{fig:skymodel_rcalib_08_15} show the calibration solutions obtained by calibrating with skymodels of cutoff ranging from 0.05 Jy to 1.5 Jy. These results suggest that performing gain calibration with less complex, and thus smaller, calibration models will not degrade image and solution quality while taking less than 20\% of processing time. Table \ref{table:skymodel_RMS} also confirms this result. 
@@ -736,7 +736,7 @@ Figures \ref{fig:skymodel_images} show a data set calibrated with sky models wit
 While this result is encouraging, there are caveats suggesting future study is required. The results we present are for a single observation, and has not been processed through the Direction Dependent Calibration pipeline. This pipeline produces final images used for scientific research. Future work will need to confirm that \DIFdelbegin \DIFdel{a short }\DIFdelend \DIFaddbegin \DIFadd{smaller }\DIFaddend calibration models used in the \texttt{prefactor} pipeline do not degrade the quality of these final images. \DIFaddbegin \DIFadd{Nevertheless if this result holds, the calibration model threshold can be decreased for a wide range of LOFAR projects, significantly saving processing time and computing resources. 
 }\DIFaddend 
 
-\DIFaddbegin \subsubsection{\DIFadd{Comparison with production runs}}
+\DIFaddbegin \subsubsection{Comparison with production runs}
 
 \DIFadd{When comparing our model's prediction with real processing runs over the past six months, we note that there are considerable overheads when running on a shared infrastructure vs.  when processing data on an isolated (Figure \ref{fig:prod_gsmcal_times}). The overhead in processing is roughly a factor of two-three from our model. This discrepancy suggests that a model for }{\fontfamily{qcr}\selectfont \DIFadd{gsmcal\_solve}} \DIFadd{needs to be built using data when running on a shared environment, to better predict processing time. 
 }
