@@ -36,7 +36,7 @@ All of the steps show a linear behavior with respect to input data size, while t
             \centering
             \includegraphics[width=\textwidth]{figures/predict_ateam_size.pdf}
             \caption[]%
-            {{\small Tests of the  {\fontfamily{qcr}\selectfont predict\_ateam} step for input data size ranging from 1GB to 64 GB. This step calculates the contamination from bright off-axis sources. Dashed lines are shown connecting each pair of points, to highlight the trend. We can see that the data fits a linear model. We show the model in Equation \ref{eq:predictateam} in black.}}   
+            {{\small Tests of the  {\fontfamily{qcr}\selectfont predict\_ateam} step for input data size ranging from 1GB to 64 GB. This step calculates the contamination from bright off-axis sources. Dashed lines are shown connecting each pair of points, to highlight the trend. We can see that the data can be described well by a linear model. We show the model in Equation \ref{eq:predictateam} in black.}}   
             \label{fig:predict_ateam}
         \end{subfigure}
         \hfill
@@ -75,7 +75,7 @@ All of the steps show a linear behavior with respect to input data size, while t
 \end{figure}
 
 \subsubsection{Calibration Model Size}
-To test the effect of the calibration model size on run time, we tested our calibration with several different lengths of the sky model file. We created these models by changing the minimum sensitivity using values ranging from 0.05 Jy to 1.5 Jy. The most sensitive model (0.05 Jy) had 809 sources while the 1.5 Jy model had only 16 sources. 
+To test the effect of the calibration model size on run time, we test our calibration with several different lengths of the sky model file. We create these models by changing the minimum sensitivity using values ranging from 0.05 Jy to 1.5 Jy. The most sensitive model (0.05 Jy) had 809 sources while the 1.5 Jy model had only 16 sources. 
 
 Figure \ref{fig:skymodel_run_lenght} shows that the calibration time is directly proportional to the length of the sky model. Figure \ref{fig:skymodel_run_sens} shows the run time as a function of the processing parameter: the cutoff sensitivity. As the relationship between the number of sources and cutoff sensitivity is a power law, here we see the same relationship holding for processing time.
 
@@ -324,7 +324,7 @@ The final performance model for the slowest steps, {\fontfamily{qcr}\selectfont 
    \begin{split}
     t_{predict\_ateam}  &= t_{infrastructure} \\
        & + 5.19\times10^{-8}\mathcal{S}+4.20\times10^1 
-       \end{split}label{eq:full_model_predict_ateam}
+       \end{split}\label{eq:full_model_predict_ateam}
   \end{equation}
 
 \caption{Model of the total time of the most computationally expensive steps for the parameters $\mathcal{N}$, Number of CPUs; $\mathcal{S}$, Size of data in bytes and $\mathcal{F}$, cutoff calibration model flux in Jansky. These models include processing times, as well as infrastructure overheads. As the model for the queuing, downloading and uploading time does not change for different processing steps, we decide to keep it separate for clarity. The complete scalability models for the rest of the steps can be derived similarly, however are omitted here as they consist of the minority of processing time for LOFAR DI processing.  }
