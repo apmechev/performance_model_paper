@@ -79,14 +79,14 @@ To test the effect of the calibration model size on run time, we test our calibr
 
 Figure \ref{fig:skymodel_run_lenght} shows that the calibration time is directly proportional to the length of the sky model. Figure \ref{fig:skymodel_run_sens} shows the run time as a function of the processing parameter: the cutoff sensitivity. As the relationship between the number of sources and cutoff sensitivity is a power law, here we see the same relationship holding for processing time.
 
-We model the run time as a function of the cutoff frequency using a power law, and fit the data to the function $y=\alpha\cdot \mathcal{F}^{-k}$. Our fit found the best model to be shown in Equation \ref{eq:skymodel_flux}, where $\mathcal{F}$ value is the cutoff flux in Jansky and $T$ is the run time in seconds. 
+We model the processing time as a function of the cutoff frequency using a power law, and fit the data to the function $y=\alpha\cdot \mathcal{F}^{-k}$. Our fit found the best model to be shown in Equation \ref{eq:skymodel_flux}, where $\mathcal{F}$ value is the cutoff flux in Jansky and $T$ is the run time in seconds. 
 
-We show four images made from data sets calibrated with a 0.05Jy (top left), 0.3Jy (top right), 0.8 Jy (bottom left) and 1.5 Jy (bottom right) cutoff in Figure \ref{fig:skymodel_images}. The statistics for the four images, taken from the regions in green on Figure \ref{fig:skymodel_images}) are shown in Table \ref{table:skymodel_RMS}. We discuss the implication and caveats of these results in Section \ref{sec:discussions}.
+We show four images made from data sets in Figure \ref{fig:skymodel_images}. The top left image is calibrated with a 0.05Jy and the other three show the difference between the top left image and the images created from the 0.3Jy, 0.8 Jy and 1.5 Jy data. The statistics for the four images, taken from the regions in green on Figure \ref{fig:skymodel_images}) are shown in Table \ref{table:skymodel_RMS}. We discuss the implication and caveats of these results in Section \ref{sec:discussions}.
 
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{||p{3cm}| c | c ||} 
+\begin{tabular}{||p{2.8cm}| c | c ||} 
  \hline
  Calibration Model Flux Cutoff & \# of sources& RMS Noise (Jy) \\ %%& std dev (Jy) \\ [0.5ex]
  \hline
@@ -133,7 +133,7 @@ We show four images made from data sets calibrated with a 0.05Jy (top left), 0.3
 
 
 \subsubsection{Number of CPUs}
-One further parameter that can be optimized is the number of CPUs requested when the job is launched. We investigated the processing speedup as a function of the number of CPUs for the \texttt{prefactor} target pipeline. From the steps tested, only the {\fontfamily{qcr}\selectfont gsmcal\_solve} step shows a significant speedup as the number of CPUs is increased. The run time of this step is an inverse power law with respect to the number of CPUs as seen in Figure \ref{fig:gsmcal_solve_NCPU}. Unlike the solving step, the step applying the calibration solutions ({\fontfamily{qcr}\selectfont gsmcal\_apply}) is constant in time with respect to the number of CPUs as seen in Figure \ref{fig:gsmcal_apply_NCPU}. The difference in performance is most likely because the gsmcal\_apply code uses a parallel for loop to calculate antenna gains while gsmcal\_apply does not. 
+One further parameter that can be optimized is the number of CPUs requested when the job is launched. We investigated the processing speedup as a function of the number of CPUs for the \texttt{prefactor} target pipeline. From the steps tested, only the {\fontfamily{qcr}\selectfont gsmcal\_solve} step shows a significant speedup as the number of CPUs is increased. The run time of this step is an inverse power law with respect to the number of CPUs as seen in Figure \ref{fig:gsmcal_solve_NCPU}. Unlike the solving step, the step applying the calibration solutions ({\fontfamily{qcr}\selectfont gsmcal\_apply}) is constant in time with respect to the number of CPUs as seen in Figure \ref{fig:gsmcal_apply_NCPU}. The difference in performance is most likely because the {\fontfamily{qcr}\selectfont gsmcal\_apply} code uses a parallel for loop to calculate antenna gains while {\fontfamily{qcr}\selectfont gsmcal\_apply} does not. 
 
 We fit a model with processing time inversely proportional to the number of CPUs used. We show the resulting model in Equation \ref{eq:gsmcal_NCPU}, with the parameter $(\mathcal{N})$ being the number of CPUs used. 
 
@@ -249,7 +249,7 @@ $\mathcal{S} $ in gigabytes.
 \subsection{Comparison with production runs}
 Over the past two years, the LOFAR software has been running in production and collecting data on run time for each processing step. We have saved detailed logs for these runs starting in July 2018.  We can compare this to the isolated model in order to determine the overhead incurred by processing LOFAR data on shared nodes. 
 
-Using the logs recorded by our processing launcher\footnote{GRID\_PiCaS\_Launcher, \url{https://github.com/apmechev/GRID\_picastools }}, we made plots showing the processing time for the downloading and extracting, and for the slowest steps, {\fontfamily{qcr}\selectfont ndppp\_prepcal} and {\fontfamily{qcr}\selectfont gsmcal\_solve}. 
+Using the logs recorded by our processing launcher \footnote{GRID\_PiCaS\_Launcher, \raggedright\url{https://github.com/apmechev/GRID\_picastools}}, we made plots showing the processing time for the downloading and extracting, and for the slowest steps, {\fontfamily{qcr}\selectfont ndppp\_prepcal} and {\fontfamily{qcr}\selectfont gsmcal\_solve}. 
 The results are shown in Figures \ref{fig:prod_dl_10} and \ref{fig:prod_dl_64}. We include predicted extract times from Section \ref{sec:results_dl} as vertical dashed lines for both plots. The agreement between our model and production runs are an encouraging result for future software performance modelling. 
 
 Finally, we present Figure \ref{fig:prod_gsmcal} which shows a comparison of {\fontfamily{qcr}\selectfont gsmcal\_solve} run times and our model's prediction for a 1GB data set.  Figure \ref{fig:prod_gsmcal_times} plots the processing time vs data size for these production runs and includes the model from Equation \ref{eq:gsmcalsolve}. The significant overhead incurred on a shared infrastructure can be noted. 
@@ -289,6 +289,7 @@ The final performance model for the slowest steps, {\fontfamily{qcr}\selectfont 
 
 \begin{equ*}[!t]
 \normalsize
+\begin{subequations}
 
 \begin{equation}
  \begin{split}
@@ -326,6 +327,7 @@ The final performance model for the slowest steps, {\fontfamily{qcr}\selectfont 
        & + 5.19\times10^{-8}\mathcal{S}+4.20\times10^1 
        \end{split}\label{eq:full_model_predict_ateam}
   \end{equation}
+\end{subequations}
 
 \caption{Model of the total time of the most computationally expensive steps for the parameters $\mathcal{N}$, Number of CPUs; $\mathcal{S}$, Size of data in bytes and $\mathcal{F}$, cutoff calibration model flux in Jansky. These models include processing times, as well as infrastructure overheads. As the model for the queuing, downloading and uploading time does not change for different processing steps, we decide to keep it separate for clarity. The complete scalability models for the rest of the steps can be derived similarly, however are omitted here as they consist of the minority of processing time for LOFAR DI processing.  }
 \end{equ*}
