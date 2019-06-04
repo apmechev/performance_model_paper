@@ -285,7 +285,7 @@ Finally, we present Figure \ref{fig:prod_gsmcal} which shows a comparison of {\f
 \subsection{Complete Scalability Model}
 To incorporate all our data into a complete model, we consider the slowdown of each parameter as a multiplier to the time taken to process our base run. We incorporate the models for each parameter above for the model of the run time. We add the transfer and queuing time to the processing time to obtain a final function of all our parameters. We can use this function to predict the processing time for an arbitrary data set. 
 
-The final performance model for the slowest steps, {\fontfamily{qcr}\selectfont gsmcal\_solve}, {\fontfamily{qcr}\selectfont dpppconcat}  and {\fontfamily{qcr}\selectfont predict\_ateam} are in Equation \ref{eq:full_model_gsmcal}. 
+The final performance model for the slowest steps, {\fontfamily{qcr}\selectfont gsmcal\_solve}, {\fontfamily{qcr}\selectfont dpppconcat}  and {\fontfamily{qcr}\selectfont predict\_ateam} are in Equation \ref{eq:final_models}. 
 
 \begin{equ*}[!t]
 \normalsize
@@ -330,4 +330,5 @@ The final performance model for the slowest steps, {\fontfamily{qcr}\selectfont 
 \end{subequations}
 
 \caption{Model of the total time of the most computationally expensive steps for the parameters $\mathcal{N}$, Number of CPUs; $\mathcal{S}$, Size of data in bytes and $\mathcal{F}$, cutoff calibration model flux in Jansky. These models include processing times, as well as infrastructure overheads. As the model for the queuing, downloading and uploading time does not change for different processing steps, we decide to keep it separate for clarity. The complete scalability models for the rest of the steps can be derived similarly, however are omitted here as they consist of the minority of processing time for LOFAR DI processing.  }
+\label{eq:final_models}
 \end{equ*}
