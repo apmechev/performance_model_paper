@@ -1,10 +1,12 @@
-%\appendix
+\appendix
 
-%\renewcommand{\theequ}{\Alph{section}.\arabic{equ}}
+\renewcommand{\theequ}{\Alph{section}.\arabic{equ}}
 
 
-\section{Calibration Solutions for the sky model tests }\label{ap:ch6_calib_solutions}
-The output of the calibration step is a data set corrected for direction independent effects, as well as a set of calibration solutions. Figures \ref{fig:ch6_skymodel_rcalib_004_03} and \ref{fig:ch6_skymodel_rcalib_08_15} show the calibration solutions for core station obtained when calibrating with  sky models with minimum flux cutoffs of 0.05, 0.3, 0.8 and 1.5Jy. Much like in Figure \ref{fig:ch6_skymodel_images}, we can see that there is no significant difference between the calibration solutions for these stations. 
+\section{Calibration Solutions for the sky model tests }\label{ap:calib_solutions}
+The output of the calibration step is a data set corrected for direction independent effects, as well as a set of calibration solutions. Figures \ref{fig:skymodel_rcalib_004_03} and \ref{fig:skymodel_rcalib_08_15} show the calibration solutions for core stations obtained when calibrating with sky models with minimum flux cutoffs of 0.05, 0.3, 0.8 and 1.5Jy. Much like in Figure \ref{fig:skymodel_images}, we can see that there is no significant difference between the calibration solutions for these stations. As a note, the naming scheme for LOFAR stations is CS/RS for core/remote stations, three digits for station number, HBA0/HBA1 for High Band antennas and LBA0/LBA1 for low-band antennas. The 0,1 suffixes correspond to sub-arrays in the core stations which can be correlated separately. Additionally, the CS/RS is replaced with the 2-letter country code for international stations\citep{staiton_data_cookbook}.
+
+We compare the phase solutions for stations CS032HBA0 and CS003HBA0 and the reference station for two different calibrations in Figure \ref{fig:diffs_solutions}. We note that this difference is within 0.3 rad for the entire observation. Combined with the results in the other two plots, our results suggest that the calibration solutions do not degrade when calibration is done with a smaller sky model.
 
 \begin{figure}
     \includegraphics[width=0.95\linewidth]{ch6/figures/005_and_03_solutsions_CS003HBA0_CS003HBA1_CS004HBA0.png}
@@ -12,6 +14,11 @@ The output of the calibration step is a data set corrected for direction indepen
 	\label{fig:ch6_skymodel_rcalib_004_03}
 \end{figure}
 
+\begin{figure}
+    \includegraphics[width=0.9\linewidth]{figures/diffs.png}
+      \caption{Difference of phase solutions between calibrations with the 0.3Jy and 0.8Jy sky models. The solutions for both stations are around zero phase for the duration of the observation.}
+	\label{fig:diffs_solutions}
+\end{figure}
 
 \begin{figure}
     \includegraphics[width=0.95\linewidth]{ch6/figures/08_and_15_solutsions_CS003HBA0_CS003HBA1_CS004HBA0.png}
@@ -38,7 +45,7 @@ The models of the processing time vs input size were fit as a linear regression.
 \centering
 \begin{tabular}{||p{2.2cm}| c | c|p{2cm}||} 
  \hline
- \texttt{prefactor} step & $R^2$ & P value & Standard Error \\ [0.5ex]
+ \texttt{prefactor} step & $R^2$ & P value & Standard Error \\ %[0.5ex]
  \hline
  predict\_ateam & 0.996   & 0                    & $1.92\times10^{-10}$    \\ 
  \hline
@@ -97,7 +104,7 @@ The queuing model is fit to the $75^{th}$ percentile of the queuing times for ea
 \centering
 \begin{tabular}{||p{2.2cm}| c | c|p{2cm}||} 
  \hline
- Value of $\mathcal{N}$ & $R^2$ & P value & Standard Error \\ [0.5ex]
+ Value of $\mathcal{N}$ & $R^2$ & P value & Standard Error \\ %[0.5ex]
  \hline
  $\mathcal{N}\leq4$ & 0.382   & 0.381                   & 37.086    \\ 
  $\mathcal{N}>4$    & 0.986   & 0.075                   & 86.293    \\ 
