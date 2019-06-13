@@ -35,7 +35,7 @@ All of the steps show a linear behavior with respect to input data size, while t
         \begin{subfigure}[b]{0.44\textwidth}
             \centering
             \includegraphics[width=\textwidth]{ch6/figures/predict_ateam_size.pdf}
-            \caption[]%
+            \caption[Processing time vs data size for predict\_ateam]%
             {{\small Tests of the  {\fontfamily{qcr}\selectfont predict\_ateam} step for input data size ranging from 1GB to 64 GB. This step calculates the contamination from bright off-axis sources. Dashed lines are shown connecting each pair of points, to highlight the trend. We can see that the data can be described well by a linear model. We show the model in Equation \ref{eq:ch6_predictateam} in black.}}   
             \label{fig:ch6_predict_ateam}
         \end{subfigure}
@@ -43,7 +43,7 @@ All of the steps show a linear behavior with respect to input data size, while t
         \begin{subfigure}[b]{0.44\textwidth}  
             \centering 
             \includegraphics[width=\textwidth]{ch6/figures/ateamcliptar_size.pdf}
-            \caption[]%
+            \caption[Processing time vs data size for ateamcliptar]%
             {{\small Tests of the {\fontfamily{qcr}\selectfont ateamcliptar} step for input data size ranging from 1GB to 64 GB. This step removes the contamination from bright off-axis sources. We can see that the data fits a linear model. We show the model in Equation \ref{eq:ch6_ateamcliptar} in black.}}    
             \label{fig:ch6_ateamcliptar}
             \end{subfigure}
@@ -108,7 +108,7 @@ We show four images made from data sets in Figure \ref{fig:ch6_skymodel_images}.
     T=1185\cdot \mathcal{F}^{-0.854}
 \label{eq:ch6_skymodel_flux}
 \end{equation}
-\caption{Processing time for the {\fontfamily{qcr}\selectfont gsmcal\_solve} step as a function of the flux cutoff of the calibration model ($\mathcal{F}$) in Jansky}
+    \caption[Calibration time vs flux cutoff]{Processing time for the {\fontfamily{qcr}\selectfont gsmcal\_solve} step as a function of the flux cutoff of the calibration model ($\mathcal{F}$) in Jansky}
 \end{equ}
 
 \begin{figure}
@@ -119,13 +119,13 @@ We show four images made from data sets in Figure \ref{fig:ch6_skymodel_images}.
 
 \begin{figure}
     \includegraphics[width=0.95\linewidth]{ch6/figures/skymodel_flux.eps}
-      \caption{The run time of the {\fontfamily{qcr}\selectfont gsmcal\_solve} step as a function of the cutoff sensitivity is not linear. As shown in Figure \ref{fig:ch6_skymodel_size}, the number of sources increases exponentially as the minimum sensitivity decreases. The dashed line shows the model fitted in Equation \ref{eq:ch6_skymodel_flux}. }
+      \caption[Run time vs cutoff sensitivity]{The run time of the {\fontfamily{qcr}\selectfont gsmcal\_solve} step as a function of the cutoff sensitivity is not linear. As shown in Figure \ref{fig:ch6_skymodel_size}, the number of sources increases exponentially as the minimum sensitivity decreases. The dashed line shows the model fitted in Equation \ref{eq:ch6_skymodel_flux}. }
 	\label{fig:ch6_skymodel_run_sens}
 \end{figure}
 
 \begin{figure*}
     \includegraphics[width=0.95\linewidth]{ch6/figures/difference_4.png}
-      \caption{Four images made using the \texttt{wsclean} software \citep{wsclean} from the data set\protect\footnotemark. The four images were calibrated with sky models of various flux cutoffs ranging from 0.05Jy (top left) to 1.5Jy (bottom right). Flux statistics for the green regions in the four images are listed in Table \ref{table:skymodel_RMS}. The top right, and bottom two quadrants show the pixel difference between the 0.05Jy image and the 0.3Jy, 0.8Jy and 1.5Jy images respectively. The four images are all on the same scaleThe green region shows the same area in all four quadrants.  }
+      \caption[Comparison of data calibrated with four sky models]{Four images made using the \texttt{wsclean} software \citep{wsclean} from the data set\protect\footnotemark. The four images were calibrated with sky models of various flux cutoffs ranging from 0.05Jy (top left) to 1.5Jy (bottom right). Flux statistics for the green regions in the four images are listed in Table \ref{table:skymodel_RMS}. The top right, and bottom two quadrants show the pixel difference between the 0.05Jy image and the 0.3Jy, 0.8Jy and 1.5Jy images respectively. The four images are all on the same scaleThe green region shows the same area in all four quadrants.  }
 	\label{fig:ch6_skymodel_images}
 \end{figure*}
 \footnotetext{Using the command wsclean -absmem 50 -niter 3 -size 4096 4096 -scale 20asec}

@@ -11,19 +11,19 @@ We compare the phase solutions for stations CS032HBA0 and CS003HBA0 and the refe
 
 \begin{figure}
     \includegraphics[width=0.95\linewidth]{ch6/figures/005_and_03_solutsions_CS003HBA0_CS003HBA1_CS004HBA0.png}
-      \caption{The calibration (phase) solutions for the test data set obtained when calibrating with sky models of 0.05 Jy cutoff (left) and 0.3Jy cutoff (right). The data shows the phase solutions for baselines including stations CS003HBA0, CS003HBA1 and CS004HBA0, with respect to the reference station, CS001HBA0. The right solutions were obtained using the production calibration model. We do not see any improvement in results in the left figure, which took twice as long to obtain.}
+      \caption[Calibration Solutions for sky models with low flux cutoff]{The calibration (phase) solutions for the test data set obtained when calibrating with sky models of 0.05 Jy cutoff (left) and 0.3Jy cutoff (right). The data shows the phase solutions for baselines including stations CS003HBA0, CS003HBA1 and CS004HBA0, with respect to the reference station, CS001HBA0. The right solutions were obtained using the production calibration model. We do not see any improvement in results in the left figure, which took twice as long to obtain.}
 	\label{fig:ch6_skymodel_rcalib_004_03}
 \end{figure}
 
 \begin{figure}
     \includegraphics[width=0.9\linewidth]{ch6/figures/diffs.png}
-      \caption{Difference of phase solutions between calibrations with the 0.3Jy and 0.8Jy sky models. The solutions for both stations are around zero phase for the duration of the observation.}
+      \caption[Calibration solution differences between two skymodels]{Difference of phase solutions between calibrations with the 0.3Jy and 0.8Jy sky models. The solutions for both stations are around zero phase for the duration of the observation.}
 	\label{fig:ch6_diffs_solutions}
 \end{figure}
 
 \begin{figure}
     \includegraphics[width=0.95\linewidth]{ch6/figures/08_and_15_solutsions_CS003HBA0_CS003HBA1_CS004HBA0.png}
-      \caption{The calibration (phase) solutions for the test data set obtained when calibrating with sky models of 0.8 Jy cutoff (left) and 1.5Jy cutoff (right). The data shows the phase solutions for baselines including stations CS003HBA0, CS003HBA1 and CS004HBA0, with respect to the reference station, CS001HBA0. We can see that the calibration solutions shown here are not significantly different than those shown in \ref{fig:ch6_skymodel_rcalib_004_03}, despite taking a fraction of the processing time.  }
+      \caption[Calibration solutions for sky models with high flux cutoff]{The calibration (phase) solutions for the test data set obtained when calibrating with sky models of 0.8 Jy cutoff (left) and 1.5Jy cutoff (right). The data shows the phase solutions for baselines including stations CS003HBA0, CS003HBA1 and CS004HBA0, with respect to the reference station, CS001HBA0. We can see that the calibration solutions shown here are not significantly different than those shown in \ref{fig:ch6_skymodel_rcalib_004_03}, despite taking a fraction of the processing time.  }
 	\label{fig:ch6_skymodel_rcalib_08_15}
 \end{figure}
 
@@ -62,7 +62,7 @@ The models of the processing time vs input size were fit as a linear regression.
 
 \hline
 \end{tabular}
-\caption{Fit parameters for the models in Equation \ref{eq:ch6_runtime_size_models}. }
+    \caption{Fit parameters for the models in Equation \ref{eq:ch6_runtime_size_models}. }
 \label{table:fits_size}
 \end{table}
 
@@ -92,7 +92,7 @@ The covariance matrix for the fit parameters of equation \ref{eq:ch6_gsmcal_NCPU
     -504.11 & 2322.95
 \end{bmatrix}
 \end{equation}
-\caption{The covariance matrix for the parameters for the model predicting run time vs Number of CPUs used, shown in Equation \ref{eq:ch6_gsmcal_NCPU}.}
+    \caption[Covariance matrix for parameters predicting run time from NCPU]{The covariance matrix for the parameters for the model predicting run time vs Number of CPUs used, shown in Equation \ref{eq:ch6_gsmcal_NCPU}.}
 \label{eq:cov_NCPU}
 \end{equ}
 
