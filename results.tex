@@ -34,7 +34,7 @@ All of the steps show a linear behavior with respect to input data size, while t
         \centering
         \begin{subfigure}[b]{0.44\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{ch6/figures/predict_ateam_size.pdf}
+            \includegraphics[width=1.\textwidth]{ch6/figures/predict_ateam_size.pdf}
             \caption[Processing time vs data size for predict\_ateam]%
             {{\small Tests of the  {\fontfamily{qcr}\selectfont predict\_ateam} step for input data size ranging from 1GB to 64 GB. This step calculates the contamination from bright off-axis sources. Dashed lines are shown connecting each pair of points, to highlight the trend. We can see that the data can be described well by a linear model. We show the model in Equation \ref{eq:ch6_predictateam} in black.}}   
             \label{fig:ch6_predict_ateam}
@@ -42,7 +42,7 @@ All of the steps show a linear behavior with respect to input data size, while t
         \hfill
         \begin{subfigure}[b]{0.44\textwidth}  
             \centering 
-            \includegraphics[width=\textwidth]{ch6/figures/ateamcliptar_size.pdf}
+            \includegraphics[width=1.\textwidth]{ch6/figures/ateamcliptar_size.pdf}
             \caption[Processing time vs data size for ateamcliptar]%
             {{\small Tests of the {\fontfamily{qcr}\selectfont ateamcliptar} step for input data size ranging from 1GB to 64 GB. This step removes the contamination from bright off-axis sources. We can see that the data fits a linear model. We show the model in Equation \ref{eq:ch6_ateamcliptar} in black.}}    
             \label{fig:ch6_ateamcliptar}
@@ -50,7 +50,7 @@ All of the steps show a linear behavior with respect to input data size, while t
         \vskip\baselineskip
         \begin{subfigure}[b]{0.44\textwidth}   
             \centering 
-            \includegraphics[width=\textwidth]{ch6/figures/dpppconcat_size.pdf}
+            \includegraphics[width=1.\textwidth]{ch6/figures/dpppconcat_size.pdf}
             \caption[]%
             {{\small Tests of the {\fontfamily{qcr}\selectfont dpppconcat} step for input data size ranging from 1GB to 64 GB. This step concatenates 10 files into a single measurement set.  We can see that the data fits a linear model. We show the model in Equation \ref{eq:ch6_dpppconcat}  in black.}}    
             \label{fig:ch6_dpppconcat_size}
@@ -58,7 +58,7 @@ All of the steps show a linear behavior with respect to input data size, while t
         \hfill
         \begin{subfigure}[b]{0.44\textwidth}   
             \centering 
-            \includegraphics[width=\textwidth]{ch6/figures/gsmcal_solve_size2.pdf}
+            \includegraphics[width=1.\textwidth]{ch6/figures/gsmcal_solve_size2.pdf}
             \caption[]%
             {{\small Tests of the {\fontfamily{qcr}\selectfont gsmcal\_solve} step for input data size ranging from 1GB to 64 GB. This step performs gain calibration of the concatenated data set against a sky model. It is the slowest and most computationally expensive \texttt{prefactor} step. We fit two linear models, for data below 16GB and above 16GB. We can see the two models, shown in  (Equation \ref{eq:ch6_gsmcalsolve}) as two black dashed lines, intersecting at 1GB.}}    
             \label{fig:ch6_gsmcalsolve_size}
@@ -69,7 +69,7 @@ All of the steps show a linear behavior with respect to input data size, while t
 
 
 \begin{figure}
-\includegraphics[width=0.95\linewidth]{ch6/figures/gsmcal_apply_size.pdf}
+\includegraphics[width=0.80\linewidth]{ch6/figures/gsmcal_apply_size.pdf}
         \caption{\small Tests of the {\fontfamily{qcr}\selectfont gsmcal\_apply} step for input data size ranging from 1GB to 64 GB. This step applies the calibration solutions to the data. We can see that the data fits a linear model, described in Equation\ref{eq:ch6_gsmcalapply}, as the black dashed line.}
             \label{fig:ch6_gsmcalapply_size}
 \end{figure}
@@ -112,19 +112,19 @@ We show four images made from data sets in Figure \ref{fig:ch6_skymodel_images}.
 \end{equ}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/skymodel_length.eps}
+    \includegraphics[width=0.80\linewidth]{ch6/figures/skymodel_length.eps}
       \caption{The processing time of the {\fontfamily{qcr}\selectfont gsmcal\_solve} step is linear with the size of the sky model as measured by the number of sources.}
 	\label{fig:ch6_skymodel_run_lenght}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/skymodel_flux.eps}
+    \includegraphics[width=0.80\linewidth]{ch6/figures/skymodel_flux.eps}
       \caption[Run time vs cutoff sensitivity]{The run time of the {\fontfamily{qcr}\selectfont gsmcal\_solve} step as a function of the cutoff sensitivity is not linear. As shown in Figure \ref{fig:ch6_skymodel_size}, the number of sources increases exponentially as the minimum sensitivity decreases. The dashed line shows the model fitted in Equation \ref{eq:ch6_skymodel_flux}. }
 	\label{fig:ch6_skymodel_run_sens}
 \end{figure}
 
 \begin{figure*}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/difference_4.png}
+    \includegraphics[width=0.80\linewidth]{ch6/figures/difference_4.png}
       \caption[Comparison of data calibrated with four sky models]{Four images made using the \texttt{wsclean} software \citep{wsclean} from the data set\protect\footnotemark. The four images were calibrated with sky models of various flux cutoffs ranging from 0.05Jy (top left) to 1.5Jy (bottom right). Flux statistics for the green regions in the four images are listed in Table \ref{table:skymodel_RMS}. The top right, and bottom two quadrants show the pixel difference between the 0.05Jy image and the 0.3Jy, 0.8Jy and 1.5Jy images respectively. The four images are all on the same scaleThe green region shows the same area in all four quadrants.  }
 	\label{fig:ch6_skymodel_images}
 \end{figure*}
@@ -138,13 +138,13 @@ One further parameter that can be optimized is the number of CPUs requested when
 We fit a model with processing time inversely proportional to the number of CPUs used. We show the resulting model in Equation \ref{eq:ch6_gsmcal_NCPU}, with the parameter $(\mathcal{N})$ being the number of CPUs used. 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/gsmcal_NCPU_and_model.eps}
+    \includegraphics[width=0.80\linewidth]{ch6/figures/gsmcal_NCPU_and_model.eps}
       \caption{The processing time of the {\fontfamily{qcr}\selectfont gsmcal\_solve} step decreases exponentially with the number of CPUs requested. The model in Equation \ref{eq:ch6_gsmcal_NCPU} is shown in a dashed line. As this is a 1/x model, it shows diminishing returns past 16 CPUs. }
 	\label{fig:ch6_gsmcal_solve_NCPU}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/gsmcal_apply_NCPU.eps}
+    \includegraphics[width=0.80\linewidth]{ch6/figures/gsmcal_apply_NCPU.eps}
       \caption{The step that applies the calibration solutions, {\fontfamily{qcr}\selectfont gsmcal\_apply}, does not show a speedup when run on multiple cores, as all runs take roughly 30 seconds to complete.  }
 	\label{fig:ch6_gsmcal_apply_NCPU}
 \end{figure}
@@ -165,7 +165,7 @@ Aside from performance of the LOFAR software, we measured the queuing time at th
 We fit two linear models for this queuing time. One model for 1-4 CPUs and one for 4-16 CPUs. The model, as a function of the number of CPUs $\mathcal{N}$ is in equation \ref{eq:ch6_queue_model}. The two models are plotted against the 75th percentile of the queuing times (last column in Table \ref{table:queueing_stats}) in Figure \ref{fig:ch6_queue_model}.
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/Queue_NCPU.eps}
+    \includegraphics[width=0.80\linewidth]{ch6/figures/Queue_NCPU.eps}
       \caption{Test randomly submitting jobs to the \texttt{GINA} with different number of requested CPUs. The long tail for 8 and 16 CPU jobs shows that some jobs can take several hours to launch.  }
       
       %Outliers due to grid downtime have been removed \textbf{Actually do this though} }
@@ -192,7 +192,7 @@ We fit two linear models for this queuing time. One model for 1-4 CPUs and one f
 \end{table*}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/Queueing_model.eps}
+    \includegraphics[width=0.80\linewidth]{ch6/figures/Queueing_model.eps}
       \caption{The queuing model built from two linear fits to the queuing times. We use the 75th percentile of the queuing data as a upper bound of job queuing. }
 	\label{fig:ch6_queue_model}
 \end{figure}
@@ -220,19 +220,19 @@ We fit a power law model to the time taken to transfer and unpack the data. In t
 $\mathcal{S} $ in gigabytes.
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/dl_ex_hatched.png}
+    \includegraphics[width=0.80\linewidth]{ch6/figures/dl_ex_hatched.png}
       \caption{A histogram of the download and extracting times of multiple data sizes on the \texttt{GINA} worker nodes. Download and extract times are comparable for data up to 8GB, however above that, the extracting time dominates.  }
 	\label{fig:ch6_dl_hist}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/download_extract_sct.eps}
+    \includegraphics[width=0.80\linewidth]{ch6/figures/download_extract_sct.eps}
       \caption{A scatter plot of the download and extracting times of multiple data sizes on the \texttt{GINA} worker nodes. The difference between download and extract time for the 32 and 64 GB data sets can be seen.  }
 	\label{fig:ch6_dl_plot}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/Dl_Ex_model.eps}
+    \includegraphics[width=0.80\linewidth]{ch6/figures/Dl_Ex_model.eps}
       \caption{Fit of an exponential model to the Download and Extraction time for different data sizes. For the transfer overhead, we took the 75th percentile from the data shown in Figure \ref{fig:ch6_dl_hist}. The model in Equation \ref{eq:ch6_download_model} is shown in a dashed line. }
 	\label{fig:ch6_dl_ex_model}
 \end{figure}
@@ -255,28 +255,28 @@ The results are shown in Figures \ref{fig:ch6_prod_dl_10} and \ref{fig:ch6_prod_
 Finally, we present Figure \ref{fig:ch6_prod_gsmcal} which shows a comparison of {\fontfamily{qcr}\selectfont gsmcal\_solve} run times and our model's prediction for a 1GB data set.  Figure \ref{fig:ch6_prod_gsmcal_times} plots the processing time vs data size for these production runs and includes the model from Equation \ref{eq:ch6_gsmcalsolve}. The significant overhead incurred on a shared infrastructure can be noted. 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/Production_10GB_2.eps}
+    \includegraphics[width=0.80\linewidth]{ch6/figures/Production_10GB_2.eps}
       \caption{Downloading and extracting time for 10 1GB data sets performed in our production environment. Data from this test ranges from July 2018 to January 2019. The dashed red line shows the prediction obtained from section \ref{sec:ch6_results_dl}. We see a bimodal distribution corresponding to 10 GB data (right peak) and data averaged further to 5GB (left peak).}
 	\label{fig:ch6_prod_dl_10}
 \end{figure}
 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/Production_64GB_2.eps}
+    \includegraphics[width=0.80\linewidth]{ch6/figures/Production_64GB_2.eps}
       \caption{Downloading and extracting time for a 64GB data set performed in our production environment. Data from this test ranges from 07/2018-01/2019. The dashed red line shows the prediction obtained from Figure \ref{fig:ch6_gsmcalsolve_size} in Section \ref{sec:ch6_results_dl}. }
 	\label{fig:ch6_prod_dl_64}
 \end{figure}
 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/Production_gsmcal_1GB_2.eps}
+    \includegraphics[width=0.80\linewidth]{ch6/figures/Production_gsmcal_1GB_2.eps}
       \caption{Processing time for the {\fontfamily{qcr}\selectfont gsmcal\_solve} step in a production environment. Data from this test ranges from 07/2018-01/2019. The dashed red line shows the prediction for a 1GB run, obtained from section \ref{sec:ch6_results_dl}. We see two distributions, which correspond to data averaged to 1GB and 512 MB.  It should be noted that the left peak corresponds to 512MB data, as seen in Figure \ref{fig:ch6_prod_gsmcal_times}.}
 	\label{fig:ch6_prod_gsmcal}
 \end{figure}
 
 
 \begin{figure}
-    \includegraphics[width=0.95\linewidth]{ch6/figures/gsmcal_solve_size_prod.eps}
+    \includegraphics[width=0.80\linewidth]{ch6/figures/gsmcal_solve_size_prod.eps}
       \caption{The scalability model for processing data through the {\fontfamily{qcr}\selectfont gsmcal\_solve} step, shown in a dashed line. The scatter plot shows the performance for production runs of this step between July 2018 and January 2019. The two large clusters are for data products that are 1.0 and 2.0 GB respectively. }
 	\label{fig:ch6_prod_gsmcal_times}
 \end{figure}
