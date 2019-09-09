@@ -11,7 +11,7 @@ We performed the scalability tests on a dedicated node of the SURFsara \texttt{G
 We processed the sample data set with the LOFAR \texttt{prefactor} pipeline. The \texttt{prefactor} version used was the same as we use for the LOFAR SKSP broadband surveys \citep{prefactor_LOTSS_DR1}. This software consists of several steps executed in sequence, shown graphically in Figure \ref{fig:ch6_prefactor_steps}. The important \texttt{prefactor} steps are as follows. The {\fontfamily{qcr}\selectfont predict\_ateam} and {\fontfamily{qcr}\selectfont ateamcliptar} steps predict the contamination by bright off-axis sources and remove these effects respectively. The {\fontfamily{qcr}\selectfont dpppconcat} step is responsible for concatenating 10 Subband into a single file which is in turn calibrated. The step {\fontfamily{qcr}\selectfont gsmcal\_solve} is responsible for calibration of the data against a model of the radio sky. The solutions produced by {\fontfamily{qcr}\selectfont gsmcal\_solve} are used by {\fontfamily{qcr}\selectfont gsmcal\_apply} and applied to the scientific observation.
 
 \begin{figure}
-    \includegraphics[width=0.8\linewidth]{ch6/figures/4_stages_steps1.png}
+    \includegraphics[width=0.8\linewidth]{ch6/figures/4_stages_steps1_thesis.png}
       \caption{The major steps of the \texttt{prefactor} DI pipeline. }
 	\label{fig:ch6_prefactor_steps}
 \end{figure}
