@@ -42,8 +42,8 @@ The goal for our scalability model is to understand the effect of several parame
 \label{table:averaging}
 \end{table}
 
-The slowest step of the \texttt{prefactor} pipeline is the {\fontfamily{qcr}\selectfont gsmcal\_solve} step, which performs the gain calibration against a model of the radio sky. This step operates on a concatenated data set that consists of 10 Subbands. We obtain the calibration model through the TGSS sky model creator\footnote{Accessible at \href{http://tgssadr.strw.leidenuniv.nl/doku.php}{the TGSS ADR portal}.}. By default this service creates a text file describing the sky-model from the TGSS survey \citep{tgssadr} as a combination of gaussians and point sources. By default, it sets a threshold of sources brighter than 0.3 Jy. 
-Lowering this threshold creates longer sky-model files with more faint sources, while increasing it will return only the few brightest sources. Since sky model calibration requires converting the sky-model into modelled \gls{visibilities}\citep[e.g.][]{dppp, radio_visibility_sage,app_synth}, a longer sky model will increase the time taken to gain calibrate a data set. We created 7 sky models with a flux cutoff ranging between 0.05 Jy and 1.5 Jy. The number of sources in the resulting models are listed in Table \ref{table:skymodels}. 
+The slowest step of the \texttt{prefactor} pipeline is the {\fontfamily{qcr}\selectfont gsmcal\_solve} step, which performs the gain calibration against a model of the radio sky. This step operates on a concatenated data set that consists of 10 Subbands. We obtain the calibration model through the TGSS sky model creator\footnote{Accessible at \href{http://tgssadr.strw.leidenuniv.nl/doku.php}{the TGSS ADR portal}.}. By default, this service creates a text file describing the sky-model from the TGSS survey \citep{tgssadr} as a combination of Gaussians and point sources. By default, it sets a threshold of sources brighter than 0.3 Jy. 
+Lowering this threshold creates longer sky-model files with more faint sources, while increasing it will return only the few brightest sources. Since sky model calibration requires converting the sky-model into modelled \gls{visibilities}\citep[e.g.][]{dppp, radio_visibility_sage,app_synth}, a longer sky model will increase the time taken to gain calibrate a data set. We created seven sky models with a flux cutoff ranging between 0.05 Jy and 1.5 Jy. The number of sources in the resulting models are listed in Table \ref{table:skymodels}. 
 For production\footnote{The query used to obtain model 3 is at the following link \url{http://bit.ly/tgss_model}}, we used the minimum sensitivity parameters for model 3.
 %%%%%Each line of these model files corresponds to one source, modelled either as a point or an ellipse), hence the second column also lists the number of sources per sky model file. %Suggested remove by Huub
 
@@ -74,12 +74,12 @@ It is important to note that the complexity and accuracy of the sky model depend
 
 \begin{figure}
     \includegraphics[width=0.8\linewidth]{ch6/figures/skymodel_size_vs_Jy.eps}
-      \caption{The size of the sky model (measured in number of sources) increases exponentially as we decrease the flux cutoff of the model (i.e. increase the sensitivity).}
+      \caption{The size of the sky model (measured as the number of sources) increases exponentially as we decrease the flux cutoff of the model (i.e. increase the sensitivity).}
 	\label{fig:ch6_skymodel_size}
 \end{figure}
 
 
-Finally, the number of CPU cores (henceforth just `CPUs') used by each step is a parameter that can be optimized for the entire pipeline. While increasing the number of CPUs can make some steps run faster, requesting jobs that reserve a large number of CPUs will take longer to launch on shared infrastructure. In order to understand the interplay between these effects, we study the queuing time and processing time as a function of the number of CPUs. For the parameter steps we choose to test 1, 2, 3, 4, 8 and 16 CPUs. 
+Finally, the number of CPU cores (henceforth just `CPUs') used by each step is a parameter that can be optimised for the entire pipeline. While increasing the number of CPUs can make some steps run faster, requesting jobs that reserve a large number of CPUs will take longer to launch on shared infrastructure. In order to understand the interplay between these effects, we study the queuing time and processing time as a function of the number of CPUs. For the parameter steps we choose to test 1, 2, 3, 4, 8 and 16 CPUs. 
 
 \subsection{Infrastructure Performance}
 %%%%%Staging files at different locations can be modelled using historical data, discuss the importance of knowing the time it takes to stage data and the prediction of future performance. 

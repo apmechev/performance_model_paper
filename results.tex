@@ -5,10 +5,10 @@ Since we are  processing a sample data set in the context of the LOFAR Surveys p
  
 
 \subsection{Isolated Environment tests}
-We first tested the LOFAR software in isolation in order to determine the scalability of processing time in terms of data size. We run the entire \texttt{prefactor} target pipeline which which removes Direction Independent Calibration errors from a LOFAR science target. In the following sections, we present the models obtained from these tests.  
+We first tested the LOFAR software in isolation in order to determine the scalability of processing time in terms of data size. We run the entire \texttt{prefactor} target pipeline which removes Direction Independent Calibration errors from a LOFAR science target. In the following sections, we present the models obtained from these tests.  
 
 \subsubsection{Input Data Size}\label{sec:ch6_results_size}
-LOFAR data can be averaged to different sizes based on the scientific requirements. Smaller data sets are processed faster, so it is important to understand the effect of data size on processing time as measured by wall-clock time. We show the processing time for our test data set, averaged to different sizes for several \texttt{prefactor} steps in Figures \ref{fig:ch6_predict_ateam}- \ref{fig:ch6_gsmcalsolve_size} and \ref{fig:ch6_gsmcalapply_size}. We run this test using 8 CPUs. The figures also show linear fits for consecutive pairs of parameter steps, in gray dashed lines, used to help guide the selection of parametric model. 
+LOFAR data can be averaged to different sizes based on the scientific requirements. Smaller data sets are processed faster, so it is important to understand the effect of data size on processing time as measured by wall-clock time. We show the processing time for our test data set, averaged to different sizes for several \texttt{prefactor} steps in Figures \ref{fig:ch6_predict_ateam}- \ref{fig:ch6_gsmcalsolve_size} and \ref{fig:ch6_gsmcalapply_size}. We run this test using 8 CPUs. The figures also show linear fits for consecutive pairs of parameter steps, in gray dashed lines, used to help guide the selection of the parametric model. 
 
 All of the steps show a linear behavior with respect to input data size, while the {\fontfamily{qcr}\selectfont gsmcal\_solve step} is best fit by two linear relationships, for data smaller and larger than 16 GB. The linear fit to the run times are shown in Equations \ref{eq:ch6_predictateam}-\ref{eq:ch6_gsmcalapply}. The equations show the processing time as a function of the data size ($\mathcal{S}$), with the slope in the units of seconds/byte. The fits are also shown in Figures \ref{fig:ch6_predict_ateam} to \ref{fig:ch6_gsmcalapply_size} as a black dashed line.
 
@@ -75,7 +75,7 @@ All of the steps show a linear behavior with respect to input data size, while t
 \end{figure}
 
 \subsubsection{Calibration Model Size}
-To test the effect of the calibration model size on run time, we test our calibration with several different lengths of the sky model file. We create these models by changing the minimum sensitivity using values ranging from 0.05 Jy to 1.5 Jy. The most sensitive model (0.05 Jy) had 809 sources while the 1.5 Jy model had only 16 sources. 
+To test the effect of the calibration model size on run time, we test our calibration with several different lengths of the sky model file. We create these models by changing the minimum sensitivity using values ranging from 0.05 Jy to 1.5 Jy. The most sensitive model (0.05 Jy) had 809 sources, while the 1.5 Jy model had only 16 sources. 
 
 Figure \ref{fig:ch6_skymodel_run_lenght} shows that the calibration time is directly proportional to the length of the sky model. Figure \ref{fig:ch6_skymodel_run_sens} shows the run time as a function of the processing parameter: the cutoff sensitivity. As the relationship between the number of sources and cutoff sensitivity is a power law, here we see the same relationship holding for processing time.
 
@@ -108,7 +108,7 @@ We show four images made from data sets in Figure \ref{fig:ch6_skymodel_images}.
     T=1185\cdot \mathcal{F}^{-0.854}
 \label{eq:ch6_skymodel_flux}
 \end{equation}
-    \caption[Calibration time vs flux cutoff]{Processing time for the {\fontfamily{qcr}\selectfont gsmcal\_solve} step as a function of the flux cutoff of the calibration model ($\mathcal{F}$) in Jansky}
+    \caption[Calibration time vs flux cutoff]{Processing time for the {\fontfamily{qcr}\selectfont gsmcal\_solve} step as a function of the flux cutoff of the calibration model ($\mathcal{F}$) in Jansky.}
 \end{equ}
 
 \begin{figure}
@@ -125,7 +125,7 @@ We show four images made from data sets in Figure \ref{fig:ch6_skymodel_images}.
 
 \begin{figure*}
     \includegraphics[width=0.80\linewidth]{ch6/figures/difference_4_thesis.png}
-      \caption[Comparison of data calibrated with four sky models]{Four images made using the \texttt{wsclean} software \citep{wsclean} from the data set\protect\footnotemark. The four images were calibrated with sky models of various flux cutoffs ranging from 0.05Jy (top left) to 1.5Jy (bottom right). Flux statistics for the green regions in the four images are listed in Table \ref{table:skymodel_RMS}. The top right, and bottom two quadrants show the pixel difference between the 0.05Jy image and the 0.3Jy, 0.8Jy and 1.5Jy images respectively. The four images are all on the same scale. The green region shows the same area in all four quadrants.  }
+      \caption[Comparison of data calibrated with four sky models]{Four images made using the \texttt{wsclean} software \citep{wsclean} from the data set\protect\footnotemark. The four images were calibrated with sky models of various flux cutoffs ranging from 0.05Jy (top left) to 1.5Jy (bottom right). Flux statistics for the green regions in the four images are listed in Table \ref{table:skymodel_RMS}. The top right and bottom two quadrants show the pixel difference between the 0.05Jy image and the 0.3Jy, 0.8Jy and 1.5Jy images respectively. The four images are all on the same scale. The green region shows the same area in all four quadrants.  }
 	\label{fig:ch6_skymodel_images}
 \end{figure*}
 \footnotetext{Using the command wsclean -absmem 50 -niter 3 -size 4096 4096 -scale 20asec}
@@ -133,7 +133,7 @@ We show four images made from data sets in Figure \ref{fig:ch6_skymodel_images}.
 
 
 \subsubsection{Number of CPUs}
-One further parameter that can be optimized is the number of CPUs requested when the job is launched. We investigated the processing speedup as a function of the number of CPUs for the \texttt{prefactor} target pipeline. From the steps tested, only the {\fontfamily{qcr}\selectfont gsmcal\_solve} step shows a significant speedup as the number of CPUs is increased. The run time of this step is an inverse power law with respect to the number of CPUs as seen in Figure \ref{fig:ch6_gsmcal_solve_NCPU}. Unlike the solving step, the step applying the calibration solutions ({\fontfamily{qcr}\selectfont gsmcal\_apply}) is constant in time with respect to the number of CPUs as seen in Figure \ref{fig:ch6_gsmcal_apply_NCPU}. The difference in performance is most likely because the {\fontfamily{qcr}\selectfont gsmcal\_apply} code uses a parallel for loop to calculate antenna gains while {\fontfamily{qcr}\selectfont gsmcal\_apply} does not. 
+One further parameter that can be optimised is the number of CPUs requested when the job is launched. We investigated the processing speedup as a function of the number of CPUs for the \texttt{prefactor} target pipeline. From the steps tested, only the {\fontfamily{qcr}\selectfont gsmcal\_solve} step shows a significant speedup as the number of CPUs is increased. The run time of this step is an inverse power law with respect to the number of CPUs as seen in Figure \ref{fig:ch6_gsmcal_solve_NCPU}. Unlike the solving step, the step applying the calibration solutions ({\fontfamily{qcr}\selectfont gsmcal\_apply}) is constant in time with respect to the number of CPUs as seen in Figure \ref{fig:ch6_gsmcal_apply_NCPU}. The difference in performance is most likely because the {\fontfamily{qcr}\selectfont gsmcal\_apply} code uses a parallel for loop to calculate antenna gains while {\fontfamily{qcr}\selectfont gsmcal\_apply} does not. 
 
 We fit a model with processing time inversely proportional to the number of CPUs used. We show the resulting model in Equation \ref{eq:ch6_gsmcal_NCPU}, with the parameter $(\mathcal{N})$ being the number of CPUs used. 
 
@@ -158,9 +158,9 @@ We fit a model with processing time inversely proportional to the number of CPUs
 \end{equ}
 
 
-\subsection{Queuing Tests}
+\subsection{Queueing Tests}
 
-Aside from performance of the LOFAR software, we measured the queuing time at the \texttt{GINA} cluster, as a function of the number of CPUs requested. This data was obtained between 16 Nov 2018 and 10 Dec 2018 for 1,  2, 3 ,4, 8, and 16 CPUs per job. A histogram of the queuing time for these jobs is shown in Figure \ref{fig:ch6_queue_NCPU}. Statistics for these runs are in Table \ref{table:queueing_stats}. We use the 75th percentile of the queuing time for each parameter step to fit a model. This scenario will include 75\% of runs and is a good trade-off between ignoring and including outliers. 
+Aside from the performance of the LOFAR software, we measured the queuing time at the \texttt{GINA} cluster, as a function of the number of CPUs requested. This data was obtained between 16 Nov 2018 and 10 Dec 2018 for 1,  2, 3 ,4, 8, and 16 CPUs per job. A histogram of the queuing time for these jobs is shown in Figure \ref{fig:ch6_queue_NCPU}. Statistics for these runs are in Table \ref{table:queueing_stats}. We use the 75th percentile of the queuing time for each parameter step to fit a model. This scenario will include 75\% of runs and is a good trade-off between ignoring and including outliers. 
 
 We fit two linear models for this queuing time. One model for 1-4 CPUs and one for 4-16 CPUs. The model, as a function of the number of CPUs $\mathcal{N}$ is in equation \ref{eq:ch6_queue_model}. The two models are plotted against the 75th percentile of the queuing times (last column in Table \ref{table:queueing_stats}) in Figure \ref{fig:ch6_queue_model}.
 
@@ -187,13 +187,13 @@ We fit two linear models for this queuing time. One model for 1-4 CPUs and one f
  16 CPU & 7079.0 & 696.4 & 8750.6\\
  \hline
 \end{tabular}
-    \caption[Queueing statistics per requested number of CPUs]{Statistics for queuing time for different values of CPUs requested. Queuing time for jobs requesting less than 8 CPUs is typically less than five minutes. It can drastically increase for larger jobs. }
+    \caption[Queueing statistics per requested number of CPUs]{Statistics for queuing time for different values of CPUs requested. Queueing time for jobs requesting less than 8 CPUs is typically less than five minutes. It can drastically increase for larger jobs. }
 \label{table:queueing_stats}
 \end{table*}
 
 \begin{figure}
     \includegraphics[width=0.80\linewidth]{ch6/figures/Queueing_model.eps}
-      \caption[Model of queueing times]{The queuing model built from two linear fits to the queuing times. We use the 75th percentile of the queuing data as a upper bound of job queuing. }
+      \caption[Model of queueing times]{The queuing model built from two linear fits to the queuing times. We use the 75th percentile of the queuing data as an upper bound of job queuing. }
 	\label{fig:ch6_queue_model}
 \end{figure}
 
@@ -205,7 +205,7 @@ We fit two linear models for this queuing time. One model for 1-4 CPUs and one f
     \end{cases}
   \label{eq:ch6_queue_model}
 \end{equation}
-\caption{The model for the Queuing time as described by two linear models. }
+\caption{The model for the queueing time as described by two linear models. }
 \end{equ}
 
 
@@ -256,7 +256,7 @@ Finally, we present Figure \ref{fig:ch6_prod_gsmcal} which shows a comparison of
 
 \begin{figure}
     \includegraphics[width=0.80\linewidth]{ch6/figures/Production_10GB_2.eps}
-      \caption[Tet of download/extract times for 10 1GB data sets]{Downloading and extracting time for 10 1GB data sets performed in our production environment. Data from this test ranges from July 2018 to January 2019. The dashed red line shows the prediction obtained from section \ref{sec:ch6_results_dl}. We see a bimodal distribution corresponding to 10 GB data (right peak) and data averaged further to 5GB (left peak).}
+      \caption[Tet of download/extract times for ten 1GB data sets]{Downloading and extracting time for 10 1GB data sets performed in our production environment. Data from this test ranges from July 2018 to January 2019. The dashed red line shows the prediction obtained from section \ref{sec:ch6_results_dl}. We see a bimodal distribution corresponding to 10 GB data (right peak) and data averaged further to 5GB (left peak).}
 	\label{fig:ch6_prod_dl_10}
 \end{figure}
 
